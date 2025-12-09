@@ -2,33 +2,35 @@ package com.pam.uas.data.repository
 
 import com.pam.uas.data.local.dao.DoaDao
 import com.pam.uas.data.local.entity.DoaEntity
-import com.pam.uas.data.remote.RetrofitClient
+import com.pam.uas.data.remote.api.ApiService
+import com.pam.uas.data.remote.response.ApiDoaResponse
 
-class DoaRepository(private val doaDao: DoaDao) {
+class DoaRepository(
+    private val api: ApiService,
+    private val dao: DoaDao
+) {
 
-    val allDoa = doaDao.getAllDoa()
-
-    suspend fun refreshFromApi() {
-        val response = RetrofitClient.instance.getAllDoa()
+    // FETCH DOA FROM API
+    suspend fun fetchApiDoa(): List<ApiDoaResponse> {
+        val response = api.getAllDoa()
 
         if (response.isSuccessful) {
-            response.body()?.let { apiList ->
-
-                // kosongkan database dulu (opsional)
-                doaDao.deleteAll()
-
-                // simpan satu-satu
-                for (item in apiList) {
-                    val doaEntity = DoaEntity(
-                        apiId = item.id,
-                        judul = item.doa,
-                        arab = item.ayat,
-                        latin = item.latin,
-                        arti = item.artinya
-                    )
-                    doaDao.insertDoa(doaEntity)
-                }
-            }
+            return response.body() ?: emptyList()
+        } else {
+            throw Exception("API error: ${response.code()} - ${response.message()}")
         }
+    }
+
+    // INSERT one selected doa into ROOM
+    suspend fun insert(doa: DoaEntity) = dao.insertDoa(doa)
+
+    // INSERT many
+    suspend fun insertMany(list: List<DoaEntity>) {
+        list.forEach { dao.insertDoa(it) }
+    }
+
+    // GET all saved doa from ROOM
+    suspend fun getSavedDoa(): List<DoaEntity> {
+        return dao.getAllDoa()
     }
 }

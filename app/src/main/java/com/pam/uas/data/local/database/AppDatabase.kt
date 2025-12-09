@@ -7,29 +7,22 @@ import androidx.room.RoomDatabase
 import com.pam.uas.data.local.dao.DoaDao
 import com.pam.uas.data.local.entity.DoaEntity
 
-@Database(
-    entities = [DoaEntity::class],
-    version = 1,
-    exportSchema = false
-)
+@Database(entities = [DoaEntity::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun doaDao(): DoaDao
 
     companion object {
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
+        @Volatile private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+        fun getDatabase(context: Context): AppDatabase =
+            INSTANCE ?: synchronized(this) {
+                Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "doa_db"
-                ).build()
-                INSTANCE = instance
-                instance
+                )
+                    .fallbackToDestructiveMigration()
+                    .build().also { INSTANCE = it }
             }
-        }
     }
 }
