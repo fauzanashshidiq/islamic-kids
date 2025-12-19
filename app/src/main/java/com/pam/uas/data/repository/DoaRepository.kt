@@ -41,4 +41,7 @@ class DoaRepository(
     suspend fun deleteByJudul(judul: String) {
         dao.deleteByJudul(judul)    }
 
+    suspend fun updateCatatan(judul: String, catatan: String) {
+        dao.updateCatatanByJudul(judul, catatan)
+    }
 }

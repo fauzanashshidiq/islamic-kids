@@ -1,18 +1,21 @@
 package com.pam.uas.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.pam.uas.data.remote.response.ApiDoaResponse
 import com.pam.uas.databinding.ItemApiDoaCheckboxBinding
 
 class DoaApiCheckboxAdapter(
     private var list: List<ApiDoaResponse> = emptyList(),
-    private val onItemCheckedChange: (ApiDoaResponse, Boolean) -> Unit
+    private val onCheckChanged: (ApiDoaResponse, Boolean) -> Unit,
+    private val onSaveNote: (ApiDoaResponse, String) -> Unit
 ) : RecyclerView.Adapter<DoaApiCheckboxAdapter.VH>() {
 
     inner class VH(val binding: ItemApiDoaCheckboxBinding) : RecyclerView.ViewHolder(binding.root)
-    private var savedTitles: List<String> = emptyList()
+    private var savedNotesMap: Map<String, String> = emptyMap()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val binding = ItemApiDoaCheckboxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,23 +26,46 @@ class DoaApiCheckboxAdapter(
         val item = list[position]
         holder.binding.tvTitleApiDoa.text = item.doa
 
-        val isSaved = savedTitles.contains(item.doa)
+        val savedNote = savedNotesMap[item.doa]
+        val isSaved = savedNote != null
 
-        // Hapus listener lama biar gak trigger saat scrolling
+        // Reset listener dulu
         holder.binding.cbSelect.setOnCheckedChangeListener(null)
+        holder.binding.btnSimpanCatatan.setOnClickListener(null)
 
-        // Set status checkbox: TRUE jika ada di DB, FALSE jika tidak
-        holder.binding.cbSelect.isChecked = isSaved
+        // ATUR STATUS UI BERDASARKAN DB
+        if (isSaved) {
+            holder.binding.cbSelect.isChecked = true
+            holder.binding.layoutCatatan.visibility = View.VISIBLE
+            // Isi EditText dengan catatan dari DB (atau kosong jika stringnya "")
+            holder.binding.etCatatan.setText(savedNote)
+        } else {
+            holder.binding.cbSelect.isChecked = false
+            holder.binding.layoutCatatan.visibility = View.GONE
+            holder.binding.etCatatan.text.clear()
+        }
 
-        // Aktifkan checkbox selamanya (jangan didisable)
-        holder.binding.cbSelect.isEnabled = true
-        holder.binding.cbSelect.alpha = 1.0f
-        holder.binding.root.alpha = 1.0f
-
-        // Pasang listener baru
+        // LISTENER CHECKBOX
         holder.binding.cbSelect.setOnCheckedChangeListener { _, isChecked ->
-            // Panggil callback ke Activity
-            onItemCheckedChange(item, isChecked)
+            if (isChecked) {
+                // Tampilkan layout catatan
+                holder.binding.layoutCatatan.visibility = View.VISIBLE
+                // Simpan doa ke DB (catatan default kosong dulu)
+                onCheckChanged(item, true)
+            } else {
+                // Sembunyikan layout catatan
+                holder.binding.layoutCatatan.visibility = View.GONE
+                holder.binding.etCatatan.text.clear()
+                // Hapus doa dari DB
+                onCheckChanged(item, false)
+            }
+        }
+
+        // LISTENER TOMBOL SIMPAN CATATAN
+        holder.binding.btnSimpanCatatan.setOnClickListener {
+            val catatanBaru = holder.binding.etCatatan.text.toString()
+            onSaveNote(item, catatanBaru)
+            Toast.makeText(holder.itemView.context, "Catatan diupdate", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -50,8 +76,8 @@ class DoaApiCheckboxAdapter(
         notifyDataSetChanged()
     }
 
-    fun setSavedIds(titles: List<String>) {
-        savedTitles = titles
-        notifyDataSetChanged() // Refresh tampilan adapter
+    fun setSavedData(notesMap: Map<String, String>) {
+        savedNotesMap = notesMap
+        notifyDataSetChanged()
     }
 }

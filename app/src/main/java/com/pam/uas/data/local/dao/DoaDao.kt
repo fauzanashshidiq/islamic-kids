@@ -22,4 +22,6 @@ interface DoaDao {
     @Query("DELETE FROM doa WHERE doa = :judul")
     suspend fun deleteByJudul(judul: String)
 
+    @Query("UPDATE doa SET catatan = :catatan WHERE doa = :judul")
+    suspend fun updateCatatanByJudul(judul: String, catatan: String)
 }

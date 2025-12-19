@@ -1,12 +1,12 @@
 package com.pam.uas
 
 import android.os.Bundle
-import android.widget.Toast
+import android.widget.EditText
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.map
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pam.uas.data.remote.response.ApiDoaResponse
 import com.pam.uas.databinding.ActivityDoaBinding
 import com.pam.uas.ui.DoaApiCheckboxAdapter
 import com.pam.uas.viewmodel.DoaViewModel
@@ -22,15 +22,24 @@ class DoaActivity : AppCompatActivity() {
         binding = ActivityDoaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = DoaApiCheckboxAdapter(emptyList()) { item, isChecked ->
-            if (isChecked) {
-                // User mencentang -> Simpan ke DB
-                viewModel.saveDoa(item)
-            } else {
-                // User hapus centang -> Hapus dari DB berdasarkan Judul
-                viewModel.deleteDoaByJudul(item.doa)
+        adapter = DoaApiCheckboxAdapter(
+            list = emptyList(),
+            // Callback 1: Checkbox diklik
+            onCheckChanged = { item, isChecked ->
+                if (isChecked) {
+                    // Simpan doa (Catatan default kosong "")
+                    viewModel.saveDoa(item, "")
+                } else {
+                    // Hapus doa
+                    viewModel.deleteDoaByJudul(item.doa)
+                }
+            },
+            // Callback 2: Tombol Simpan Catatan diklik
+            onSaveNote = { item, newNote ->
+                // Update catatan di DB
+                viewModel.updateCatatan(item.doa, newNote)
             }
-        }
+        )
 
         binding.rvDoaApi.adapter = adapter
         binding.rvDoaApi.layoutManager = LinearLayoutManager(this)
@@ -40,8 +49,10 @@ class DoaActivity : AppCompatActivity() {
         }
 
         viewModel.savedDoa.observe(this) { savedList ->
-            val savedTitles = savedList.map { it.doa }
-            adapter.setSavedIds(savedTitles)
+            // KITA BUAT MAP: Kuncinya Judul, Valuenya Catatan
+            // Supaya adapter tahu doa mana yg disimpan DAN apa catatannya
+            val notesMap = savedList.associate { it.doa to (it.catatan ?: "") }
+            adapter.setSavedData(notesMap)
         }
 
         viewModel.loadApiDoa()

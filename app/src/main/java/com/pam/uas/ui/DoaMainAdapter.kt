@@ -1,6 +1,7 @@
 package com.pam.uas.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pam.uas.data.local.entity.DoaEntity
@@ -33,7 +34,15 @@ class DoaMainAdapter(
             item.isMemorized = isChecked
 
             onMemorizedChanged(item, isChecked)
-        }    }
+        }
+
+        if (item.catatan.isNullOrEmpty()) {
+            holder.binding.tvCatatan.visibility = View.GONE
+        } else {
+            holder.binding.tvCatatan.visibility = View.VISIBLE
+            holder.binding.tvCatatan.text = "Catatan: ${item.catatan}"
+        }
+    }
 
     override fun getItemCount(): Int = list.size
 
