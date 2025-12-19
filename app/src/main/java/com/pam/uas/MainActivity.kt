@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = DoaMainAdapter(emptyList())
+        adapter = DoaMainAdapter(emptyList()) { doa, isMemorized ->
+            viewModel.updateMemorizedStatus(doa, isMemorized)
+        }
         binding.rvDoaMain.layoutManager = LinearLayoutManager(this)
         binding.rvDoaMain.adapter = adapter
 

@@ -15,4 +15,11 @@ interface DoaDao {
 
     @Query("SELECT * FROM doa")
     suspend fun getAllDoa(): List<DoaEntity>
+
+    @Query("UPDATE doa SET isMemorized = :isMemorized WHERE id = :id")
+    suspend fun updateMemorizedStatus(id: Int, isMemorized: Boolean)
+
+    @Query("DELETE FROM doa WHERE doa = :judul")
+    suspend fun deleteByJudul(judul: String)
+
 }

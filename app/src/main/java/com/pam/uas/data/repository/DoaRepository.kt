@@ -33,4 +33,12 @@ class DoaRepository(
     suspend fun getSavedDoa(): List<DoaEntity> {
         return dao.getAllDoa()
     }
+
+    suspend fun updateMemorizedStatus(id: Int, isMemorized: Boolean) {
+        dao.updateMemorizedStatus(id, isMemorized)
+    }
+
+    suspend fun deleteByJudul(judul: String) {
+        dao.deleteByJudul(judul)    }
+
 }

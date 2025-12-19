@@ -27,22 +27,32 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
         apiDoaList.postValue(repo.fetchApiDoa())
     }
 
-    fun saveSelectedDoa(list: List<ApiDoaResponse>) = viewModelScope.launch {
-        val entities = list.map {
-            DoaEntity(
-                id = 0,
-                doa = it.doa,
-                ayat = it.ayat,
-                latin = it.latin,
-                artinya = it.artinya
-            )
-        }
-        repo.insertMany(entities)
+    fun saveDoa(apiDoa: ApiDoaResponse) = viewModelScope.launch {
+        val entity = DoaEntity(
+            id = 0, // Auto generate
+            doa = apiDoa.doa,
+            ayat = apiDoa.ayat,
+            latin = apiDoa.latin,
+            artinya = apiDoa.artinya,
+            isMemorized = false
+        )
+        repo.insertMany(listOf(entity))
     }
+
 
     fun loadSavedDoa() = viewModelScope.launch {
         savedDoa.postValue(repo.getSavedDoa())
     }
 
+    fun updateMemorizedStatus(doa: DoaEntity, isMemorized: Boolean) {
+        viewModelScope.launch {
+            repo.updateMemorizedStatus(doa.id, isMemorized)
+        }
+    }
+
+    fun deleteDoaByJudul(judul: String) = viewModelScope.launch {
+        // Kamu perlu menambahkan fungsi ini di Repository dan DAO
+        repo.deleteByJudul(judul)
+    }
 }
 

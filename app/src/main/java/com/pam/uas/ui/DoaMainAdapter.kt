@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pam.uas.data.local.entity.DoaEntity
 import com.pam.uas.databinding.ItemDoaMainBinding
 
-class DoaMainAdapter(private var list: List<DoaEntity>) : RecyclerView.Adapter<DoaMainAdapter.VH>() {
+class DoaMainAdapter(
+    private var list: List<DoaEntity>,
+    private val onMemorizedChanged: (DoaEntity, Boolean) -> Unit
+) : RecyclerView.Adapter<DoaMainAdapter.VH>() {
 
     inner class VH(val binding: ItemDoaMainBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -21,7 +24,16 @@ class DoaMainAdapter(private var list: List<DoaEntity>) : RecyclerView.Adapter<D
         holder.binding.tvArtiMain.text = item.artinya
         holder.binding.tvAyat.text = item.ayat
         holder.binding.tvLatin.text = item.latin ?: ""
-    }
+
+        holder.binding.cbHapal.setOnCheckedChangeListener(null)
+
+        holder.binding.cbHapal.isChecked = item.isMemorized
+
+        holder.binding.cbHapal.setOnCheckedChangeListener { _, isChecked ->
+            item.isMemorized = isChecked
+
+            onMemorizedChanged(item, isChecked)
+        }    }
 
     override fun getItemCount(): Int = list.size
 

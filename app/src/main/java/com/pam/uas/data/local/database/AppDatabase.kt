@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.pam.uas.data.local.dao.DoaDao
 import com.pam.uas.data.local.entity.DoaEntity
 
-@Database(entities = [DoaEntity::class], version = 2, exportSchema = false)
+@Database(entities = [DoaEntity::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun doaDao(): DoaDao
 

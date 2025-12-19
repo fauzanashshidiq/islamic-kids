@@ -10,5 +10,6 @@ data class DoaEntity(
     val doa: String,
     val ayat: String,
     val latin: String,
-    val artinya: String
+    val artinya: String,
+    var isMemorized: Boolean = false
 )
