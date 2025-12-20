@@ -1,0 +1,92 @@
+[
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 1,
+    "nama": "Wujud",
+    "teks_arab": "وجود",
+    "deskripsi": "Artinya Ada.",
+    "keterangan": "Allah itu ada, tidak mungkin Allah itu tidak ada. Adanya alam semesta adalah bukti adanya Allah.",
+    "image_path": "ic_sifat_wujud"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 2,
+    "nama": "Qidam",
+    "teks_arab": "قدم",
+    "deskripsi": "Artinya Terdahulu.",
+    "keterangan": "Allah adalah pencipta, maka Allah sudah ada sebelum segala sesuatu yang diciptakan-Nya itu ada.",
+    "image_path": "ic_sifat_qidam"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 3,
+    "nama": "Baqa",
+    "teks_arab": "بقاء",
+    "deskripsi": "Artinya Kekal.",
+    "keterangan": "Allah tidak akan pernah mati atau punah. Segala sesuatu akan hancur kecuali wajah Allah.",
+    "image_path": "ic_sifat_baqa"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 4,
+    "nama": "Mukhalafatu Lil Hawaditsi",
+    "teks_arab": "مخالفته للحوادث",
+    "deskripsi": "Artinya Berbeda dengan makhluk-Nya.",
+    "keterangan": "Allah tidak menyerupai apapun dan siapapun dari makhluk ciptaan-Nya.",
+    "image_path": "ic_sifat_mukhalafatu"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 5,
+    "nama": "Qiyamuhu Binafsihi",
+    "teks_arab": "قيامه بنفسه",
+    "deskripsi": "Artinya Berdiri Sendiri.",
+    "keterangan": "Allah tidak memerlukan bantuan siapapun atau apapun untuk ada dan mengatur alam semesta.",
+    "image_path": "ic_sifat_qiyamuhu"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 6,
+    "nama": "Wahdaniyah",
+    "teks_arab": "وحدانية",
+    "deskripsi": "Artinya Maha Esa.",
+    "keterangan": "Allah itu tunggal, tidak ada sekutu bagi-Nya baik dalam zat, sifat, maupun perbuatan-Nya.",
+    "image_path": "ic_sifat_wahdaniyah"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 7,
+    "nama": "Qudrat",
+    "teks_arab": "قدرة",
+    "deskripsi": "Artinya Berkuasa.",
+    "keterangan": "Allah Maha Kuasa atas segala sesuatu, tidak ada yang tidak mungkin bagi-Nya.",
+    "image_path": "ic_sifat_qudrat"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 8,
+    "nama": "Iradat",
+    "teks_arab": "إرادة",
+    "deskripsi": "Artinya Berkehendak.",
+    "keterangan": "Segala sesuatu yang terjadi di alam semesta ini adalah atas kehendak Allah.",
+    "image_path": "ic_sifat_iradat"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 9,
+    "nama": "Ilmu",
+    "teks_arab": "علم",
+    "deskripsi": "Artinya Mengetahui.",
+    "keterangan": "Allah Maha Mengetahui segala sesuatu, baik yang tampak maupun yang tersembunyi.",
+    "image_path": "ic_sifat_ilmu"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 10,
+    "nama": "Hayat",
+    "teks_arab": "حياة",
+    "deskripsi": "Artinya Hidup.",
+    "keterangan": "Allah itu Maha Hidup secara kekal dan memberikan kehidupan bagi makhluk-Nya.",
+    "image_path": "ic_sifat_hayat"
+  }
+]

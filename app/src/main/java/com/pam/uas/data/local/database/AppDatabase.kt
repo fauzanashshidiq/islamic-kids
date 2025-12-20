@@ -6,13 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.pam.uas.data.local.dao.DoaDao
 import com.pam.uas.data.local.dao.KisahNabiDao
+import com.pam.uas.data.local.dao.PembelajaranDao
 import com.pam.uas.data.local.entity.DoaEntity
 import com.pam.uas.data.local.entity.KisahNabiEntity
+import com.pam.uas.data.local.entity.PembelajaranEntity
 
-@Database(entities = [DoaEntity::class, KisahNabiEntity::class], version = 5, exportSchema = false)
+@Database(entities = [DoaEntity::class, KisahNabiEntity::class, PembelajaranEntity::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun doaDao(): DoaDao
     abstract fun kisahNabiDao(): KisahNabiDao
+    abstract fun pembelajaranDao(): PembelajaranDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null

@@ -1,0 +1,50 @@
+[
+  {
+    "kategori": "RUKUN_IMAN",
+    "urutan": 1,
+    "nama": "Iman kepada Allah",
+    "deskripsi": "Meyakini dengan sepenuh hati bahwa Allah itu ada, Maha Esa, dan satu-satunya Tuhan yang berhak disembah.",
+    "keterangan": "Landasan utama dari seluruh ajaran Islam.",
+    "image_path": "ic_iman_allah"
+  },
+  {
+    "kategori": "RUKUN_IMAN",
+    "urutan": 2,
+    "nama": "Iman kepada Malaikat",
+    "deskripsi": "Meyakini adanya makhluk gaib ciptaan Allah yang bernama Malaikat yang selalu patuh pada perintah-Nya.",
+    "keterangan": "Malaikat diciptakan dari cahaya (nur) dan tidak memiliki hawa nafsu.",
+    "image_path": "ic_iman_malaikat"
+  },
+  {
+    "kategori": "RUKUN_IMAN",
+    "urutan": 3,
+    "nama": "Iman kepada Kitab-Kitab Allah",
+    "deskripsi": "Meyakini bahwa Allah menurunkan kitab-kitab suci kepada para Rasul sebagai pedoman hidup manusia.",
+    "keterangan": "Termasuk Zabur, Taurat, Injil, dan Al-Qur'an sebagai penyempurna.",
+    "image_path": "ic_iman_kitab"
+  },
+  {
+    "kategori": "RUKUN_IMAN",
+    "urutan": 4,
+    "nama": "Iman kepada Nabi dan Rasul",
+    "deskripsi": "Meyakini bahwa Allah memilih manusia-manusia pilihan untuk menyampaikan wahyu-Nya kepada umat manusia.",
+    "keterangan": "Jumlah Nabi sangat banyak, namun ada 25 Nabi dan Rasul yang wajib diketahui.",
+    "image_path": "ic_iman_rasul"
+  },
+  {
+    "kategori": "RUKUN_IMAN",
+    "urutan": 5,
+    "nama": "Iman kepada Hari Akhir",
+    "deskripsi": "Meyakini bahwa seluruh alam semesta akan hancur (kiamat) dan manusia akan dibangkitkan untuk mempertanggungjawabkan perbuatannya.",
+    "keterangan": "Percaya akan adanya surga, neraka, dan pembalasan yang adil.",
+    "image_path": "ic_iman_kiamat"
+  },
+  {
+    "kategori": "RUKUN_IMAN",
+    "urutan": 6,
+    "nama": "Iman kepada Qada dan Qadar",
+    "deskripsi": "Meyakini bahwa segala sesuatu yang terjadi di alam semesta ini, baik yang baik maupun yang buruk, adalah atas ketetapan Allah.",
+    "keterangan": "Mencakup takdir manusia yang sudah ditentukan sejak sebelum dunia diciptakan.",
+    "image_path": "ic_iman_takdir"
+  }
+]

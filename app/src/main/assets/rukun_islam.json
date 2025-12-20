@@ -1,0 +1,42 @@
+[
+  {
+    "kategori": "RUKUN_ISLAM",
+    "nama": "Syahadat",
+    "deskripsi": "Mengakui bahwa tidak ada Tuhan selain Allah dan Nabi Muhammad adalah utusan Allah.",
+    "keterangan": "Pintu masuk utama ke dalam Islam.",
+    "image_path": "ic_syahadat",
+    "urutan": 1
+  },
+  {
+    "kategori": "RUKUN_ISLAM",
+    "nama": "Shalat",
+    "deskripsi": "Mendirikan shalat fardu lima waktu dalam sehari semalam.",
+    "keterangan": "Tiang agama yang wajib dilaksanakan bagi setiap Muslim yang sudah mukallaf.",
+    "image_path": "ic_shalat",
+    "urutan": 2
+  },
+  {
+    "kategori": "RUKUN_ISLAM",
+    "nama": "Zakat",
+    "deskripsi": "Mengeluarkan sebagian harta tertentu untuk diberikan kepada golongan yang berhak (asnaf).",
+    "keterangan": "Mensucikan harta dan membantu fakir miskin.",
+    "image_path": "ic_zakat",
+    "urutan": 3
+  },
+  {
+    "kategori": "RUKUN_ISLAM",
+    "nama": "Puasa",
+    "deskripsi": "Menahan diri dari makan, minum, dan hal-hal yang membatalkan dari terbit fajar hingga terbenam matahari di bulan Ramadhan.",
+    "keterangan": "Sarana melatih kesabaran dan ketakwaan.",
+    "image_path": "ic_puasa",
+    "urutan": 4
+  },
+  {
+    "kategori": "RUKUN_ISLAM",
+    "nama": "Haji",
+    "deskripsi": "Menunaikan ibadah haji ke Baitullah di Makkah sekali seumur hidup.",
+    "keterangan": "Wajib dilaksanakan hanya bagi mereka yang mampu secara fisik, finansial, dan keamanan.",
+    "image_path": "ic_haji",
+    "urutan": 5
+  }
+]

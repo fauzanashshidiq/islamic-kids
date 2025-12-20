@@ -1,0 +1,695 @@
+[
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 1,
+    "nama": "Ar Rahman",
+    "teks_arab": "الرحمن",
+    "deskripsi": "Yang Maha Pengasih"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 2,
+    "nama": "Ar Rahiim",
+    "teks_arab": "الرحيم",
+    "deskripsi": "Yang Maha Penyayang"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 3,
+    "nama": "Al Malik",
+    "teks_arab": "الملك",
+    "deskripsi": "Yang Maha Merajai / Memerintah"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 4,
+    "nama": "Al Quddus",
+    "teks_arab": "القدوس",
+    "deskripsi": "Yang Maha Suci"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 5,
+    "nama": "As Salaam",
+    "teks_arab": "السلام",
+    "deskripsi": "Yang Maha Memberi Kesejahteraan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 6,
+    "nama": "Al Mu 'min",
+    "teks_arab": "المؤمن",
+    "deskripsi": "Yang Maha Memberi Keamanan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 7,
+    "nama": "Al Muhaimin",
+    "teks_arab": "المهيمن",
+    "deskripsi": "Yang Maha Pemelihara"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 8,
+    "nama": "Al 'Aziiz",
+    "teks_arab": "العزيز",
+    "deskripsi": "Yang Maha Perkasa"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 9,
+    "nama": "Al Jabbar",
+    "teks_arab": "الجبار",
+    "deskripsi": "Yang Memiliki Mutlak Kegagahan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 10,
+    "nama": "Al Mutakabbir",
+    "teks_arab": "المتكبر",
+    "deskripsi": "Yang Maha Megah, Yang Memiliki Kebesaran"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 11,
+    "nama": "Al Khaliq",
+    "teks_arab": "الخالق",
+    "deskripsi": "Yang Maha Pencipta"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 12,
+    "nama": "Al Baari '",
+    "teks_arab": "البارئ",
+    "deskripsi": "Yang Maha Melepaskan(Membuat, Membentuk, Menyeimbangkan)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 13,
+    "nama": "Al Mushawwir",
+    "teks_arab": "المصور",
+    "deskripsi": "Yang Maha Membentuk Rupa(makhluknya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 14,
+    "nama": "Al Ghaffaar",
+    "teks_arab": "الغفار",
+    "deskripsi": "Yang Maha Pengampun"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 15,
+    "nama": "Al Qahhaar",
+    "teks_arab": "القهار",
+    "deskripsi": "Yang Maha Memaksa"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 16,
+    "nama": "Al Wahhaab",
+    "teks_arab": "الوهاب",
+    "deskripsi": "Yang Maha Pemberi Karunia"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 17,
+    "nama": "Ar Razzaaq",
+    "teks_arab": "الرزاق",
+    "deskripsi": "Yang Maha Pemberi Rezeki"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 18,
+    "nama": "Al Fattaah",
+    "teks_arab": "الفتاح",
+    "deskripsi": "Yang Maha Pembuka Rahmat"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 19,
+    "nama": "Al 'Aliim",
+    "teks_arab": "العليم",
+    "deskripsi": "Yang Maha Mengetahui(Memiliki Ilmu)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 20,
+    "nama": "Al Qaabidh",
+    "teks_arab": "القابض",
+    "deskripsi": "Yang Maha Menyempitkan(makhluknya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 21,
+    "nama": "Al Baasith",
+    "teks_arab": "الباسط",
+    "deskripsi": "Yang Maha Melapangkan(makhluknya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 22,
+    "nama": "Al Khaafidh",
+    "teks_arab": "الخافض",
+    "deskripsi": "Yang Maha Merendahkan(makhluknya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 23,
+    "nama": "Ar Raafi '",
+    "teks_arab": "الرافع",
+    "deskripsi": "Yang Maha Meninggikan(makhluknya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 24,
+    "nama": "Al Mu'izz",
+    "teks_arab": "المعز",
+    "deskripsi": "Yang Maha Memuliakan(makhluknya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 25,
+    "nama": "Al Mudzil",
+    "teks_arab": "المذل",
+    "deskripsi": "Yang Maha Menghinakan(makhluknya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 26,
+    "nama": "Al Samii '",
+    "teks_arab": "السميع",
+    "deskripsi": "Yang Maha Mendengar"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 27,
+    "nama": "Al Bashiir",
+    "teks_arab": "البصير",
+    "deskripsi": "Yang Maha Melihat"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 28,
+    "nama": "Al Hakam",
+    "teks_arab": "الحكم",
+    "deskripsi": "Yang Maha Menetapkan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 29,
+    "nama": "Al 'Adl",
+    "teks_arab": "العدل",
+    "deskripsi": "Yang Maha Adil"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 30,
+    "nama": "Al Lathiif",
+    "teks_arab": "اللطيف",
+    "deskripsi": "Yang Maha Lembut"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 31,
+    "nama": "Al Khabiir",
+    "teks_arab": "الخبير",
+    "deskripsi": "Yang Maha Mengenal"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 32,
+    "nama": "Al Haliim",
+    "teks_arab": "الحليم",
+    "deskripsi": "Yang Maha Penyantun"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 33,
+    "nama": "Al 'Azhiim",
+    "teks_arab": "العظيم",
+    "deskripsi": "Yang Maha Agung"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 34,
+    "nama": "Al Ghafuur",
+    "teks_arab": "الغفور",
+    "deskripsi": "Yang Maha Pengampun"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 35,
+    "nama": "As Syakuur",
+    "teks_arab": "الشكور",
+    "deskripsi": "Yang Maha Pembalas Budi(Menghargai)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 36,
+    "nama": "Al 'Aliy",
+    "teks_arab": "العلى",
+    "deskripsi": "Yang Maha Tinggi"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 37,
+    "nama": "Al Kabiir",
+    "teks_arab": "الكبير",
+    "deskripsi": "Yang Maha Besar"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 38,
+    "nama": "Al Hafizh",
+    "teks_arab": "الحفيظ",
+    "deskripsi": "Yang Maha Memelihara"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 39,
+    "nama": "Al Muqiit",
+    "teks_arab": "المقيت",
+    "deskripsi": "Yang Maha Pemberi Kecukupan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 40,
+    "nama": "Al Hasiib",
+    "teks_arab": "الحسيب",
+    "deskripsi": "Yang Maha Membuat Perhitungan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 41,
+    "nama": "Al Jaliil",
+    "teks_arab": "الجليل",
+    "deskripsi": "Yang Maha Mulia"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 42,
+    "nama": "Al Kariim",
+    "teks_arab": "الكريم",
+    "deskripsi": "Yang Maha Mulia"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 43,
+    "nama": "Ar Raqiib",
+    "teks_arab": "الرقيب",
+    "deskripsi": "Yang Maha Mengawasi"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 44,
+    "nama": "Al Mujiib",
+    "teks_arab": "المجيب",
+    "deskripsi": "Yang Maha Mengabulkan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 45,
+    "nama": "Al Waasi '",
+    "teks_arab": "الواسع",
+    "deskripsi": "Yang Maha Luas"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 46,
+    "nama": "Al Hakiim",
+    "teks_arab": "الحكيم",
+    "deskripsi": "Yang Maha Maka Bijaksana"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 47,
+    "nama": "Al Waduud",
+    "teks_arab": "الودود",
+    "deskripsi": "Yang Maha Mengasihi"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 48,
+    "nama": "Al Majiid",
+    "teks_arab": "المجيد",
+    "deskripsi": "Yang Maha Mulia"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 49,
+    "nama": "Al Baa'its",
+    "teks_arab": "الباعث",
+    "deskripsi": "Yang Maha Membangkitkan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 50,
+    "nama": "As Syahiid",
+    "teks_arab": "الشهيد",
+    "deskripsi": "Yang Maha Menyaksikan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 51,
+    "nama": "Al Haqq",
+    "teks_arab": "الحق",
+    "deskripsi": "Yang Maha Benar"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 52,
+    "nama": "Al Wakiil",
+    "teks_arab": "الوكيل",
+    "deskripsi": "Yang Maha Memelihara"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 53,
+    "nama": "Al Qawiyyu",
+    "teks_arab": "القوى",
+    "deskripsi": "Yang Maha Kuat"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 54,
+    "nama": "Al Matiin",
+    "teks_arab": "المتين",
+    "deskripsi": "Yang Maha Kokoh"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 55,
+    "nama": "Al Waliyy",
+    "teks_arab": "الولى",
+    "deskripsi": "Yang Maha Melindungi"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 56,
+    "nama": "Al Hamiid",
+    "teks_arab": "الحميد",
+    "deskripsi": "Yang Maha Terpuji"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 57,
+    "nama": "Al Muhshii",
+    "teks_arab": "المحصى",
+    "deskripsi": "Yang Maha Mengalkulasi(Menghitung Segala Sesuatu)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 58,
+    "nama": "Al Mubdi '",
+    "teks_arab": "المبدئ",
+    "deskripsi": "Yang Maha Memulai"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 59,
+    "nama": "Al Mu'iid",
+    "teks_arab": "المعيد",
+    "deskripsi": "Yang Maha Mengembalikan Kehidupan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 60,
+    "nama": "Al Muhyii",
+    "teks_arab": "المحيى",
+    "deskripsi": "Yang Maha Menghidupkan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 61,
+    "nama": "Al Mumiitu",
+    "teks_arab": "المميت",
+    "deskripsi": "Yang Maha Mematikan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 62,
+    "nama": "Al Hayyu",
+    "teks_arab": "الحي",
+    "deskripsi": "Yang Maha Hidup"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 63,
+    "nama": "Al Qayyuum",
+    "teks_arab": "القيوم",
+    "deskripsi": "Yang Maha Mandiri"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 64,
+    "nama": "Al Waajid",
+    "teks_arab": "الواجد",
+    "deskripsi": "Yang Maha Penemu"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 65,
+    "nama": "Al Maajid",
+    "teks_arab": "الماجد",
+    "deskripsi": "Yang Maha Mulia"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 66,
+    "nama": "Al Wahiid",
+    "teks_arab": "الواحد",
+    "deskripsi": "Yang Maha Tunggal"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 67,
+    "nama": "Al Ahad",
+    "teks_arab": "الاحد",
+    "deskripsi": "Yang Maha Esa"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 68,
+    "nama": "As Shamad",
+    "teks_arab": "الصمد",
+    "deskripsi": "Yang Maha Dibutuhkan, Tempat Meminta"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 69,
+    "nama": "Al Qaadir",
+    "teks_arab": "القادر",
+    "deskripsi": "Yang Maha Menentukan, Maha Menyeimbangkan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 70,
+    "nama": "Al Muqtadir",
+    "teks_arab": "المقتدر",
+    "deskripsi": "Yang Maha Berkuasa"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 71,
+    "nama": "Al Muqaddim",
+    "teks_arab": "المقدم",
+    "deskripsi": "Yang Maha Mendahulukan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 72,
+    "nama": "Al Mu 'akkhir",
+    "teks_arab": "المؤخر",
+    "deskripsi": "Yang Maha Mengakhirkan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 73,
+    "nama": "Al Awwal",
+    "teks_arab": "الأول",
+    "deskripsi": "Yang Maha Awal"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 74,
+    "nama": "Al Aakhir",
+    "teks_arab": "الأخر",
+    "deskripsi": "Yang Maha Akhir"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 75,
+    "nama": "Az Zhaahir",
+    "teks_arab": "الظاهر",
+    "deskripsi": "Yang Maha Nyata"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 76,
+    "nama": "Al Baathin",
+    "teks_arab": "الباطن",
+    "deskripsi": "Yang Maha Ghaib"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 77,
+    "nama": "Al Waali",
+    "teks_arab": "الوالي",
+    "deskripsi": "Yang Maha Memerintah"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 78,
+    "nama": "Al Muta'aalii",
+    "teks_arab": "المتعالي",
+    "deskripsi": "Yang Maha Tinggi"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 79,
+    "nama": "Al Barru",
+    "teks_arab": "البر",
+    "deskripsi": "Yang Maha Penderma(Maha Pemberi Kebajikan)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 80,
+    "nama": "At Tawwaab",
+    "teks_arab": "التواب",
+    "deskripsi": "Yang Maha Penerima Tobat"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 81,
+    "nama": "Al Muntaqim",
+    "teks_arab": "المنتقم",
+    "deskripsi": "Yang Maha Pemberi Balasan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 82,
+    "nama": "Al Afuww",
+    "teks_arab": "العفو",
+    "deskripsi": "Yang Maha Pemaaf"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 83,
+    "nama": "Ar Ra 'uuf",
+    "teks_arab": "الرؤوف",
+    "deskripsi": "Yang Maha Pengasuh"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 84,
+    "nama": "Malikul Mulk",
+    "teks_arab": "مالك الملك",
+    "deskripsi": "Yang Maha Penguasa Kerajaan(Semesta)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 85,
+    "nama": "Dzul Jalaali Wal Ikraam",
+    "teks_arab": "ذو الجلال و الإكرام",
+    "deskripsi": "Yang Maha Pemilik Kebesaran dan Kemuliaan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 86,
+    "nama": "Al Muqsith",
+    "teks_arab": "المقسط",
+    "deskripsi": "Yang Maha Pemberi Keadilan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 87,
+    "nama": "Al Jamii'",
+    "teks_arab": "الجامع",
+    "deskripsi": "Yang Maha Mengumpulkan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 88,
+    "nama": "Al Ghaniyy",
+    "teks_arab": "الغنى",
+    "deskripsi": "Yang Maha Kaya"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 89,
+    "nama": "Al Mughnii",
+    "teks_arab": "المغنى",
+    "deskripsi": "Yang Maha Pemberi Kekayaan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 90,
+    "nama": "Al Maani",
+    "teks_arab": "المانع",
+    "deskripsi": "Yang Maha Mencegah"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 91,
+    "nama": "Ad Dhaar",
+    "teks_arab": "الضار",
+    "deskripsi": "Yang Maha Penimpa Kemudharatan"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 92,
+    "nama": "An Nafii '",
+    "teks_arab": "النافع",
+    "deskripsi": "Yang Maha Memberi Manfaat"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 93,
+    "nama": "An Nuur",
+    "teks_arab": "النور",
+    "deskripsi": "Yang Maha Bercahaya(Menerangi, Memberi Cahaya)"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 94,
+    "nama": "Al Haadii",
+    "teks_arab": "الهادئ",
+    "deskripsi": "Yang Maha Pemberi Petunjuk"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 95,
+    "nama": "Al Badii'",
+    "teks_arab": "البديع",
+    "deskripsi": "Yang Maha Pencipta Yang Tiada Bandingannya"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 96,
+    "nama": "Al Baaqii",
+    "teks_arab": "الباقي",
+    "deskripsi": "Yang Maha Kekal"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 97,
+    "nama": "Al Waarits",
+    "teks_arab": "الوارث",
+    "deskripsi": "Yang Maha Pewaris"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 98,
+    "nama": "Ar Rasyiid",
+    "teks_arab": "الرشيد",
+    "deskripsi": "Yang Maha Pandai"
+  },
+  {
+    "kategori": "ASMAUL_HUSNA",
+    "urutan": 99,
+    "nama": "As Shabuur",
+    "teks_arab": "الصبور",
+    "deskripsi": "Yang Maha Sabar"
+  }
+]
