@@ -5,11 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.pam.uas.data.local.dao.DoaDao
+import com.pam.uas.data.local.dao.KisahNabiDao
 import com.pam.uas.data.local.entity.DoaEntity
+import com.pam.uas.data.local.entity.KisahNabiEntity
 
-@Database(entities = [DoaEntity::class], version = 4, exportSchema = false)
+@Database(entities = [DoaEntity::class, KisahNabiEntity::class], version = 5, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun doaDao(): DoaDao
+    abstract fun kisahNabiDao(): KisahNabiDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -19,7 +22,7 @@ abstract class AppDatabase : RoomDatabase() {
                 Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "doa_db"
+                    "islami_db"
                 )
                     .fallbackToDestructiveMigration()
                     .build().also { INSTANCE = it }

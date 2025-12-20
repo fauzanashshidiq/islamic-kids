@@ -14,13 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uas">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".PinActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".DoaActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".KisahNabiActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
