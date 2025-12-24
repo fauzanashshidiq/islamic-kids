@@ -1,21 +1,67 @@
 package com.pam.uas.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.pam.uas.data.local.database.AppDatabase
+import com.pam.uas.data.local.entity.DoaEntity
+import com.pam.uas.data.remote.RetrofitClient
+import com.pam.uas.data.remote.response.ApiDoaResponse
 import com.pam.uas.data.repository.DoaRepository
+import com.pam.uas.utils.AudioMapper
 import kotlinx.coroutines.launch
 
 class DoaViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val doaDao = AppDatabase.getDatabase(application).doaDao()
-    private val repo = DoaRepository(doaDao)
+    private val repo: DoaRepository
 
-    val listDoa = repo.allDoa
+    val apiDoaList = MutableLiveData<List<ApiDoaResponse>>()
+    val savedDoa = MutableLiveData<List<DoaEntity>>()
 
-    fun loadFromApi() = viewModelScope.launch {
-        android.util.Log.d("DoaVM", "Memanggil API...")
-        repo.refreshFromApi()
+    init {
+        val context = application.applicationContext
+        val api = RetrofitClient.instance
+        val db = AppDatabase.getDatabase(context)
+        repo = DoaRepository(api, db.doaDao())
+    }
+
+    fun loadApiDoa() = viewModelScope.launch {
+        apiDoaList.postValue(repo.fetchApiDoa())
+    }
+
+    fun saveDoa(apiDoa: ApiDoaResponse, catatanAwal: String = "") = viewModelScope.launch {
+        val audioFile = AudioMapper.getAudioFile(apiDoa.doa)
+
+        val entity = DoaEntity(
+            id = 0, // Auto generate
+            doa = apiDoa.doa,
+            ayat = apiDoa.ayat,
+            latin = apiDoa.latin,
+            artinya = apiDoa.artinya,
+            isMemorized = false,
+            catatan = catatanAwal,
+            voice_path = audioFile
+        )
+        repo.insertMany(listOf(entity))
+    }
+
+
+    fun loadSavedDoa() = viewModelScope.launch {
+        savedDoa.postValue(repo.getSavedDoa())
+    }
+
+    fun updateMemorizedStatus(doa: DoaEntity, isMemorized: Boolean) {
+        viewModelScope.launch {
+            repo.updateMemorizedStatus(doa.id, isMemorized)
+        }
+    }
+
+    fun deleteDoaByJudul(judul: String) = viewModelScope.launch {
+        // Kamu perlu menambahkan fungsi ini di Repository dan DAO
+        repo.deleteByJudul(judul)
+    }
+
+    fun updateCatatan(judul: String, catatan: String) = viewModelScope.launch {
+        repo.updateCatatan(judul, catatan)
     }
 }
+

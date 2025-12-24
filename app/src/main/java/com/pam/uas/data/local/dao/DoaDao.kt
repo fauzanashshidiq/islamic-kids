@@ -7,12 +7,21 @@ import com.pam.uas.data.local.entity.DoaEntity
 @Dao
 interface DoaDao {
 
-    @Query("SELECT * FROM doa ORDER BY localId DESC")
-    fun getAllDoa(): LiveData<List<DoaEntity>>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insertDoa(doa: DoaEntity)
 
-    @Query("DELETE FROM doa")
-    suspend fun deleteAll()
+    @Insert
+    suspend fun insertMany(list: List<DoaEntity>)
+
+    @Query("SELECT * FROM doa")
+    suspend fun getAllDoa(): List<DoaEntity>
+
+    @Query("UPDATE doa SET isMemorized = :isMemorized WHERE id = :id")
+    suspend fun updateMemorizedStatus(id: Int, isMemorized: Boolean)
+
+    @Query("DELETE FROM doa WHERE doa = :judul")
+    suspend fun deleteByJudul(judul: String)
+
+    @Query("UPDATE doa SET catatan = :catatan WHERE doa = :judul")
+    suspend fun updateCatatanByJudul(judul: String, catatan: String)
 }

@@ -5,31 +5,30 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.pam.uas.data.local.dao.DoaDao
+import com.pam.uas.data.local.dao.KisahNabiDao
+import com.pam.uas.data.local.dao.PembelajaranDao
 import com.pam.uas.data.local.entity.DoaEntity
+import com.pam.uas.data.local.entity.KisahNabiEntity
+import com.pam.uas.data.local.entity.PembelajaranEntity
 
-@Database(
-    entities = [DoaEntity::class],
-    version = 1,
-    exportSchema = false
-)
+@Database(entities = [DoaEntity::class, KisahNabiEntity::class, PembelajaranEntity::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun doaDao(): DoaDao
+    abstract fun kisahNabiDao(): KisahNabiDao
+    abstract fun pembelajaranDao(): PembelajaranDao
 
     companion object {
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
+        @Volatile private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+        fun getDatabase(context: Context): AppDatabase =
+            INSTANCE ?: synchronized(this) {
+                Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "doa_db"
-                ).build()
-                INSTANCE = instance
-                instance
+                    "islami_db"
+                )
+                    .fallbackToDestructiveMigration()
+                    .build().also { INSTANCE = it }
             }
-        }
     }
 }

@@ -5,5 +5,6 @@ data class ApiDoaResponse(
     val doa: String,
     val ayat: String,
     val latin: String,
-    val artinya: String
+    val artinya: String,
+    var isChecked: Boolean = false
 )

@@ -1,0 +1,102 @@
+[
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 1,
+    "nama": "Niat Wudhu",
+    "teks_arab": "نَوَيْتُ الْوُضُوْءَ لِرَفْعِ الْحَدَثِ الْأَصْغَرِ فَرْضًا لِلَّهِ تَعَالَى",
+    "deskripsi": "Membaca niat wudhu di dalam hati.",
+    "keterangan": "Artinya: Saya niat berwudhu untuk menghilangkan hadas kecil fardu karena Allah Ta'ala.",
+    "image_path": "ic_wudhu_niat",
+    "voice_path": "audio_wudhu_niat"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 2,
+    "nama": "Mencuci Telapak Tangan",
+    "teks_arab": "",
+    "deskripsi": "Mencuci kedua telapak tangan sebanyak 3 kali.",
+    "keterangan": "Sela-sela jari juga harus dibersihkan hingga terkena air secara merata.",
+    "image_path": "ic_wudhu_tangan",
+    "voice_path": "audio_wudhu_tangan"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 3,
+    "nama": "Berkumur-kumur",
+    "teks_arab": "",
+    "deskripsi": "Memasukkan air ke dalam mulut lalu mengeluarkannya sebanyak 3 kali.",
+    "keterangan": "Tujuannya untuk membersihkan sisa makanan yang ada di mulut.",
+    "image_path": "ic_wudhu_kumur",
+    "voice_path": "audio_wudhu_kumur"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 4,
+    "nama": "Membersihkan Lubang Hidung",
+    "teks_arab": "",
+    "deskripsi": "Menghirup sedikit air ke hidung lalu mengeluarkannya sebanyak 3 kali.",
+    "keterangan": "Proses menghirup air disebut Istinsyaq dan mengeluarkannya disebut Istintsar.",
+    "image_path": "ic_wudhu_hidung",
+    "voice_path": "audio_wudhu_hidung"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 5,
+    "nama": "Membasuh Wajah",
+    "teks_arab": "",
+    "deskripsi": "Membasuh seluruh permukaan wajah sebanyak 3 kali.",
+    "keterangan": "Batasnya mulai dari tumbuhnya rambut kepala hingga dagu, dan dari telinga kanan ke telinga kiri.",
+    "image_path": "ic_wudhu_wajah",
+    "voice_path": "audio_wudhu_wajah"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 6,
+    "nama": "Mencuci Kedua Tangan",
+    "teks_arab": "",
+    "deskripsi": "Mencuci tangan kanan lalu kiri hingga siku sebanyak 3 kali.",
+    "keterangan": "Pastikan air mengenai seluruh bagian siku tangan.",
+    "image_path": "ic_wudhu_siku",
+    "voice_path": "audio_wudhu_siku"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 7,
+    "nama": "Mengusap Kepala",
+    "teks_arab": "",
+    "deskripsi": "Mengusap sebagian atau seluruh permukaan kepala dengan air.",
+    "keterangan": "Biasanya dilakukan satu kali, mulai dari bagian depan ke belakang.",
+    "image_path": "ic_wudhu_kepala",
+    "voice_path": "audio_wudhu_kepala"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 8,
+    "nama": "Membersihkan Telinga",
+    "teks_arab": "",
+    "deskripsi": "Mengusap telinga kanan dan kiri dengan jari tangan.",
+    "keterangan": "Jari telunjuk membersihkan bagian dalam telinga dan jempol membersihkan bagian belakang telinga.",
+    "image_path": "ic_wudhu_telinga",
+    "voice_path": "audio_wudhu_telinga"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 9,
+    "nama": "Mencuci Kedua Kaki",
+    "teks_arab": "",
+    "deskripsi": "Mencuci kaki kanan lalu kiri hingga mata kaki sebanyak 3 kali.",
+    "keterangan": "Pastikan sela-sela jari kaki juga terkena air dengan sempurna.",
+    "image_path": "ic_wudhu_kaki",
+    "voice_path": "audio_wudhu_kaki"
+  },
+  {
+    "kategori": "TATA_CARA_WUDHU",
+    "urutan": 10,
+    "nama": "Membaca Doa Setelah Wudhu",
+    "teks_arab": "أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+    "deskripsi": "Berdiri menghadap kiblat dan mengangkat kedua tangan.",
+    "keterangan": "Membaca persaksian (Syahadat) dan memohon agar dijadikan hamba yang bertaubat serta mensucikan diri.",
+    "image_path": "ic_wudhu_doa",
+    "voice_path": "audio_wudhu_doa"
+  }
+]

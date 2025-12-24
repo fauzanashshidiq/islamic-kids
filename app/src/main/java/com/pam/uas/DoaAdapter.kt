@@ -22,7 +22,7 @@ class DoaAdapter(private var list: List<DoaEntity>) :
     }
 
     override fun onBindViewHolder(holder: DoaViewHolder, position: Int) {
-        holder.tvJudul.text = list[position].judul
+        holder.tvJudul.text = list[position].doa
     }
 
     override fun getItemCount() = list.size
