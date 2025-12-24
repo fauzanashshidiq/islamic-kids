@@ -12,5 +12,6 @@ data class DoaEntity(
     val latin: String,
     val artinya: String,
     var isMemorized: Boolean = false,
-    val catatan: String? = ""
+    val catatan: String? = "",
+    val voice_path: String? = ""
 )

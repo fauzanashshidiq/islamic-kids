@@ -7,6 +7,7 @@ import com.pam.uas.data.local.entity.DoaEntity
 import com.pam.uas.data.remote.RetrofitClient
 import com.pam.uas.data.remote.response.ApiDoaResponse
 import com.pam.uas.data.repository.DoaRepository
+import com.pam.uas.utils.AudioMapper
 import kotlinx.coroutines.launch
 
 class DoaViewModel(application: Application) : AndroidViewModel(application) {
@@ -28,6 +29,8 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun saveDoa(apiDoa: ApiDoaResponse, catatanAwal: String = "") = viewModelScope.launch {
+        val audioFile = AudioMapper.getAudioFile(apiDoa.doa)
+
         val entity = DoaEntity(
             id = 0, // Auto generate
             doa = apiDoa.doa,
@@ -35,7 +38,8 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
             latin = apiDoa.latin,
             artinya = apiDoa.artinya,
             isMemorized = false,
-            catatan = catatanAwal
+            catatan = catatanAwal,
+            voice_path = audioFile
         )
         repo.insertMany(listOf(entity))
     }
