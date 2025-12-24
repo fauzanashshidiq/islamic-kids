@@ -5,6 +5,7 @@
     "deskripsi": "Mengakui bahwa tidak ada Tuhan selain Allah dan Nabi Muhammad adalah utusan Allah.",
     "keterangan": "Pintu masuk utama ke dalam Islam.",
     "image_path": "ic_syahadat",
+    "voice_path": "audio_syahadat",
     "urutan": 1
   },
   {
@@ -13,6 +14,7 @@
     "deskripsi": "Mendirikan shalat fardu lima waktu dalam sehari semalam.",
     "keterangan": "Tiang agama yang wajib dilaksanakan bagi setiap Muslim yang sudah mukallaf.",
     "image_path": "ic_shalat",
+    "voice_path": "audio_shalat",
     "urutan": 2
   },
   {
@@ -21,6 +23,7 @@
     "deskripsi": "Mengeluarkan sebagian harta tertentu untuk diberikan kepada golongan yang berhak (asnaf).",
     "keterangan": "Mensucikan harta dan membantu fakir miskin.",
     "image_path": "ic_zakat",
+    "voice_path": "audio_zakat",
     "urutan": 3
   },
   {
@@ -29,6 +32,7 @@
     "deskripsi": "Menahan diri dari makan, minum, dan hal-hal yang membatalkan dari terbit fajar hingga terbenam matahari di bulan Ramadhan.",
     "keterangan": "Sarana melatih kesabaran dan ketakwaan.",
     "image_path": "ic_puasa",
+    "voice_path": "audio_puasa",
     "urutan": 4
   },
   {
@@ -37,6 +41,7 @@
     "deskripsi": "Menunaikan ibadah haji ke Baitullah di Makkah sekali seumur hidup.",
     "keterangan": "Wajib dilaksanakan hanya bagi mereka yang mampu secara fisik, finansial, dan keamanan.",
     "image_path": "ic_haji",
+    "voice_path": "audio_haji",
     "urutan": 5
   }
 ]

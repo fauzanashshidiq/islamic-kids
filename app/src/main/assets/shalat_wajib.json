@@ -5,7 +5,8 @@
     "nama": "Subuh",
     "deskripsi": "Shalat dua rakaat yang dilaksanakan pada waktu fajar sebelum matahari terbit.",
     "keterangan": "Memiliki keutamaan besar dan disaksikan oleh para malaikat.",
-    "image_path": "ic_shalat_subuh"
+    "image_path": "ic_shalat_subuh",
+    "voice_path": "audio_shalat_subuh"
   },
   {
     "kategori": "SHALAT_WAJIB",
@@ -13,7 +14,8 @@
     "nama": "Zuhur",
     "deskripsi": "Shalat empat rakaat yang dilaksanakan saat matahari mulai tergelincir ke arah barat hingga bayangan benda sama panjang dengan aslinya.",
     "keterangan": "Dilaksanakan di tengah hari saat waktu beraktivitas.",
-    "image_path": "ic_shalat_zuhur"
+    "image_path": "ic_shalat_zuhur",
+    "voice_path": "audio_shalat_zuhur"
   },
   {
     "kategori": "SHALAT_WAJIB",
@@ -21,7 +23,8 @@
     "nama": "Ashar",
     "deskripsi": "Shalat empat rakaat yang dilaksanakan setelah waktu Zuhur berakhir hingga matahari menguning sebelum terbenam.",
     "keterangan": "Sering disebut sebagai Shalatul Wustha (shalat yang di tengah).",
-    "image_path": "ic_shalat_ashar"
+    "image_path": "ic_shalat_ashar",
+    "voice_path": "audio_shalat_ashar"
   },
   {
     "kategori": "SHALAT_WAJIB",
@@ -29,7 +32,8 @@
     "nama": "Maghrib",
     "deskripsi": "Shalat tiga rakaat yang dilaksanakan tepat setelah matahari terbenam hingga hilangnya cahaya merah di ufuk barat.",
     "keterangan": "Waktu pelaksanaannya relatif lebih singkat dibanding shalat lainnya.",
-    "image_path": "ic_shalat_maghrib"
+    "image_path": "ic_shalat_maghrib",
+    "voice_path": "audio_shalat_maghrib"
   },
   {
     "kategori": "SHALAT_WAJIB",
@@ -37,6 +41,7 @@
     "nama": "Isya",
     "deskripsi": "Shalat empat rakaat yang dilaksanakan setelah waktu Maghrib berakhir (hilangnya syafaq merah) hingga terbit fajar shadiq.",
     "keterangan": "Shalat penutup di penghujung hari.",
-    "image_path": "ic_shalat_isya"
+    "image_path": "ic_shalat_isya",
+    "voice_path": "audio_shalat_isya"
   }
 ]

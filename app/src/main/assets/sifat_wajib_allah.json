@@ -6,7 +6,8 @@
     "teks_arab": "وجود",
     "deskripsi": "Artinya Ada.",
     "keterangan": "Allah itu ada, tidak mungkin Allah itu tidak ada. Adanya alam semesta adalah bukti adanya Allah.",
-    "image_path": "ic_sifat_wujud"
+    "image_path": "ic_sifat_wujud",
+    "voice_path": "audio_sifat_wujud"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -14,8 +15,9 @@
     "nama": "Qidam",
     "teks_arab": "قدم",
     "deskripsi": "Artinya Terdahulu.",
-    "keterangan": "Allah adalah pencipta, maka Allah sudah ada sebelum segala sesuatu yang diciptakan-Nya itu ada.",
-    "image_path": "ic_sifat_qidam"
+    "keterangan": "Allah sudah ada sebelum segala sesuatu yang diciptakan-Nya itu ada. Tidak ada permulaan bagi-Nya.",
+    "image_path": "ic_sifat_qidam",
+    "voice_path": "audio_sifat_qidam"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -23,8 +25,9 @@
     "nama": "Baqa",
     "teks_arab": "بقاء",
     "deskripsi": "Artinya Kekal.",
-    "keterangan": "Allah tidak akan pernah mati atau punah. Segala sesuatu akan hancur kecuali wajah Allah.",
-    "image_path": "ic_sifat_baqa"
+    "keterangan": "Allah tidak akan pernah mati, rusak, atau punah. Segala sesuatu akan hancur kecuali zat Allah.",
+    "image_path": "ic_sifat_baqa",
+    "voice_path": "audio_sifat_baqa"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -32,8 +35,9 @@
     "nama": "Mukhalafatu Lil Hawaditsi",
     "teks_arab": "مخالفته للحوادث",
     "deskripsi": "Artinya Berbeda dengan makhluk-Nya.",
-    "keterangan": "Allah tidak menyerupai apapun dan siapapun dari makhluk ciptaan-Nya.",
-    "image_path": "ic_sifat_mukhalafatu"
+    "keterangan": "Allah tidak menyerupai apapun dan siapapun dari makhluk ciptaan-Nya baik zat, sifat, maupun perbuatannya.",
+    "image_path": "ic_sifat_mukhalafatu",
+    "voice_path": "audio_sifat_mukhalafatu"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -41,8 +45,9 @@
     "nama": "Qiyamuhu Binafsihi",
     "teks_arab": "قيامه بنفسه",
     "deskripsi": "Artinya Berdiri Sendiri.",
-    "keterangan": "Allah tidak memerlukan bantuan siapapun atau apapun untuk ada dan mengatur alam semesta.",
-    "image_path": "ic_sifat_qiyamuhu"
+    "keterangan": "Allah tidak memerlukan bantuan siapapun atau tempat bagi zat-Nya. Ia berdiri sendiri.",
+    "image_path": "ic_sifat_qiyamuhu",
+    "voice_path": "audio_sifat_qiyamuhu"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -50,8 +55,9 @@
     "nama": "Wahdaniyah",
     "teks_arab": "وحدانية",
     "deskripsi": "Artinya Maha Esa.",
-    "keterangan": "Allah itu tunggal, tidak ada sekutu bagi-Nya baik dalam zat, sifat, maupun perbuatan-Nya.",
-    "image_path": "ic_sifat_wahdaniyah"
+    "keterangan": "Allah itu Tunggal, tidak terbagi-bagi dan tidak ada sekutu bagi-Nya.",
+    "image_path": "ic_sifat_wahdaniyah",
+    "voice_path": "audio_sifat_wahdaniyah"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -59,8 +65,9 @@
     "nama": "Qudrat",
     "teks_arab": "قدرة",
     "deskripsi": "Artinya Berkuasa.",
-    "keterangan": "Allah Maha Kuasa atas segala sesuatu, tidak ada yang tidak mungkin bagi-Nya.",
-    "image_path": "ic_sifat_qudrat"
+    "keterangan": "Allah Maha Kuasa atas segala sesuatu. Tidak ada satupun yang dapat menghalangi kekuasaan-Nya.",
+    "image_path": "ic_sifat_qudrat",
+    "voice_path": "audio_sifat_qudrat"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -68,8 +75,9 @@
     "nama": "Iradat",
     "teks_arab": "إرادة",
     "deskripsi": "Artinya Berkehendak.",
-    "keterangan": "Segala sesuatu yang terjadi di alam semesta ini adalah atas kehendak Allah.",
-    "image_path": "ic_sifat_iradat"
+    "keterangan": "Segala sesuatu terjadi atas kehendak Allah. Jika Allah berkehendak 'Jadi', maka jadilah.",
+    "image_path": "ic_sifat_iradat",
+    "voice_path": "audio_sifat_iradat"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -77,8 +85,9 @@
     "nama": "Ilmu",
     "teks_arab": "علم",
     "deskripsi": "Artinya Mengetahui.",
-    "keterangan": "Allah Maha Mengetahui segala sesuatu, baik yang tampak maupun yang tersembunyi.",
-    "image_path": "ic_sifat_ilmu"
+    "keterangan": "Allah Maha Mengetahui segala sesuatu, baik yang sudah terjadi, sedang terjadi, maupun yang akan terjadi.",
+    "image_path": "ic_sifat_ilmu",
+    "voice_path": "audio_sifat_ilmu"
   },
   {
     "kategori": "SIFAT_WAJIB_ALLAH",
@@ -86,7 +95,108 @@
     "nama": "Hayat",
     "teks_arab": "حياة",
     "deskripsi": "Artinya Hidup.",
-    "keterangan": "Allah itu Maha Hidup secara kekal dan memberikan kehidupan bagi makhluk-Nya.",
-    "image_path": "ic_sifat_hayat"
+    "keterangan": "Allah Maha Hidup, kekal selama-lamanya dan tidak pernah mengantuk ataupun tidur.",
+    "image_path": "ic_sifat_hayat",
+    "voice_path": "audio_sifat_hayat"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 11,
+    "nama": "Sama'",
+    "teks_arab": "سمع",
+    "deskripsi": "Artinya Mendengar.",
+    "keterangan": "Allah Maha Mendengar segala suara, baik yang dibisikkan maupun yang dinyatakan.",
+    "image_path": "ic_sifat_sama",
+    "voice_path": "audio_sifat_sama"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 12,
+    "nama": "Bashar",
+    "teks_arab": "بصر",
+    "deskripsi": "Artinya Melihat.",
+    "keterangan": "Allah Maha Melihat segala sesuatu, bahkan benda terkecil sekalipun di kegelapan malam.",
+    "image_path": "ic_sifat_bashar",
+    "voice_path": "audio_sifat_bashar"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 13,
+    "nama": "Kalam",
+    "teks_arab": "كلام",
+    "deskripsi": "Artinya Berfirman.",
+    "keterangan": "Allah berbicara melalui firman-Nya tanpa memerlukan alat, suara, atau bahasa seperti manusia.",
+    "image_path": "ic_sifat_kalam",
+    "voice_path": "audio_sifat_kalam"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 14,
+    "nama": "Kaunuhu Qaadiran",
+    "teks_arab": "كونه قادرا",
+    "deskripsi": "Keadaan-Nya yang Berkuasa.",
+    "keterangan": "Sifat yang menunjukkan keberadaan zat Allah yang Maha Kuasa secara mutlak.",
+    "image_path": "ic_sifat_qaadiran",
+    "voice_path": "audio_sifat_qaadiran"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 15,
+    "nama": "Kaunuhu Muriidan",
+    "teks_arab": "كونه مريدا",
+    "deskripsi": "Keadaan-Nya yang Berkehendak.",
+    "keterangan": "Allah memiliki kehendak mutlak yang tidak dapat dipengaruhi oleh siapapun.",
+    "image_path": "ic_sifat_muriidan",
+    "voice_path": "audio_sifat_muriidan"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 16,
+    "nama": "Kaunuhu 'Aaliman",
+    "teks_arab": "كونه عالما",
+    "deskripsi": "Keadaan-Nya yang Mengetahui.",
+    "keterangan": "Menunjukkan zat Allah yang memiliki pengetahuan tanpa batas.",
+    "image_path": "ic_sifat_aaliman",
+    "voice_path": "audio_sifat_aaliman"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 17,
+    "nama": "Kaunuhu Hayyan",
+    "teks_arab": "كونه حيا",
+    "deskripsi": "Keadaan-Nya yang Hidup.",
+    "keterangan": "Allah Maha Hidup dan tidak akan pernah mati selamanya.",
+    "image_path": "ic_sifat_hayyan",
+    "voice_path": "audio_sifat_hayyan"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 18,
+    "nama": "Kaunuhu Samii'an",
+    "teks_arab": "كونه سميعا",
+    "deskripsi": "Keadaan-Nya yang Mendengar.",
+    "keterangan": "Menunjukkan zat Allah yang senantiasa mendengar segala sesuatu.",
+    "image_path": "ic_sifat_samiian",
+    "voice_path": "audio_sifat_samiian"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 19,
+    "nama": "Kaunuhu Bashiiran",
+    "teks_arab": "كونه بصيرا",
+    "deskripsi": "Keadaan-Nya yang Melihat.",
+    "keterangan": "Menunjukkan zat Allah yang senantiasa melihat segala sesuatu.",
+    "image_path": "ic_sifat_bashiiran",
+    "voice_path": "audio_sifat_bashiiran"
+  },
+  {
+    "kategori": "SIFAT_WAJIB_ALLAH",
+    "urutan": 20,
+    "nama": "Kaunuhu Mutakalliman",
+    "teks_arab": "كونه متكلما",
+    "deskripsi": "Keadaan-Nya yang Berfirman.",
+    "keterangan": "Menunjukkan zat Allah yang senantiasa berfirman kepada Rasul-Rasul-Nya.",
+    "image_path": "ic_sifat_mutakalliman",
+    "voice_path": "audio_sifat_mutakalliman"
   }
 ]

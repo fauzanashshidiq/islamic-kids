@@ -12,5 +12,6 @@ import androidx.room.PrimaryKey
         val teks_arab: String? = "",
         val deskripsi: String,
         val keterangan: String? = "",
-        val image_path: String? = ""
+        val image_path: String? = "",
+        val voice_path: String? = ""
 )

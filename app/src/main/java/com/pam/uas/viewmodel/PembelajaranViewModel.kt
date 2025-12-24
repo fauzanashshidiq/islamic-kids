@@ -16,8 +16,6 @@ class PembelajaranViewModel(application: Application) : AndroidViewModel(applica
     init {
         val db = AppDatabase.getDatabase(application)
 
-        // ... init dao lain ...
-
         // Init Pembelajaran Repo
         val pembelajaranDao = db.pembelajaranDao()
         pembelajaranRepo = PembelajaranRepository(pembelajaranDao)
