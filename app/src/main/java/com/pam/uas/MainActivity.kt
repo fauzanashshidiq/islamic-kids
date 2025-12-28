@@ -1,62 +1,89 @@
 package com.pam.uas
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
 import com.pam.uas.databinding.ActivityMainBinding
-import com.pam.uas.ui.DoaMainAdapter
-import com.pam.uas.viewmodel.DoaViewModel
-import com.pam.uas.viewmodel.PembelajaranViewModel
+import com.pam.uas.fragment.DoaFragment
+import com.pam.uas.fragment.KisahNabiFragment
+import com.pam.uas.fragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: DoaViewModel by viewModels()
-    private lateinit var adapter: DoaMainAdapter
-    //CUMAN CEK
-    private val pembelajaranViewModel: PembelajaranViewModel by viewModels()
+
+    private val pinResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            loadFragment(DoaFragment())
+
+            // Kita matikan listener sebentar supaya baris di bawah ini
+            // tidak memicu event klik 'nav_doa' lagi.
+            binding.bottomNavigation.setOnItemSelectedListener(null)
+
+            binding.bottomNavigation.selectedItemId = R.id.nav_doa
+
+            // Nyalakan listener lagi
+            setupBottomNavListener()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // CUMAN CEK
-        pembelajaranViewModel.preloadPembelajaran()
-        pembelajaranViewModel.getMateri("ASMAUL_HUSNA").observe(this) { list ->
-            if (list.isNotEmpty()) {
-                // Jika log ini muncul, berarti BERHASIL!
-                Log.d("CEK_DB", "Berhasil! Ditemukan ${list.size} data Shalat Wajib.")
+        // Tampilkan MainFragment saat aplikasi pertama kali dibuka
+        if (savedInstanceState == null) {
+            loadFragment(MainFragment())
+        }
 
-                // Cek isi data pertama
-                Log.d("CEK_DB", "Data pertama: ${list[0].nama}")
-            } else {
-                // Jika log ini muncul terus, mungkin JSON belum terbaca atau kategori salah
-                Log.d("CEK_DB", "Data masih kosong atau sedang loading...")
+        setupBottomNavListener()
+    }
+
+    private fun setupBottomNavListener() {
+        binding.bottomNavigation.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_main -> {
+                    loadFragment(MainFragment())
+                    true
+                }
+                R.id.nav_doa -> {
+                    val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+
+                    // Jika user sudah ada di halaman Doa, tidak perlu PIN lagi
+                    if (currentFragment is DoaFragment) {
+                        return@setOnItemSelectedListener true
+                    }
+
+                    // Luncurkan PIN
+                    val intent = Intent(this, PinActivity::class.java)
+                    pinResultLauncher.launch(intent)
+
+                    // Return false: Jangan ganti icon jadi aktif dulu (tunggu hasil PIN)
+                    false
+                }
+                R.id.nav_kisah -> {
+                    loadFragment(KisahNabiFragment())
+                    true
+                }
+                R.id.nav_pembelajaran -> {
+                    // Placeholder logic
+                    startActivity(Intent(this, KisahNabiActivity::class.java))
+                    false
+                }
+                else -> false
             }
         }
-
-        adapter = DoaMainAdapter(emptyList()) { doa, isMemorized ->
-            viewModel.updateMemorizedStatus(doa, isMemorized)
-        }
-        binding.rvDoaMain.layoutManager = LinearLayoutManager(this)
-        binding.rvDoaMain.adapter = adapter
-
-        binding.btnLihatSemua.setOnClickListener {
-            startActivity(Intent(this, PinActivity::class.java))
-        }
-
-        viewModel.loadSavedDoa()
-
-        viewModel.savedDoa.observe(this) { list ->
-            adapter.updateData(list)
-        }
     }
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadSavedDoa()
+
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 }
