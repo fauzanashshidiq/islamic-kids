@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uas">
         <activity
-            android:name=".KisahNabiActivity"
+            android:name=".DetailKisahNabiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailPembelajaranActivity"
             android:exported="false" />
         <activity
             android:name=".PinActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DoaActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

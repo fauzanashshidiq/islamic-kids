@@ -55,7 +55,7 @@ class PinActivity : AppCompatActivity() {
     }
 
     private fun goToAddDoa() {
-        startActivity(Intent(this, DoaActivity::class.java))
+        setResult(RESULT_OK)
         finish()
     }
 }

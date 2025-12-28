@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_main"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Main"/>
+    <item
+        android:id="@+id/nav_doa"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Doa"/>
+    <item
+        android:id="@+id/nav_kisah"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Kisah Nabi"/>
+    <item
+        android:id="@+id/nav_pembelajaran"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Pembelajaran"/>
+</menu>
