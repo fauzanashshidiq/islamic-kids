@@ -17,13 +17,7 @@
             android:name=".DetailPembelajaranActivity"
             android:exported="false" />
         <activity
-            android:name=".KisahNabiActivity"
-            android:exported="false" />
-        <activity
             android:name=".PinActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DoaActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -25,6 +25,6 @@
         android:id="@+id/btnSimpanKeMenuUtama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Simpan Pilihan ke Menu Utama"
+        android:text="Simpan"
         android:layout_marginTop="12dp"/>
 </LinearLayout>
