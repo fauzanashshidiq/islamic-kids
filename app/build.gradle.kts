@@ -62,4 +62,5 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

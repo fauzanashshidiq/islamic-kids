@@ -1,5 +1,6 @@
 package com.pam.uas.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pam.uas.DetailKisahNabiActivity
 import com.pam.uas.databinding.FragmentKisahNabiBinding
 import com.pam.uas.ui.KisahNabiAdapter
 import com.pam.uas.viewmodel.KisahNabiViewModel
@@ -31,9 +33,21 @@ class KisahNabiFragment : Fragment() {
   super.onViewCreated(view, savedInstanceState)
 
   // Setup Recycler View
-  adapter = KisahNabiAdapter(emptyList())
+  adapter = KisahNabiAdapter(emptyList()) { nabi ->
+   // Saat item diklik, jalankan ini:
+   val intent = Intent(requireContext(), DetailKisahNabiActivity::class.java)
 
-  // Gunakan requireContext() pengganti 'this'
+   // Kirim data penting lewat Intent
+   // (Sebaiknya Entity kamu Parcelable, tapi kalau belum, kirim manual string-nya)
+   intent.putExtra("EXTRA_NAMA", nabi.name)
+   intent.putExtra("EXTRA_USIA", nabi.usia)
+   intent.putExtra("EXTRA_TMP", nabi.tmp)
+   intent.putExtra("EXTRA_THN", nabi.thnKelahiran)
+   intent.putExtra("EXTRA_DESC", nabi.description)
+
+   startActivity(intent)
+  }
+
   binding.rvKisahNabi.layoutManager = LinearLayoutManager(requireContext())
   binding.rvKisahNabi.adapter = adapter
 
