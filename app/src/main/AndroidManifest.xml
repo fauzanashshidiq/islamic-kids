@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uas">
         <activity
+            android:name=".DetailPembelajaranActivity"
+            android:exported="false" />
+        <activity
             android:name=".KisahNabiActivity"
             android:exported="false" />
         <activity

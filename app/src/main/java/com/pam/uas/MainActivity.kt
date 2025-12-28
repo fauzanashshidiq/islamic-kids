@@ -10,6 +10,7 @@ import com.pam.uas.databinding.ActivityMainBinding
 import com.pam.uas.fragment.DoaFragment
 import com.pam.uas.fragment.KisahNabiFragment
 import com.pam.uas.fragment.MainFragment
+import com.pam.uas.fragment.PembelajaranFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -72,9 +73,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_pembelajaran -> {
-                    // Placeholder logic
-                    startActivity(Intent(this, KisahNabiActivity::class.java))
-                    false
+                    loadFragment(PembelajaranFragment())
+                    true
                 }
                 else -> false
             }
