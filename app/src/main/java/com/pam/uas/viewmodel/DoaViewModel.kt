@@ -17,11 +17,43 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
     val apiDoaList = MutableLiveData<List<ApiDoaResponse>>()
     val savedDoa = MutableLiveData<List<DoaEntity>>()
 
+    // Master data (Semua data dari DB)
+    private val _allSavedDoa = MutableLiveData<List<DoaEntity>>()
+
+    // Data yang ditampilkan ke UI (bisa difilter)
+    val displayDoaList = MediatorLiveData<List<DoaEntity>>()
+
+    private var currentFilterMode = FilterMode.ALL
+
+    enum class FilterMode {
+        ALL, MEMORIZED, NOT_MEMORIZED
+    }
+
     init {
         val context = application.applicationContext
         val api = RetrofitClient.instance
         val db = AppDatabase.getDatabase(context)
         repo = DoaRepository(api, db.doaDao())
+
+        // Hubungkan display list dengan data asli
+        displayDoaList.addSource(_allSavedDoa) { list ->
+            applyFilter(list)
+        }
+    }
+
+    fun setFilter(mode: FilterMode) {
+        currentFilterMode = mode
+        // Trigger ulang filter dengan data yang ada sekarang
+        _allSavedDoa.value?.let { applyFilter(it) }
+    }
+
+    private fun applyFilter(list: List<DoaEntity>) {
+        val filteredList = when (currentFilterMode) {
+            FilterMode.ALL -> list
+            FilterMode.MEMORIZED -> list.filter { it.isMemorized }
+            FilterMode.NOT_MEMORIZED -> list.filter { !it.isMemorized }
+        }
+        displayDoaList.value = filteredList
     }
 
     fun loadApiDoa() = viewModelScope.launch {
@@ -46,12 +78,17 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
 
 
     fun loadSavedDoa() = viewModelScope.launch {
-        savedDoa.postValue(repo.getSavedDoa())
+        val list = repo.getSavedDoa()
+        savedDoa.postValue(list)
+        _allSavedDoa.postValue(list)
     }
 
     fun updateMemorizedStatus(doa: DoaEntity, isMemorized: Boolean) {
         viewModelScope.launch {
             repo.updateMemorizedStatus(doa.id, isMemorized)
+            val currentList = _allSavedDoa.value?.toMutableList()
+            currentList?.find { it.id == doa.id }?.isMemorized = isMemorized
+            _allSavedDoa.value = currentList ?: emptyList()
         }
     }
 

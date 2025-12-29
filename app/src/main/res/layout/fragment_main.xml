@@ -1,17 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:clipToPadding="false">
 
+    <!-- Header Judul -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Doa Harian Kamu"
+        android:fontFamily="@font/baloo_bold"
+        android:textSize="26sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="1"/>
+
+    <!-- Filter Buttons (Gaya Kapsul Warna-warni) -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginBottom="20dp"
+        android:clipToPadding="false">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:chipSpacingHorizontal="12dp"> <!-- Jarak antar tombol -->
+
+            <!-- Chip SEMUA -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSemua"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Semua"
+                android:checked="true"
+                android:textColor="@color/selector_chip_text"
+                app:chipBackgroundColor="@color/selector_chip_bg_blue"
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="16sp"
+                app:chipCornerRadius="25dp"/>
+
+            <!-- Chip SUDAH HAPAL -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSudahHapal"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Sudah Hapal"
+                android:textColor="@color/selector_chip_text"
+                app:chipBackgroundColor="@color/selector_chip_bg_green"
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="16sp"
+                app:chipCornerRadius="25dp"/>
+
+            <!-- Chip BELUM HAPAL -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBelumHapal"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Belum Hapal"
+                android:textColor="@color/selector_chip_text"
+                app:chipBackgroundColor="@color/selector_chip_bg_orange"
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="16sp"
+                app:chipCornerRadius="25dp"/>
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView List Doa -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDoaMain"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_weight="1"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

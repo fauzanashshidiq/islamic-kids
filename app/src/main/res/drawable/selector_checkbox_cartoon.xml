@@ -4,18 +4,26 @@
     <!-- KEADAAN 1: DICENTANG (Aktif) -->
     <item android:state_checked="true">
         <layer-list>
-            <!-- Layer Bawah: Kotak Hijau -->
+
+            <!-- LAYER 1 (Bawah): Kotak HITAM Full (Berfungsi sebagai Border Luar) -->
             <item>
                 <shape android:shape="rectangle">
-                    <solid android:color="#4CD964"/>
-                    <corners android:radius="6dp"/>  <!-- Radius dikecilkan dikit -->
-                    <stroke android:width="2dp" android:color="#000000"/> <!-- Stroke ditipiskan dikit -->
-                    <size android:width="20dp" android:height="20dp"/> <!-- UBAH DI SINI (Dikecilkan) -->
+                    <solid android:color="#000000"/> <!-- Warna Border -->
+                    <corners android:radius="8dp"/>
+                    <size android:width="32dp" android:height="32dp"/>
                 </shape>
             </item>
 
-            <!-- Layer Atas: Ikon Centang -->
-            <!-- Padding dikurangi supaya centang gak kekecilan -->
+            <!-- LAYER 2 (Tengah): Kotak HIJAU (Diberi jarak/margin dari pinggir) -->
+            <!-- Margin 2dp di semua sisi = Ketebalan border 2dp -->
+            <item android:top="2dp" android:bottom="2dp" android:left="2dp" android:right="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#4CD964"/> <!-- Warna Hijau -->
+                    <corners android:radius="6dp"/> <!-- Radius harus lebih kecil dari background agar rapi -->
+                </shape>
+            </item>
+
+            <!-- LAYER 3 (Atas): Ikon Centang -->
             <item android:bottom="6dp" android:left="6dp" android:right="6dp" android:top="6dp">
                 <vector android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
                     <path android:fillColor="#FFFFFF"
@@ -29,14 +37,24 @@
     <!-- KEADAAN 2: TIDAK DICENTANG (Pasif) -->
     <item>
         <layer-list>
+
+            <!-- LAYER 1 (Bawah): Kotak HITAM Full -->
             <item>
                 <shape android:shape="rectangle">
-                    <solid android:color="#FFFFFF"/>
-                    <corners android:radius="6dp"/> <!-- Radius dikecilkan dikit -->
-                    <stroke android:width="2dp" android:color="#000000"/> <!-- Stroke ditipiskan dikit -->
-                    <size android:width="28dp" android:height="28dp"/> <!-- UBAH DI SINI (Dikecilkan) -->
+                    <solid android:color="#000000"/>
+                    <corners android:radius="8dp"/>
+                    <size android:width="32dp" android:height="32dp"/>
                 </shape>
             </item>
+
+            <!-- LAYER 2 (Atas): Kotak PUTIH (Diberi jarak/margin) -->
+            <item android:top="2dp" android:bottom="2dp" android:left="2dp" android:right="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#FFFFFF"/> <!-- Warna Putih -->
+                    <corners android:radius="6dp"/>
+                </shape>
+            </item>
+
         </layer-list>
     </item>
 </selector>

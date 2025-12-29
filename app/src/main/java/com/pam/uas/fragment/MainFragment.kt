@@ -1,15 +1,12 @@
 package com.pam.uas.fragment
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pam.uas.PinActivity
 import com.pam.uas.databinding.FragmentMainBinding
 import com.pam.uas.ui.DoaMainAdapter
 import com.pam.uas.viewmodel.DoaViewModel
@@ -23,7 +20,8 @@ class MainFragment : Fragment() {
  private lateinit var adapter: DoaMainAdapter
 
  override fun onCreateView(
-  inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+  inflater: LayoutInflater, container: ViewGroup?,
+  savedInstanceState: Bundle?
  ): View {
   _binding = FragmentMainBinding.inflate(inflater, container, false)
   return binding.root
@@ -32,34 +30,53 @@ class MainFragment : Fragment() {
  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
   super.onViewCreated(view, savedInstanceState)
 
-  // Setup Adapter
-  adapter = DoaMainAdapter(emptyList()) { doa, isMemorized ->
-   viewModel.updateMemorizedStatus(doa, isMemorized)
-  }
+  setupRecyclerView()
+  setupFilterChips()
 
-  // Setup RecyclerView (Gunakan requireContext() di fragment)
-  binding.rvDoaMain.layoutManager = LinearLayoutManager(requireContext())
-  binding.rvDoaMain.adapter = adapter
-
-  // Load Data
+  // Load data awal
   viewModel.loadSavedDoa()
 
-  // Observe Data
-  // viewLifecycleOwner adalah lifecycle aman untuk Fragment
-  viewModel.savedDoa.observe(viewLifecycleOwner) { list ->
+  // Observe data hasil filter
+  viewModel.displayDoaList.observe(viewLifecycleOwner) { list ->
    adapter.updateData(list)
-   Log.d("MAIN_FRAGMENT", "Data doa ter-load: ${list.size}")
+
+   // Opsional: Tampilkan view kosong jika list kosong
+   if (list.isEmpty()) {
+    // binding.tvEmptyState.visibility = View.VISIBLE
+   } else {
+    // binding.tvEmptyState.visibility = View.GONE
+   }
   }
  }
 
- // Refresh data saat kembali ke fragment ini
+ private fun setupRecyclerView() {
+  adapter = DoaMainAdapter(emptyList()) { doa, isMemorized ->
+   viewModel.updateMemorizedStatus(doa, isMemorized)
+  }
+  binding.rvDoaMain.layoutManager = LinearLayoutManager(requireContext())
+  binding.rvDoaMain.adapter = adapter
+ }
+
+ private fun setupFilterChips() {
+  binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
+   if (checkedIds.isNotEmpty()) {
+    when (checkedIds[0]) {
+     binding.chipSemua.id -> viewModel.setFilter(DoaViewModel.FilterMode.ALL)
+     binding.chipSudahHapal.id -> viewModel.setFilter(DoaViewModel.FilterMode.MEMORIZED)
+     binding.chipBelumHapal.id -> viewModel.setFilter(DoaViewModel.FilterMode.NOT_MEMORIZED)
+    }
+   }
+  }
+ }
+
  override fun onResume() {
   super.onResume()
+  // Reload data saat kembali ke layar ini (jaga-jaga ada update dari fragment lain)
   viewModel.loadSavedDoa()
  }
 
  override fun onDestroyView() {
   super.onDestroyView()
-  _binding = null // Mencegah memory leak
+  _binding = null
  }
 }

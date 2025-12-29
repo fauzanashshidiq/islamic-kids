@@ -21,25 +21,33 @@ class DoaMainAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val item = list[position]
+
+        // Set Data Text
         holder.binding.tvJudulMain.text = item.doa
         holder.binding.tvArtiMain.text = item.artinya
         holder.binding.tvAyat.text = item.ayat
         holder.binding.tvLatin.text = item.latin ?: ""
 
+        // 1. Hapus listener lama dulu
         holder.binding.cbHapal.setOnCheckedChangeListener(null)
 
+        // 2. Set Status Visual Checkbox (Visual hijau/putih otomatis ikut ini)
         holder.binding.cbHapal.isChecked = item.isMemorized
 
-        holder.binding.cbHapal.setOnCheckedChangeListener { _, isChecked ->
+        // 3. Listener perubahan status hapal
+        holder.binding.cbHapal.setOnCheckedChangeListener { buttonView, isChecked ->
+            // Update data model di memory agar tidak lompat saat scroll
             item.isMemorized = isChecked
 
+            // Panggil callback ke Fragment/ViewModel untuk update ke Database
             onMemorizedChanged(item, isChecked)
         }
 
+        // Tampilkan catatan jika ada
         if (item.catatan.isNullOrEmpty()) {
-            holder.binding.tvCatatan.visibility = View.GONE
+            holder.binding.layoutCatatanItem.visibility = View.GONE
         } else {
-            holder.binding.tvCatatan.visibility = View.VISIBLE
+            holder.binding.layoutCatatanItem.visibility = View.VISIBLE
             holder.binding.tvCatatan.text = "Catatan: ${item.catatan}"
         }
     }
