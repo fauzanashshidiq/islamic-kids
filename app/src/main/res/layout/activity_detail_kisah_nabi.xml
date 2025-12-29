@@ -133,6 +133,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Usia"
                                 android:textColor="#EEEEEE"
+                                android:fontFamily="@font/baloo_semibold"
                                 android:textSize="12sp" />
                             <TextView
                                 android:id="@+id/tvUsia"
@@ -156,6 +157,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tempat"
                                 android:textColor="#EEEEEE"
+                                android:fontFamily="@font/baloo_semibold"
                                 android:textSize="12sp" />
                             <TextView
                                 android:id="@+id/tvTempat"
@@ -180,6 +182,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tahun"
                                 android:textColor="#EEEEEE"
+                                android:fontFamily="@font/baloo_semibold"
                                 android:textSize="12sp" />
                             <TextView
                                 android:id="@+id/tvTahun"
@@ -244,7 +247,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Lorem ipsum..."
-                        android:fontFamily="sans-serif-rounded"
+                        android:fontFamily="@font/baloo_reguler"
                         android:textColor="#424242"
                         android:textSize="18sp"
                         android:lineSpacingMultiplier="1.5"
