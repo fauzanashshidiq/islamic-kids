@@ -24,6 +24,5 @@ data class KisahNabiEntity(
     @SerializedName("tmp")
     val tmp: String,
 
-    // Opsional: Image url jika ada, atau flag sudah dibaca
     val isRead: Boolean = false
 )

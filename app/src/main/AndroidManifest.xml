@@ -14,6 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uas">
         <activity
+            android:name=".DetailTataCaraWudhuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailSifatWajibAllahActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailShalatWajibActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailAsmaulHusnaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailRukunImanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailRukunIslamActivity"
+            android:exported="false" />
+        <activity
             android:name=".Welcome"
             android:exported="false" />
         <activity
