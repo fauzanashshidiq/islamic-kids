@@ -35,7 +35,7 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         binding.tvDetailNama.text = nama
         binding.tvUsia.text = "$usia Tahun"
         binding.tvTempat.text = tempat
-        binding.tvTahun.text = "$tahun SM" // Asumsi tahun nabi SM
+        binding.tvTahun.text = "$tahun SM"
         binding.tvDeskripsi.text = desc
 
         // 4. Load Gambar Header
