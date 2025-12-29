@@ -11,7 +11,7 @@ import com.pam.uas.data.local.entity.DoaEntity
 import com.pam.uas.data.local.entity.KisahNabiEntity
 import com.pam.uas.data.local.entity.PembelajaranEntity
 
-@Database(entities = [DoaEntity::class, KisahNabiEntity::class, PembelajaranEntity::class], version = 3, exportSchema = false)
+@Database(entities = [DoaEntity::class, KisahNabiEntity::class, PembelajaranEntity::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun doaDao(): DoaDao
     abstract fun kisahNabiDao(): KisahNabiDao

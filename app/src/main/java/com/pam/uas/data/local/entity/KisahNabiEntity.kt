@@ -13,7 +13,7 @@ data class KisahNabiEntity(
     val name: String,
 
     @SerializedName("thn_kelahiran")
-    val thnKelahiran: Int,
+    val thnKelahiran: String,
 
     @SerializedName("usia")
     val usia: String,
@@ -23,6 +23,9 @@ data class KisahNabiEntity(
 
     @SerializedName("tmp")
     val tmp: String,
+
+    @SerializedName("icon_url")
+    val iconUrl: String? = null,
 
     val isRead: Boolean = false
 )

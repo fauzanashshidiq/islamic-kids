@@ -20,7 +20,7 @@ class PembelajaranMenuAdapter(
     // Daftar Menu Statis (Sesuaikan imageRes dengan icon yang kamu punya)
     private val menuList = listOf(
         MenuModel("Rukun Islam", "RUKUN_ISLAM", R.drawable.ic_launcher_foreground),
-        MenuModel("Rukun Iman", "RUKUN_IMAN", R.drawable.ic_launcher_foreground),
+        MenuModel("Rukun Iman", "RUKUN_IMAN", R.drawable.ic_rukun_iman),
         MenuModel("Asmaul Husna", "ASMAUL_HUSNA", R.drawable.ic_launcher_foreground),
         MenuModel("Shalat Wajib", "SHALAT_WAJIB", R.drawable.ic_launcher_foreground),
         MenuModel("Sifat Wajib Allah", "SIFAT_WAJIB_ALLAH", R.drawable.ic_launcher_foreground),
