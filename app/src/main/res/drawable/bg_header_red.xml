@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Lapisan Bawah (Warna Gelap untuk efek 3D/Bayangan) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#D32F2F"/> <!-- Merah Tua -->
+            <corners android:radius="50dp"/>
+        </shape>
+    </item>
+
+    <!-- Lapisan Atas (Warna Utama, digeser ke atas sedikit) -->
+    <item android:bottom="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#EF5350"/> <!-- Merah Cerah -->
+            <corners android:radius="50dp"/>
+        </shape>
+    </item>
+
+</layer-list>
