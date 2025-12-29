@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             loadFragment(DoaFragment())
             binding.bottomNavigation.setOnItemSelectedListener(null)
             binding.bottomNavigation.selectedItemId = R.id.nav_doa
-            binding.rootLayout.setBackgroundResource(R.drawable.bgsplashscreen)
+            binding.rootLayout.setBackgroundResource(R.drawable.bg_list_doa)
             updateBottomNavAnimation(binding.bottomNavigation, R.id.nav_doa)
             setupBottomNavListener()
         }

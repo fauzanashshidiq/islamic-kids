@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- KEADAAN 1: DICENTANG (Aktif) -->
+    <item android:state_checked="true">
+        <layer-list>
+            <!-- Layer Bawah: Kotak Hijau -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#4CD964"/>
+                    <corners android:radius="6dp"/>  <!-- Radius dikecilkan dikit -->
+                    <stroke android:width="2dp" android:color="#000000"/> <!-- Stroke ditipiskan dikit -->
+                    <size android:width="20dp" android:height="20dp"/> <!-- UBAH DI SINI (Dikecilkan) -->
+                </shape>
+            </item>
+
+            <!-- Layer Atas: Ikon Centang -->
+            <!-- Padding dikurangi supaya centang gak kekecilan -->
+            <item android:bottom="6dp" android:left="6dp" android:right="6dp" android:top="6dp">
+                <vector android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+                    <path android:fillColor="#FFFFFF"
+                        android:pathData="M9,16.2L4.8,12l-1.4,1.4L9,19 21,7l-1.4,-1.4L9,16.2z"
+                        android:strokeWidth="2"/>
+                </vector>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- KEADAAN 2: TIDAK DICENTANG (Pasif) -->
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#FFFFFF"/>
+                    <corners android:radius="6dp"/> <!-- Radius dikecilkan dikit -->
+                    <stroke android:width="2dp" android:color="#000000"/> <!-- Stroke ditipiskan dikit -->
+                    <size android:width="28dp" android:height="28dp"/> <!-- UBAH DI SINI (Dikecilkan) -->
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

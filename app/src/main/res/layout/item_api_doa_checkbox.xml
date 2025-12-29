@@ -2,61 +2,96 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="?attr/selectableItemBackground">
+    android:layout_marginBottom="16dp"
+    android:clipToPadding="false">
 
     <!-- BARIS 1: Checkbox & Judul -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp"> <!-- Padding dikit biar shadow ga kepotong -->
 
+        <!-- Checkbox Custom -->
         <CheckBox
             android:id="@+id/cbSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:button="@drawable/selector_checkbox_cartoon"
+            android:background="@null"
+            android:layout_marginEnd="16dp"
+            app:buttonTint="@null"
+            android:buttonTint="@null" /> <!-- PENTING: Matikan pewarnaan otomatis -->
 
+
+        <!-- Teks dengan Shadow Putih -->
         <TextView
             android:id="@+id/tvTitleApiDoa"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Judul Doa"
-            android:textSize="16sp"
-            android:paddingStart="8dp"
-            android:textColor="@android:color/black"/>
+            android:fontFamily="@font/baloo_bold"
+            android:textSize="22sp"
+            android:textColor="@android:color/black"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1"/>
     </LinearLayout>
 
-    <!-- BARIS 2: Input Catatan (Default GONE/Tersembunyi) -->
+    <!-- BARIS 2: Input Catatan -->
     <LinearLayout
         android:id="@+id/layoutCatatan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="gone"
-        android:paddingStart="32dp"
-        android:paddingTop="4dp">
 
+        android:gravity="center_vertical"
+
+        android:layout_marginStart="58dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_input_border"
+        android:padding="8dp">
+
+        <!-- EditText Multiline -->
         <EditText
             android:id="@+id/etCatatan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Tulis catatan di sini..."
+            android:hint="tulis catatan di sini..."
+            android:textColorHint="#999999"
             android:textSize="14sp"
-            android:background="@android:drawable/edit_text"
-            android:inputType="textCapSentences"/>
+            android:fontFamily="@font/baloo_bold"
+            android:textColor="#333333"
+            android:background="@null"
+            android:paddingHorizontal="4dp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minLines="1"
+            android:maxLines="4"
+            android:scrollbars="vertical"
+            android:gravity="top|start"/>
 
-        <Button
+        <!-- Tombol Simpan (Ubah gravity ke center_vertical) -->
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSimpanCatatan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="26dp"
+            android:layout_gravity="center_vertical"
             android:text="Simpan"
+            android:textColor="#FFFFFF"
             android:textSize="12sp"
-            android:minHeight="40dp"
-            android:layout_marginStart="8dp"/>
+            android:fontFamily="@font/baloo_bold"
+            android:textAllCaps="false"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_button_simpan"
+            android:paddingHorizontal="12dp"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -61,13 +61,6 @@ class DoaFragment : Fragment() {
         // Load Data
         viewModel.loadApiDoa()
         viewModel.loadSavedDoa()
-
-        // Tombol Selesai (Navigasi balik ke home/main)
-        binding.btnSimpanKeMenuUtama.text = "Selesai"
-        binding.btnSimpanKeMenuUtama.setOnClickListener {
-            // Logic opsional: misal pindah tab ke Home secara manual
-            // (activity as? MainActivity)?.moveToHome()
-        }
     }
 
     override fun onDestroyView() {
