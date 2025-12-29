@@ -9,6 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.pam.uas.DetailPembelajaranActivity
+import com.pam.uas.DetailRukunIslamActivity
+import com.pam.uas.DetailRukunImanActivity
+import com.pam.uas.DetailAsmaulHusnaActivity
+import com.pam.uas.DetailShalatWajibActivity
+import com.pam.uas.DetailSifatWajibAllahActivity
+import com.pam.uas.DetailTataCaraWudhuActivity
 import com.pam.uas.databinding.FragmentPembelajaranBinding
 import com.pam.uas.ui.PembelajaranMenuAdapter
 import com.pam.uas.viewmodel.PembelajaranViewModel
@@ -37,9 +43,21 @@ class PembelajaranFragment : Fragment() {
   // Setup Adapter
   val adapter = PembelajaranMenuAdapter { menu ->
    // Saat item diklik, buka DetailActivity dengan membawa KEY KATEGORI
-   val intent = Intent(requireContext(), DetailPembelajaranActivity::class.java)
-   intent.putExtra("EXTRA_KATEGORI", menu.categoryKey) // Kirim "RUKUN_ISLAM", "SIFAT_ALLAH", dll
-   intent.putExtra("EXTRA_JUDUL", menu.title) // Kirim Judul untuk Header
+   val destinationActivity = when (menu.categoryKey) {
+    "RUKUN_ISLAM" -> DetailRukunIslamActivity::class.java
+    "RUKUN_IMAN" -> DetailRukunImanActivity::class.java
+    "ASMAUL_HUSNA" -> DetailAsmaulHusnaActivity::class.java
+    "SHALAT_WAJIB" -> DetailShalatWajibActivity::class.java
+    "SIFAT_WAJIB_ALLAH" -> DetailSifatWajibAllahActivity::class.java
+    "TATA_CARA_WUDHU" -> DetailTataCaraWudhuActivity::class.java
+    else -> DetailPembelajaranActivity::class.java
+   }
+
+   val intent = Intent(requireContext(), destinationActivity)
+
+   // Tetap bisa kirim data jika Activity tujuan membutuhkannya (misal untuk query DB)
+   intent.putExtra("EXTRA_KATEGORI", menu.categoryKey)
+   intent.putExtra("EXTRA_JUDUL", menu.title)
    startActivity(intent)
   }
 

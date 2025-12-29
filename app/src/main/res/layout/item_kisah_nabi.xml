@@ -19,11 +19,5 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvUsia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Usia: 950 Tahun"
-            android:textColor="#757575" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

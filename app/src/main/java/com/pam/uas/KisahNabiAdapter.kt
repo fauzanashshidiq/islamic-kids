@@ -24,10 +24,9 @@ class KisahNabiAdapter(
         val item = list[position]
 
         holder.binding.tvNamaNabi.text = item.name
-        // ... set text lainnya sesuai item layout kamu ...
 
-        // Load gambar icon jika ada (opsional, pakai Glide)
-        // Glide.with(holder.itemView).load(item.imageUrl).into(holder.binding.ivIconNabi)
+        // Load gambar icon
+         Glide.with(holder.itemView).load(item.imageUrl).into(holder.binding.ivIconNabi)
 
         // KLIK ITEM
         holder.itemView.setOnClickListener {
