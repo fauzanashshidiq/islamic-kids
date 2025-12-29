@@ -1,18 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_main"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/icon_home"
         android:title="Main"/>
     <item
         android:id="@+id/nav_doa"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/icon_listdoa"
         android:title="Doa"/>
     <item
         android:id="@+id/nav_kisah"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/icon_kisahnabi"
         android:title="Kisah Nabi"/>
     <item
         android:id="@+id/nav_pembelajaran"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/icon_pembelajaran"
         android:title="Pembelajaran"/>
 </menu>

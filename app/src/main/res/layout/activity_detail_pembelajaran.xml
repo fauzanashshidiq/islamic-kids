@@ -1,161 +1,224 @@
-<?xml version="1.0" encoding="utf-8"?><androidx.constraintlayout.widget.ConstraintLayout
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F8FF"
+    android:background="#81D4FA"
     android:padding="16dp">
 
-    <!-- Header Judul Kategori -->
     <TextView
         android:id="@+id/tvHeaderKategori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Judul Kategori"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:background="@drawable/ic_launcher_background"
-        android:paddingHorizontal="24dp"
+        android:layout_marginTop="16dp"
+
+        android:text="Rukun Iman"
+        android:fontFamily="@font/baloo_bold"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+
+        android:background="@drawable/bg_header_orange"
+        android:paddingHorizontal="40dp"
         android:paddingVertical="8dp"
+        android:elevation="4dp"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tombol Back Kiri Atas -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ic_launcher_background"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/arrow"
+        android:background="@drawable/bg_circle_badge"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvHeaderKategori"
-        app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"/>
-
-    <!-- Tombol Suara Kanan Atas -->
+        app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"
+        app:layout_constraintTop_toTopOf="@id/tvHeaderKategori"/>
     <ImageButton
         android:id="@+id/btnSuara"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ic_launcher_background"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/sound"
+        android:background="@drawable/bg_circle_badge"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvHeaderKategori"
-        app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"/>
-
-    <!-- CARD UTAMA -->
+        app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"
+        app:layout_constraintTop_toTopOf="@id/tvHeaderKategori"/>
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContent"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tvHeaderKategori"
-        app:layout_constraintBottom_toTopOf="@id/btnNext">
 
-        <LinearLayout
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="120dp"
+
+        app:cardCornerRadius="32dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#F57C00"
+
+        app:layout_constraintDimensionRatio="H,3:4.8"
+        app:layout_constraintTop_toBottomOf="@id/tvHeaderKategori"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="24dp">
+            android:padding="16dp">
 
-            <!-- Nomor Urut (Badge Bulat) -->
-            <TextView
-                android:id="@+id/tvNomorUrut"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/ic_launcher_background"
-                android:gravity="center"
-                android:text="1"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:layout_marginBottom="16dp"/>
+            <View
+                android:id="@+id/bg_glow"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:background="@drawable/bg_circle_badge"
+                android:backgroundTint="#FFF3E0"
 
-            <!-- Gambar Materi -->
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@id/tvArabMateri"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/ivMateri"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:src="@drawable/ic_launcher_foreground"
-                android:layout_marginBottom="16dp"/>
+                app:layout_constraintBottom_toBottomOf="@id/bg_glow"
+                app:layout_constraintEnd_toEndOf="@id/bg_glow"
+                app:layout_constraintStart_toStartOf="@id/bg_glow"
+                app:layout_constraintTop_toTopOf="@id/bg_glow" />
 
-            <!-- Judul Materi -->
-            <TextView
-                android:id="@+id/tvJudulMateri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Iman Kepada Allah"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#D35400"
-                android:layout_marginBottom="8dp"/>
-
-            <!-- Teks Arab (Jika ada) -->
             <TextView
                 android:id="@+id/tvArabMateri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arab"
-                android:textSize="24sp"
-                android:gravity="center"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginTop="16dp"
 
-            <!-- Deskripsi Singkat -->
+                android:text="اللّٰهُ"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="32sp"
+                android:textStyle="bold"
+
+                app:layout_constraintBottom_toTopOf="@id/tvJudulMateri"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bg_glow" />
+            <TextView
+                android:id="@+id/tvJudulMateri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+
+                android:text="Iman Kepada\nAllah"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:fontFamily="@font/baloo_bold"
+
+                app:layout_constraintBottom_toTopOf="@id/tvDeskripsiMateri"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvArabMateri" />
+
             <TextView
                 android:id="@+id/tvDeskripsiMateri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Faith in Allah"
-                android:background="@drawable/ic_launcher_background"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="4dp"
-                android:gravity="center"/>
+                android:layout_marginTop="12dp"
 
-            <!-- Keterangan Panjang (Scrollable jika perlu) -->
+                android:text="Faith in Allah"
+                android:background="@drawable/bg_pill_beige"
+                android:fontFamily="@font/baloo_bold"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="6dp"
+                android:textColor="#5D4037"
+                android:textSize="16sp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvJudulMateri" />
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="12dp">
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/tvDeskripsiMateri"
+                app:layout_constraintBottom_toBottomOf="parent">
                 <TextView
                     android:id="@+id/tvKeterangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Keterangan lengkap..."
-                    android:gravity="center"
-                    android:textSize="14sp"/>
+                    android:textColor="#FFFFFF"/>
             </ScrollView>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Tombol Previous -->
+
+    <TextView
+        android:id="@+id/tvNomorUrut"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+        android:background="@drawable/bg_circle_badge"
+        android:gravity="center"
+        android:text="1"
+
+        android:fontFamily="@font/baloo_bold"
+        android:textColor="#F57C00"
+        android:textSize="28sp"
+
+        android:elevation="12dp"
+        android:translationX="-15dp"
+        android:translationY="-15dp"
+
+        app:layout_constraintStart_toStartOf="@id/cardContent"
+        app:layout_constraintTop_toTopOf="@id/cardContent"/>
+
     <ImageButton
         android:id="@+id/btnPrev"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:src="@drawable/ic_launcher_background"
-        android:background="@drawable/ic_launcher_foreground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btnNext"/>
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_arrow_left"
+        android:background="@drawable/bg_circle_badge"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
 
-    <!-- Tombol Next -->
+        app:layout_constraintEnd_toStartOf="@id/cardContent"
+        app:layout_constraintTop_toTopOf="@id/cardContent"
+        app:layout_constraintBottom_toBottomOf="@id/cardContent"
+        android:layout_marginEnd="-12dp" />
     <ImageButton
         android:id="@+id/btnNext"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:src="@drawable/ic_launcher_background"
-        android:background="@drawable/ic_launcher_foreground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"/>
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_arrow_right"
+        android:background="@drawable/bg_circle_badge"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintStart_toEndOf="@id/cardContent"
+        app:layout_constraintTop_toTopOf="@id/cardContent"
+        app:layout_constraintBottom_toBottomOf="@id/cardContent"
+        android:layout_marginStart="-12dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
