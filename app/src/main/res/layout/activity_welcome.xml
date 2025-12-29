@@ -6,78 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgsplashscreen1">
-
-    <!-- HEADER TEXT -->
-    <LinearLayout
-        android:id="@+id/header_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <!-- SHADOW / GLOW -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Halo Teman Kecil"
-                android:fontFamily="@font/baloo_bold"
-                android:textSize="38sp"
-                android:textColor="#FF9100"
-                android:shadowColor="#FF9100"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="25"
-                android:includeFontPadding="false" />
-
-            <!-- TEXT UTAMA -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Halo Teman Kecil"
-                android:fontFamily="@font/baloo_bold"
-                android:textSize="38sp"
-                android:textColor="#FFFFFF"
-                android:includeFontPadding="false" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-5dp">
-
-            <!-- SHADOW -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ayo belajar islam dengan ceria"
-                android:fontFamily="@font/baloo_bold"
-                android:textSize="20sp"
-                android:textColor="#FF9100"
-                android:shadowColor="#FF9100"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="15"
-                android:includeFontPadding="false" />
-
-            <!-- TEXT UTAMA -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ayo belajar islam dengan ceria"
-                android:fontFamily="@font/baloo_bold"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"
-                android:includeFontPadding="false" />
-        </FrameLayout>
-
-    </LinearLayout>
+    android:background="@drawable/bgwelcome">
 
     <!-- HERO IMAGE -->
     <ImageView
@@ -85,13 +14,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/iconlogo"
+        android:src="@drawable/logoislamic"
         android:layout_marginHorizontal="40dp"
         app:layout_constraintWidth_percent="0.85"
         app:layout_constraintBottom_toTopOf="@id/btn_mulai"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_container"
         app:layout_constraintVertical_bias="0.45" />
 
     <!-- BUTTON MULAI -->
@@ -100,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="150dp"
         android:background="@drawable/button_start"
         android:text="Mulai Belajar   ▶"
         android:textColor="#FFFFFF"

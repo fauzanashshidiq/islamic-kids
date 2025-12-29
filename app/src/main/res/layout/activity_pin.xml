@@ -1,38 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="@android:color/white">
-
-    <TextView
-        android:id="@+id/tvTitlePin"
+    android:background="@drawable/bgparent"
+    android:padding="16dp">
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/headerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masukkan PIN"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
-
-    <EditText
-        android:id="@+id/edtPin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberPassword"
-        android:hint="****"
-        android:maxLength="6"
+        android:orientation="vertical"
         android:gravity="center"
-        android:textSize="22sp"
-        android:padding="12dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btnSubmitPin"
-        android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode Orangtua"
+            android:fontFamily="@font/baloo_bold"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARENT CONTROL"
+            android:textSize="12sp"
+            android:letterSpacing="0.2"
+            android:textColor="#FF9800"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/ivLock"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_oval_green"
+        android:padding="20dp"
+        android:src="@drawable/icon_lock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerText" />
+    <TextView
+        android:id="@+id/tvPinTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lanjut"
-        android:layout_marginTop="24dp"
-        android:padding="12dp" />
+        android:layout_marginTop="16dp"
+        android:text="PIN"
+        android:fontFamily="@font/baloo_bold"
+        android:textSize="28sp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLock" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masukkan Pin Untuk\nMenambahkan List Doa"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPinTitle" />
+
+    <LinearLayout
+        android:id="@+id/pinIndicators"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvInstruction">
+
+        <TextView
+            android:id="@+id/tvPinDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="24sp"
+            android:letterSpacing="0.5"
+            android:textColor="#FFFFFF"
+            android:hint="••••" />
+    </LinearLayout>
+
+
+    <GridLayout
+        android:id="@+id/gridLayoutKeypad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:useDefaultMargins="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pinIndicators">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="1"
+            android:id="@+id/btn1"/>
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="2"
+            android:id="@+id/btn2"/>
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="3"
+            android:id="@+id/btn3"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="4"
+            android:id="@+id/btn4"/>
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="5"
+            android:id="@+id/btn5"/>
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="6"
+            android:id="@+id/btn6"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="7"
+            android:id="@+id/btn7"/>
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="8"
+            android:id="@+id/btn8"/>
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/PinButtonStyle"
+            android:text="9"
+            android:id="@+id/btn9"/>
+
+        <Space
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp" /> <androidx.appcompat.widget.AppCompatButton
+        style="@style/PinButtonStyle"
+        android:text="0"
+        android:id="@+id/btn0"/>
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_close"
+            android:scaleType="centerInside" />
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
