@@ -1,7 +1,10 @@
 package com.pam.uas
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import com.bumptech.glide.Glide
 import com.pam.uas.databinding.ActivityDetailKisahNabiBinding
 
@@ -14,13 +17,10 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         binding = ActivityDetailKisahNabiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Setup Toolbar (Tombol Back)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false) // Kita pakai text custom
-
-        binding.toolbar.setNavigationOnClickListener {
-            finish() // Kembali ke fragment sebelumnya
+        // --- 1. LOGIKA TOMBOL KEMBALI ---
+        binding.btnBack.setOnClickListener {
+            // finish() akan menutup activity ini dan kembali ke activity sebelumnya
+            finish()
         }
 
         // 2. Ambil Data dari Intent
@@ -29,7 +29,6 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         val tempat = intent.getStringExtra("EXTRA_TMP") ?: "-"
         val tahun = intent.getStringExtra("EXTRA_THN") ?: "-"
         val desc = intent.getStringExtra("EXTRA_DESC") ?: "Tidak ada deskripsi."
-        val imageUrl = intent.getStringExtra("EXTRA_IMAGE")
 
         // 3. Tampilkan Data ke UI
         binding.tvDetailNama.text = nama
@@ -38,14 +37,44 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         binding.tvTahun.text = "$tahun SM"
         binding.tvDeskripsi.text = desc
 
-        // 4. Load Gambar Header
-        // Gunakan Glide agar mudah load URL dari internet
-        if (!imageUrl.isNullOrEmpty()) {
-            Glide.with(this)
-                .load(imageUrl)
-                .placeholder(R.drawable.ic_launcher_foreground) // Ganti dengan placeholder kamu
-                .error(R.drawable.ic_launcher_foreground)      // Ganti dengan gambar error kamu
-                .into(binding.ivDetailNabi)
+        val context = this
+        val warnaResId = when {
+            nama.contains("Adam", ignoreCase = true) -> R.color.color_kisah_blue
+            nama.contains("Idris", ignoreCase = true) -> R.color.color_kisah_green
+            nama.contains("Nuh", ignoreCase = true) -> R.color.color_kisah_yellow
+            nama.contains("Hud", ignoreCase = true) -> R.color.color_kisah_purple
+            nama.contains("Sholeh", ignoreCase = true) -> R.color.color_kisah_red
+            nama.contains("Ibrahim", ignoreCase = true) -> R.color.color_kisah_blue
+            nama.contains("Luth", ignoreCase = true) -> R.color.color_kisah_green
+            nama.contains("Ismail", ignoreCase = true) -> R.color.color_kisah_yellow
+            nama.contains("Ishaq", ignoreCase = true) -> R.color.color_kisah_purple
+            nama.contains("Yaqub", ignoreCase = true) -> R.color.color_kisah_red
+            nama.contains("Yusuf", ignoreCase = true) -> R.color.color_kisah_blue
+            nama.contains("Ayyub", ignoreCase = true) -> R.color.color_kisah_green
+            nama.contains("Syu'aib", ignoreCase = true) -> R.color.color_kisah_yellow
+            nama.contains("Musa", ignoreCase = true) -> R.color.color_kisah_purple
+            nama.contains("Harun", ignoreCase = true) -> R.color.color_kisah_red
+            nama.contains("Dzulkifli", ignoreCase = true) -> R.color.color_kisah_blue
+            nama.contains("Daud", ignoreCase = true) -> R.color.color_kisah_green
+            nama.contains("Sulaiman", ignoreCase = true) -> R.color.color_kisah_yellow
+            nama.contains("Ilyasa'", ignoreCase = true) -> R.color.color_kisah_red
+            nama.contains("Ilyas", ignoreCase = true) -> R.color.color_kisah_purple
+            nama.contains("Yunus", ignoreCase = true) -> R.color.color_kisah_blue
+            nama.contains("Zakariya", ignoreCase = true) -> R.color.color_kisah_green
+            nama.contains("Yahya", ignoreCase = true) -> R.color.color_kisah_yellow
+            nama.contains("Isa", ignoreCase = true) -> R.color.color_kisah_purple
+            nama.contains("Muhammad", ignoreCase = true) -> R.color.color_kisah_red
+            else -> R.color.white // Warna default (Putih)
         }
+
+        // 1. Ambil warna utama
+        val colorMain = ContextCompat.getColor(context, warnaResId)
+
+        // 2. Buat warna shadow (lebih gelap 20%)
+        val colorShadow = ColorUtils.blendARGB(colorMain, Color.BLACK, 0.2f)
+
+        // 3. Terapkan ke ID layout yang baru di XML
+        binding.layoutHeaderMain.background.setTint(colorMain)
+        binding.viewHeaderShadow.background.setTint(colorShadow)
     }
 }
