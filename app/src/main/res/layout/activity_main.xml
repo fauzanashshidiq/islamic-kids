@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:id="@+id/root_layout"
     android:orientation="vertical"
-    android:background="@drawable/bgsplashscreen"
-    android:clipChildren="false"> <!-- LEVEL 1: WAJIB FALSE -->
+    android:background="@drawable/bg_home"
+    android:clipChildren="false">
 
     <!-- Pastikan RelativeLayout ini clipChildren="false" -->
     <RelativeLayout
@@ -19,7 +19,8 @@
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="70dp"/>
+            android:fitsSystemWindows="true"
+            android:layout_marginBottom="2dp"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"

@@ -55,7 +55,7 @@ class DoaMainAdapter(
     override fun getItemCount(): Int = list.size
 
     fun updateData(newList: List<DoaEntity>) {
-        list = newList
+        list = newList.sortedBy { it.doa }
         notifyDataSetChanged()
     }
 }

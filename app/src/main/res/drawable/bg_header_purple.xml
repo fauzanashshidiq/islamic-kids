@@ -3,5 +3,5 @@
     android:shape="rectangle">
     <solid android:color="#6F42F5" /> <!-- Warna Ungu -->
     <corners android:radius="30dp" /> <!-- Sudut membulat kapsul -->
-    <stroke android:width="2dp" android:color="#FFFFFF"/> <!-- Border putih tipis -->
+    <stroke android:width="2dp" android:color="#7479FD"/> <!-- Border putih tipis -->
 </shape>

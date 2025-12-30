@@ -103,10 +103,9 @@
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_launcher_foreground"
-            app:tint="#FF9800"/>
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_semua_doa"/>
 
         <TextView
             android:id="@+id/tvCatatan"

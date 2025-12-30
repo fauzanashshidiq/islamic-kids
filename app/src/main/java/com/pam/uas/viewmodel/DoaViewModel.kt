@@ -68,10 +68,12 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
             // 2. Coba ambil data
             val result = repo.fetchApiDoa()
 
-            // Jika berhasil
-            apiDoaList.postValue(result)
-            isError.postValue(false)
+            // Urutkan hasil berdasarkan nama 'doa' secara abjad (A-Z)
+            val sortedResult = result.sortedBy { it.doa }
 
+            // Masukkan data yang sudah urut
+            apiDoaList.postValue(sortedResult)
+            isError.postValue(false)
         } catch (e: Exception) {
             // 3. Jika GAGAL (No Internet / Server Down)
             e.printStackTrace()
