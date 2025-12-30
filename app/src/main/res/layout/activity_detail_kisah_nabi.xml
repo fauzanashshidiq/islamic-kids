@@ -47,11 +47,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
+
         android:clipToPadding="false"
         android:paddingBottom="40dp"
+
+        android:fillViewport="true"
+
+        android:scrollbars="vertical"
+        android:scrollbarThumbVertical="@drawable/scrollbar_thumb_cartoon"
+        android:scrollbarSize="12dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:fadeScrollbars="false"
+        android:isScrollContainer="true"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBack">
 
+    <!-- Konten di dalam ScrollView harus dibungkus SATU Layout (LinearLayout) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,7 +123,6 @@
                         android:shadowRadius="4"/>
 
                     <!-- Info Baris (Usia, Tempat, Tahun) -->
-                    <!-- Background putih transparan agar teks terbaca di warna apapun -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -241,7 +252,7 @@
                         android:textColor="#333333"
                         android:textSize="22sp" />
 
-                    <!-- PERBAIKAN TEKS DESKRIPSI -->
+                    <!-- TEKS DESKRIPSI -->
                     <TextView
                         android:id="@+id/tvDeskripsi"
                         android:layout_width="match_parent"
