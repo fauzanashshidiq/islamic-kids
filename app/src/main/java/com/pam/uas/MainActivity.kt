@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             loadFragment(MainFragment())
-            binding.rootLayout.setBackgroundResource(R.drawable.bgsplashscreen)
+            binding.rootLayout.setBackgroundResource(R.drawable.bg_home)
             navView.post {
                 updateBottomNavAnimation(navView, R.id.nav_main)
             }
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_main -> {
                     loadFragment(MainFragment())
                     updateBottomNavAnimation(navView, R.id.nav_main)
-                    binding.rootLayout.setBackgroundResource(R.drawable.bgsplashscreen)
+                    binding.rootLayout.setBackgroundResource(R.drawable.bg_home)
                     true
                 }
                 R.id.nav_doa -> {

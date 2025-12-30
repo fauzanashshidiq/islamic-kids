@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:text="Judul Doa"
             android:fontFamily="@font/baloo_bold"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textColor="@android:color/black"
             android:shadowColor="#FFFFFF"
             android:shadowDx="3"
@@ -36,9 +36,9 @@
             android:layout_height="wrap_content"
             android:text="Hapal"
             android:fontFamily="@font/baloo_bold"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:textColor="#4CAF50"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="2dp"/>
 
         <!-- Checkbox Hapal -->
         <CheckBox
@@ -58,14 +58,14 @@
         android:id="@+id/tvAyat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="26sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="8dp"
         android:textDirection="rtl"
         android:textAlignment="viewEnd"
         android:gravity="end"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/baloo_semibold"
         android:text="بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم"/>
 
     <!-- Latin -->
@@ -73,10 +73,11 @@
         android:id="@+id/tvLatin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textColor="#555555"
+        android:text="Latin"
         android:textStyle="italic"
-        android:fontFamily="@font/baloo_bold"
+        android:fontFamily="@font/baloo_reguler"
         android:layout_marginBottom="8dp"/>
 
     <!-- Arti -->
@@ -85,9 +86,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Terjemahan"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:fontFamily="@font/baloo_semibold"/>
+        android:fontFamily="@font/baloo_reguler"/>
 
     <!-- Catatan -->
     <LinearLayout
@@ -112,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Catatan kamu..."
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/baloo_semibold"
             android:textColor="#E65100"/>

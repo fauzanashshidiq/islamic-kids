@@ -8,9 +8,9 @@
             <!-- LAYER 1 (Bawah): Kotak HITAM Full (Berfungsi sebagai Border Luar) -->
             <item>
                 <shape android:shape="rectangle">
-                    <solid android:color="#000000"/> <!-- Warna Border -->
-                    <corners android:radius="8dp"/>
-                    <size android:width="32dp" android:height="32dp"/>
+                    <solid android:color="#4CD964"/>
+                    <corners android:radius="6dp"/>
+                    <size android:width="24dp" android:height="24dp"/>
                 </shape>
             </item>
 
@@ -24,7 +24,7 @@
             </item>
 
             <!-- LAYER 3 (Atas): Ikon Centang -->
-            <item android:bottom="6dp" android:left="6dp" android:right="6dp" android:top="6dp">
+            <item android:bottom="2dp" android:left="2dp" android:right="2dp" android:top="2dp">
                 <vector android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
                     <path android:fillColor="#FFFFFF"
                         android:pathData="M9,16.2L4.8,12l-1.4,1.4L9,19 21,7l-1.4,-1.4L9,16.2z"
@@ -43,7 +43,7 @@
                 <shape android:shape="rectangle">
                     <solid android:color="#000000"/>
                     <corners android:radius="8dp"/>
-                    <size android:width="32dp" android:height="32dp"/>
+                    <size android:width="24dp" android:height="24dp"/>
                 </shape>
             </item>
 

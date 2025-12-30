@@ -252,6 +252,7 @@
                         android:textSize="18sp"
                         android:lineSpacingMultiplier="1.5"
                         android:gravity="start"
+                        android:justificationMode="inter_word"
                         tools:text="Nabi Adam AS adalah manusia pertama yang diciptakan Allah SWT. Beliau diciptakan dari tanah liat kering yang berasal dari lumpur hitam. Setelah roh ditiupkan ke dalamnya, Allah memerintahkan para malaikat untuk bersujud kepada Adam sebagai bentuk penghormatan." />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
