@@ -23,6 +23,9 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
     // Data yang ditampilkan ke UI (bisa difilter)
     val displayDoaList = MediatorLiveData<List<DoaEntity>>()
 
+    val isError = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
+
     private var currentFilterMode = FilterMode.ALL
 
     enum class FilterMode {
@@ -57,7 +60,28 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun loadApiDoa() = viewModelScope.launch {
-        apiDoaList.postValue(repo.fetchApiDoa())
+        // 1. Mulai Loading
+        isLoading.postValue(true)
+        isError.postValue(false) // Reset error
+
+        try {
+            // 2. Coba ambil data
+            val result = repo.fetchApiDoa()
+
+            // Jika berhasil
+            apiDoaList.postValue(result)
+            isError.postValue(false)
+
+        } catch (e: Exception) {
+            // 3. Jika GAGAL (No Internet / Server Down)
+            e.printStackTrace()
+            isError.postValue(true) // Beritahu UI ada error
+            apiDoaList.postValue(emptyList())
+
+        } finally {
+            // 4. Selesai Loading
+            isLoading.postValue(false)
+        }
     }
 
     fun saveDoa(apiDoa: ApiDoaResponse, catatanAwal: String = "") = viewModelScope.launch {

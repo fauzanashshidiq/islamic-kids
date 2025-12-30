@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/doa_root"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:clipToPadding="false">
 
-    <!-- Header Kapsul Ungu -->
+    <!-- 1. Header Kapsul Ungu (Tetap Muncul di Semua Kondisi) -->
     <TextView
         android:id="@+id/tvTitleDoa"
         android:layout_width="match_parent"
@@ -25,13 +28,82 @@
         android:layout_marginBottom="24dp"
         android:elevation="4dp"/>
 
-    <!-- RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDoaApi"
+    <!-- 2. Container Utama (Isinya ganti-ganti antara List, Loading, atau Error) -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingBottom="80dp"/> <!-- Padding bawah agar tidak ketutup nav bar -->
+        android:layout_weight="1">
+
+        <!-- A. LIST DATA (Default Visible) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDoaApi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="80dp"
+            tools:listitem="@layout/item_api_doa_checkbox"/>
+
+        <!-- B. LOADING BAR (Muncul saat loading) -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <!-- C. TAMPILAN ERROR / NO INTERNET (Muncul saat error) -->
+        <LinearLayout
+            android:id="@+id/layoutErrorState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true">
+
+            <!-- Gambar Ikon Error -->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_launcher_foreground"
+                app:tint="#FF5252"
+                android:layout_marginBottom="16dp"/>
+            <!-- Tips: Ganti src dengan icon wifi_off atau signal_disconnected -->
+
+            <!-- Judul Error -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yah, Internetnya Mati..."
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="20sp"
+                android:textColor="#333333"/>
+
+            <!-- Deskripsi Error -->
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Coba nyalakan wifi atau datanya dulu, lalu tekan tombol di bawah ya! 🌐"
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Tombol Coba Lagi -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTryAgain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coba Lagi 🔄"
+                android:fontFamily="@font/baloo_bold"
+                android:layout_marginTop="24dp"
+                app:cornerRadius="20dp"
+                android:backgroundTint="#FF9800"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>

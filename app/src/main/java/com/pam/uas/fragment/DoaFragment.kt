@@ -47,6 +47,33 @@ class DoaFragment : Fragment() {
         binding.rvDoaApi.adapter = adapter
         binding.rvDoaApi.layoutManager = LinearLayoutManager(requireContext()) // Use requireContext()
 
+        // 1. Observer untuk List API (Normal)
+        viewModel.apiDoaList.observe(viewLifecycleOwner) { list ->
+            adapter.updateData(list)
+        }
+
+        // 2. Observer untuk ERROR STATE (Tampilkan Layout Error jika true)
+        viewModel.isError.observe(viewLifecycleOwner) { isError ->
+            if (isError) {
+                binding.layoutErrorState.visibility = View.VISIBLE
+                binding.rvDoaApi.visibility = View.GONE
+            } else {
+                binding.layoutErrorState.visibility = View.GONE
+                binding.rvDoaApi.visibility = View.VISIBLE
+            }
+        }
+
+        // 3. Observer untuk LOADING (Opsional)
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+
+        // 4. Listener Tombol "Coba Lagi"
+        binding.btnTryAgain.setOnClickListener {
+            // Panggil ulang fungsi load data
+            viewModel.loadApiDoa()
+        }
+
         // Observer API List
         viewModel.apiDoaList.observe(viewLifecycleOwner) { list ->
             adapter.updateData(list)
