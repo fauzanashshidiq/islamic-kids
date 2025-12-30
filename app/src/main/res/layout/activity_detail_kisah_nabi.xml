@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_kisah_nabi">
+    android:background="@drawable/bg_kisah_nabi"
+    android:fitsSystemWindows="true">
 
     <!-- TOMBOL BACK -->
     <ImageButton
@@ -47,11 +48,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
+
         android:clipToPadding="false"
         android:paddingBottom="40dp"
+
+        android:fillViewport="true"
+
+        android:scrollbars="vertical"
+        android:scrollbarThumbVertical="@drawable/scrollbar_thumb_cartoon"
+        android:scrollbarSize="12dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:fadeScrollbars="false"
+        android:isScrollContainer="true"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBack">
 
+    <!-- Konten di dalam ScrollView harus dibungkus SATU Layout (LinearLayout) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,7 +124,6 @@
                         android:shadowRadius="4"/>
 
                     <!-- Info Baris (Usia, Tempat, Tahun) -->
-                    <!-- Background putih transparan agar teks terbaca di warna apapun -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -133,6 +145,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Usia"
                                 android:textColor="#EEEEEE"
+                                android:fontFamily="@font/baloo_semibold"
                                 android:textSize="12sp" />
                             <TextView
                                 android:id="@+id/tvUsia"
@@ -156,6 +169,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tempat"
                                 android:textColor="#EEEEEE"
+                                android:fontFamily="@font/baloo_semibold"
                                 android:textSize="12sp" />
                             <TextView
                                 android:id="@+id/tvTempat"
@@ -180,6 +194,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tahun"
                                 android:textColor="#EEEEEE"
+                                android:fontFamily="@font/baloo_semibold"
                                 android:textSize="12sp" />
                             <TextView
                                 android:id="@+id/tvTahun"
@@ -238,17 +253,18 @@
                         android:textColor="#333333"
                         android:textSize="22sp" />
 
-                    <!-- PERBAIKAN TEKS DESKRIPSI -->
+                    <!-- TEKS DESKRIPSI -->
                     <TextView
                         android:id="@+id/tvDeskripsi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Lorem ipsum..."
-                        android:fontFamily="sans-serif-rounded"
+                        android:fontFamily="@font/baloo_reguler"
                         android:textColor="#424242"
                         android:textSize="18sp"
                         android:lineSpacingMultiplier="1.5"
                         android:gravity="start"
+                        android:justificationMode="inter_word"
                         tools:text="Nabi Adam AS adalah manusia pertama yang diciptakan Allah SWT. Beliau diciptakan dari tanah liat kering yang berasal dari lumpur hitam. Setelah roh ditiupkan ke dalamnya, Allah memerintahkan para malaikat untuk bersujud kepada Adam sebagai bentuk penghormatan." />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

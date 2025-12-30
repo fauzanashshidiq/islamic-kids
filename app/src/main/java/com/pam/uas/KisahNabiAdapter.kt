@@ -93,8 +93,26 @@ class KisahNabiAdapter(
 
 
         // KLIK ITEM
-        holder.itemView.setOnClickListener {
-            onItemClick(item)
+        holder.itemView.setOnClickListener { view ->
+            // 1. Animasi Mengecil (Efek Ditekan)
+            view.animate()
+                .scaleX(0.95f) // Kecilkan dikit ke 95%
+                .scaleY(0.95f)
+                .setDuration(100) // Durasi cepat (0.1 detik)
+                .withEndAction {
+                    // 2. Animasi Membal Balik (Bounce)
+                    view.animate()
+                        .scaleX(1.0f) // Balik ke ukuran normal
+                        .scaleY(1.0f)
+                        .setDuration(300)
+                        .setInterpolator(android.view.animation.BounceInterpolator()) // Efek kenyal
+                        .start()
+
+                    // 3. Panggil Callback Navigasi (Pindah Layar)
+                    // Ditaruh di sini supaya animasi 'tekan' selesai dulu baru pindah
+                    onItemClick(item)
+                }
+                .start()
         }
     }
 

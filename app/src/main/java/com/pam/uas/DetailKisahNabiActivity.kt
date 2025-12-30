@@ -18,9 +18,22 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // --- 1. LOGIKA TOMBOL KEMBALI ---
-        binding.btnBack.setOnClickListener {
-            // finish() akan menutup activity ini dan kembali ke activity sebelumnya
-            finish()
+        binding.btnBack.setOnClickListener { view ->
+            view.animate()
+                .scaleX(0.85f)
+                .scaleY(0.85f)
+                .setDuration(100)
+                .withEndAction {
+                    view.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setInterpolator(android.view.animation.BounceInterpolator())
+                        .withEndAction {
+                            finish()
+                        }
+                        .start()
+                }
+                .start()
         }
 
         // 2. Ambil Data dari Intent

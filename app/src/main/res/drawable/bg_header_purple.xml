@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#6F42F5" /> <!-- Warna Ungu -->
+    <corners android:radius="30dp" /> <!-- Sudut membulat kapsul -->
+    <stroke android:width="2dp" android:color="#7479FD"/> <!-- Border putih tipis -->
+</shape>
