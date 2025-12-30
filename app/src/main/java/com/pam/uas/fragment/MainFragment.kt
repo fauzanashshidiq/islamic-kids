@@ -71,17 +71,17 @@ class MainFragment : Fragment() {
 
   when (currentFilterMode) {
    DoaViewModel.FilterMode.ALL -> {
-    ivIcon.setImageResource(R.drawable.ic_search_preview)
+    ivIcon.setImageResource(R.drawable.ic_semua_doa)
     tvJudul.text = "Wah, List Doanya Masih Kosong!"
     tvDeskripsi.text = "Yuk, minta Ayah atau Bunda untuk tambah doa baru di sini. Semangat ya!"
    }
    DoaViewModel.FilterMode.MEMORIZED -> {
-    ivIcon.setImageResource(R.drawable.ic_launcher_foreground)
+    ivIcon.setImageResource(R.drawable.ic_belum_hapal)
     tvJudul.text = "Siap Jadi Anak Hebat?"
     tvDeskripsi.text = "Pilih satu doa dan hapalkan pelan-pelan ya. Kamu pasti bisa!"
    }
    DoaViewModel.FilterMode.NOT_MEMORIZED -> {
-    ivIcon.setImageResource(R.drawable.ic_launcher_foreground)
+    ivIcon.setImageResource(R.drawable.ic_sudah_hapal)
     tvJudul.text = "Masya Allah, Kamu Hebat!"
     tvDeskripsi.text = "Minta Ayah atau Bunda tambah doa baru lagi yuk!"
    }

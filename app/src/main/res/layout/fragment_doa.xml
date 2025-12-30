@@ -66,10 +66,8 @@
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/ic_launcher_foreground"
-                app:tint="#FF5252"
+                android:src="@drawable/ic_error_internet"
                 android:layout_marginBottom="16dp"/>
-            <!-- Tips: Ganti src dengan icon wifi_off atau signal_disconnected -->
 
             <!-- Judul Error -->
             <TextView
@@ -77,16 +75,16 @@
                 android:layout_height="wrap_content"
                 android:text="Yah, Internetnya Mati..."
                 android:fontFamily="@font/baloo_bold"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textColor="#333333"/>
 
             <!-- Deskripsi Error -->
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Coba nyalakan wifi atau datanya dulu, lalu tekan tombol di bawah ya! 🌐"
+                android:text="Coba nyalakan wifi atau datanya dulu, lalu tekan tombol di bawah ya!"
                 android:fontFamily="@font/baloo_bold"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textColor="#757575"
                 android:gravity="center"
                 android:layout_marginTop="8dp"/>

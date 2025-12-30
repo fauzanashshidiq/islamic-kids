@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:text="Yuk, tambah doa harianmu dulu di menu Tambah Doa!"
                 android:fontFamily="@font/baloo_bold"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textColor="#757575"
                 android:gravity="center"
                 android:layout_marginTop="8dp"/>
