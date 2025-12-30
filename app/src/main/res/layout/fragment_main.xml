@@ -81,13 +81,60 @@
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
-    <!-- RecyclerView List Doa -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDoaMain"
+    <!-- Container Utama: RecyclerView & Empty State -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingBottom="80dp"
-        android:clipToPadding="false"/>
+        android:layout_weight="1">
+
+        <!-- RecyclerView List Doa -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDoaMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="80dp"
+            android:clipToPadding="false"/>
+
+        <!-- VIEW KOSONG (Empty State) -->
+        <LinearLayout
+            android:id="@+id/layoutEmptyState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="50dp">
+
+            <!-- Gambar Ikon Lucu (Pakai yg ada atau ic_launcher) -->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:alpha="0.8"/>
+
+            <!-- Judul -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum Ada Doa"
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="22sp"
+                android:textColor="#333333"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Deskripsi -->
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Yuk, tambah doa harianmu dulu di menu Tambah Doa!"
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>
