@@ -110,34 +110,65 @@ class MainActivity : AppCompatActivity() {
             // 1. Ambil Container Item (BottomNavigationItemView)
             val itemView = navView.findViewById<View>(viewId)
 
-            // 2. MATIKAN CLIP PADA CONTAINER ITEM JUGA!
+            // 2. Matikan Clip agar bisa keluar jalur
             if (itemView is android.view.ViewGroup) {
                 itemView.clipChildren = false
                 itemView.clipToPadding = false
             }
 
-            // 3. Ambil Icon (ImageView)
+            // 3. Ambil Icon di dalamnya
             val iconView = itemView.findViewById<View>(com.google.android.material.R.id.navigation_bar_item_icon_view)
 
-            if (iconView != null) {
-                if (viewId == selectedItemId) {
-                    // POSISI AKTIF
-                    animateView(iconView, -40f, 1.4f) // Naik lebih tinggi (-60f)
-                } else {
-                    // POSISI TIDAK AKTIF
-                    animateView(iconView, 0f, 1.2f)
+            if (viewId == selectedItemId) {
+                // --- KONDISI AKTIF ---
+
+                // A. Beri Background Putih pada Container
+                itemView.setBackgroundResource(R.drawable.bg_nav_item_selected)
+
+                // B. Naikkan CONTAINER-nya (ItemView), maka Icon otomatis ikut naik
+                // Kita naikkan -50f (sesuaikan tinggi 'pop' yang dimau)
+                animateView(itemView, -50f, 1.0f)
+
+                // C. Besarkan Icon-nya sedikit biar manis
+                if (iconView != null) {
+                    // Icon tidak perlu ditranslate lagi karena containernya sudah naik
+                    // Cukup di-scale saja
+                    iconView.animate()
+                        .scaleX(1.3f)
+                        .scaleY(1.3f)
+                        .setDuration(300)
+                        .start()
+                }
+
+            } else {
+                // --- KONDISI TIDAK AKTIF ---
+
+                // A. Hapus Background
+                itemView.background = null
+
+                // B. Kembalikan Posisi Container ke 0 (Bawah)
+                animateView(itemView, 0f, 1.0f)
+
+                // C. Kembalikan Ukuran Icon Normal
+                if (iconView != null) {
+                    iconView.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(300)
+                        .start()
                 }
             }
         }
     }
 
+    // Update helper function biar lebih fleksibel
     private fun animateView(view: View, translationY: Float, scale: Float) {
-        // Kita tidak perlu main elevation/translationZ berlebihan jika clipChildren sudah mati total
         view.animate()
             .translationY(translationY)
             .scaleX(scale)
             .scaleY(scale)
             .setDuration(300)
+            .setInterpolator(android.view.animation.OvershootInterpolator()) // Efek membal sedikit saat naik
             .start()
     }
 }
