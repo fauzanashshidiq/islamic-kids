@@ -62,10 +62,27 @@ class DoaApiCheckboxAdapter(
         }
 
         // LISTENER TOMBOL SIMPAN CATATAN
-        holder.binding.btnSimpanCatatan.setOnClickListener {
-            val catatanBaru = holder.binding.etCatatan.text.toString()
-            onSaveNote(item, catatanBaru)
-            Toast.makeText(holder.itemView.context, "Catatan diupdate", Toast.LENGTH_SHORT).show()
+        holder.binding.btnSimpanCatatan.setOnClickListener { view ->
+            // 1. Animasi Mengecil (Tekan)
+            view.animate()
+                .scaleX(0.85f) // Mengecil ke 85%
+                .scaleY(0.85f)
+                .setDuration(100)
+                .withEndAction {
+                    // 2. Animasi Membal (Bounce Back)
+                    view.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(300)
+                        .setInterpolator(android.view.animation.BounceInterpolator()) // Efek kenyal
+                        .start()
+
+                    // 3. Jalankan logika simpan setelah animasi tekan selesai
+                    val catatanBaru = holder.binding.etCatatan.text.toString()
+                    onSaveNote(item, catatanBaru)
+                    Toast.makeText(holder.itemView.context, "Catatan disimpan! ✅", Toast.LENGTH_SHORT).show()
+                }
+                .start()
         }
     }
 

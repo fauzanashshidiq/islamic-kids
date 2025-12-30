@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pam.uas.R // Pastikan import R ada
+import com.pam.uas.R
 import com.pam.uas.databinding.FragmentMainBinding
 import com.pam.uas.ui.DoaMainAdapter
 import com.pam.uas.viewmodel.DoaViewModel
@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
   super.onViewCreated(view, savedInstanceState)
 
   setupRecyclerView()
-  setupFilterChips()
+  setupFilterButtons()
 
   // Load data awal
   viewModel.loadSavedDoa()
@@ -96,25 +96,71 @@ class MainFragment : Fragment() {
   binding.rvDoaMain.adapter = adapter
  }
 
- private fun setupFilterChips() {
-  binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
-   if (checkedIds.isNotEmpty()) {
-    when (checkedIds[0]) {
-     binding.chipSemua.id -> {
-      currentFilterMode = DoaViewModel.FilterMode.ALL // Update mode
-      viewModel.setFilter(DoaViewModel.FilterMode.ALL)
-     }
-     binding.chipSudahHapal.id -> {
-      currentFilterMode = DoaViewModel.FilterMode.MEMORIZED // Update mode
-      viewModel.setFilter(DoaViewModel.FilterMode.MEMORIZED)
-     }
-     binding.chipBelumHapal.id -> {
-      currentFilterMode = DoaViewModel.FilterMode.NOT_MEMORIZED // Update mode
-      viewModel.setFilter(DoaViewModel.FilterMode.NOT_MEMORIZED)
-     }
-    }
+ private fun setupFilterButtons() {
+  // Daftar semua tombol filter
+  val buttons = listOf(binding.btnFilterSemua, binding.btnFilterSudah, binding.btnFilterBelum)
+
+  // Set Default: Tombol "Semua" aktif
+  updateButtonVisual(binding.btnFilterSemua, buttons)
+
+  // Listener Tombol SEMUA
+  binding.btnFilterSemua.setOnClickListener {
+   animateButton(it) // Animasi Pop
+   updateButtonVisual(it, buttons) // Update Warna
+   currentFilterMode = DoaViewModel.FilterMode.ALL
+   viewModel.setFilter(DoaViewModel.FilterMode.ALL)
+  }
+
+  // Listener Tombol SUDAH HAPAL
+  binding.btnFilterSudah.setOnClickListener {
+   animateButton(it)
+   updateButtonVisual(it, buttons)
+   currentFilterMode = DoaViewModel.FilterMode.MEMORIZED
+   viewModel.setFilter(DoaViewModel.FilterMode.MEMORIZED)
+  }
+
+  // Listener Tombol BELUM HAPAL
+  binding.btnFilterBelum.setOnClickListener {
+   animateButton(it)
+   updateButtonVisual(it, buttons)
+   currentFilterMode = DoaViewModel.FilterMode.NOT_MEMORIZED
+   viewModel.setFilter(DoaViewModel.FilterMode.NOT_MEMORIZED)
+  }
+ }
+
+ // Fungsi Mengatur Visual Tombol (Ganti Warna & Text Color)
+ private fun updateButtonVisual(selectedBtn: View, allButtons: List<View>) {
+  allButtons.forEach { btn ->
+   val button = btn as androidx.appcompat.widget.AppCompatButton
+   if (btn == selectedBtn) {
+    // KONDISI AKTIF
+    btn.isSelected = true // Ini memicu selector XML tadi jadi Orange
+    btn.setTextColor(android.graphics.Color.WHITE)
+    btn.elevation = 8f
+   } else {
+    // KONDISI TIDAK AKTIF
+    btn.isSelected = false // Ini memicu selector XML tadi jadi Abu
+    btn.setTextColor(android.graphics.Color.parseColor("#757575"))
+    btn.elevation = 2f
    }
   }
+ }
+
+ // Fungsi Animasi "Pop" (Membal)
+ private fun animateButton(view: View) {
+  view.animate()
+   .scaleX(1.1f)
+   .scaleY(1.1f)
+   .setDuration(100)
+   .withEndAction {
+    view.animate()
+     .scaleX(1.0f)
+     .scaleY(1.0f)
+     .setDuration(300)
+     .setInterpolator(android.view.animation.BounceInterpolator()) // Efek membal
+     .start()
+   }
+   .start()
  }
 
  override fun onResume() {
