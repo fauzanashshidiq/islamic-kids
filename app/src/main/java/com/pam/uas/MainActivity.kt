@@ -1,12 +1,11 @@
 package com.pam.uas
 
-import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Outline
+import android.content.res.AssetFileDescriptor
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
-import android.view.ViewOutlineProvider
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,10 +15,14 @@ import com.pam.uas.fragment.DoaFragment
 import com.pam.uas.fragment.KisahNabiFragment
 import com.pam.uas.fragment.MainFragment
 import com.pam.uas.fragment.PembelajaranFragment
+import com.pam.uas.sfx.SfxPlayer
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private var mediaPlayer: MediaPlayer? = null
 
     private val pinResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -38,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupBackgroundMusic()
 
         val navView = binding.bottomNavigation
         navView.itemIconTintList = null
@@ -61,11 +66,66 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavListener()
     }
 
+    // --- FUNGSI SETUP MUSIK DARI ASSETS ---
+    private fun setupBackgroundMusic() {
+        try {
+            // Inisialisasi MediaPlayer kosong
+            mediaPlayer = MediaPlayer()
+
+            // Buka file dari folder 'assets'
+            val afd: AssetFileDescriptor = assets.openFd("music/bg_music.mp3")
+
+            // Set Data Source
+            // Penting: Gunakan startOffset dan length agar tidak error
+            mediaPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+
+            // Tutup file descriptor karena sudah di-set ke player
+            afd.close()
+
+            // Persiapan player
+            mediaPlayer?.prepare()
+            mediaPlayer?.isLooping = true // Biar ngulang terus
+            mediaPlayer?.setVolume(0.5f, 0.5f) // Volume 50%
+            mediaPlayer?.start() // Mulai mainkan
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    // --- LIFECYCLE ---
+
+    override fun onResume() {
+        super.onResume()
+        // Lanjut mainkan musik jika aplikasi dibuka kembali
+        if (mediaPlayer != null && !mediaPlayer!!.isPlaying) {
+            mediaPlayer?.start()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Pause musik jika pindah aplikasi / tekan home
+        if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
+            mediaPlayer?.pause()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Hapus player dari memori saat aplikasi dimatikan total
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
     private fun setupBottomNavListener() {
         val navView = binding.bottomNavigation
         navView.setOnItemSelectedListener { menuItem ->
+            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             when (menuItem.itemId) {
                 R.id.nav_main -> {
+
                     loadFragment(MainFragment())
                     updateBottomNavAnimation(navView, R.id.nav_main)
                     binding.rootLayout.setBackgroundResource(R.drawable.bg_home)

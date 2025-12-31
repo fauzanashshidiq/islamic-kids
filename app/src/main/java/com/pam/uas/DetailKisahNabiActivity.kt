@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import com.bumptech.glide.Glide
 import com.pam.uas.databinding.ActivityDetailKisahNabiBinding
+import com.pam.uas.sfx.SfxPlayer
 
 class DetailKisahNabiActivity : AppCompatActivity() {
 
@@ -19,6 +20,7 @@ class DetailKisahNabiActivity : AppCompatActivity() {
 
         // --- 1. LOGIKA TOMBOL KEMBALI ---
         binding.btnBack.setOnClickListener { view ->
+            SfxPlayer.play(view.context, SfxPlayer.SoundType.POP)
             view.animate()
                 .scaleX(0.85f)
                 .scaleY(0.85f)

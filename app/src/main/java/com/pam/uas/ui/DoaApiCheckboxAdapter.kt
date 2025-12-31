@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.pam.uas.data.remote.response.ApiDoaResponse
 import com.pam.uas.databinding.ItemApiDoaCheckboxBinding
+import com.pam.uas.sfx.SfxPlayer
 
 class DoaApiCheckboxAdapter(
     private var list: List<ApiDoaResponse> = emptyList(),
@@ -46,13 +47,16 @@ class DoaApiCheckboxAdapter(
         }
 
         // LISTENER CHECKBOX
-        holder.binding.cbSelect.setOnCheckedChangeListener { _, isChecked ->
+        holder.binding.cbSelect.setOnCheckedChangeListener { buttonView, isChecked ->
+            val context = buttonView.context
             if (isChecked) {
+                SfxPlayer.play(context, SfxPlayer.SoundType.SUCCESS)
                 // Tampilkan layout catatan
                 holder.binding.layoutCatatan.visibility = View.VISIBLE
                 // Simpan doa ke DB (catatan default kosong dulu)
                 onCheckChanged(item, true)
             } else {
+                SfxPlayer.play(context, SfxPlayer.SoundType.POP)
                 // Sembunyikan layout catatan
                 holder.binding.layoutCatatan.visibility = View.GONE
                 holder.binding.etCatatan.text.clear()
@@ -63,6 +67,7 @@ class DoaApiCheckboxAdapter(
 
         // LISTENER TOMBOL SIMPAN CATATAN
         holder.binding.btnSimpanCatatan.setOnClickListener { view ->
+            SfxPlayer.play(view.context, SfxPlayer.SoundType.POP)
             // 1. Animasi Mengecil (Tekan)
             view.animate()
                 .scaleX(0.85f) // Mengecil ke 85%
