@@ -8,4 +8,30 @@
     <color name="color_kisah_purple">#D900FF</color>
     <color name="color_kisah_red">#ED411A</color>
     <color name="color_default">#FFFFFF</color>
+
+    <!-- Pastel Card Colors (Light & Dark for Gradient) -->
+    <color name="card_blue_light">#81D4FA</color>
+    <color name="card_blue_dark">#29B6F6</color>
+    <color name="card_blue_shadow">#0277BD</color>
+
+    <color name="card_green_light">#A5D6A7</color>
+    <color name="card_green_dark">#66BB6A</color>
+    <color name="card_green_shadow">#2E7D32</color>
+
+    <color name="card_peach_light">#FFCCBC</color>
+    <color name="card_peach_dark">#FF8A65</color>
+    <color name="card_peach_shadow">#D84315</color>
+
+    <color name="card_orange_light">#FFE0B2</color>
+    <color name="card_orange_dark">#FFB74D</color>
+    <color name="card_orange_shadow">#EF6C00</color>
+
+    <color name="card_purple_light">#E1BEE7</color>
+    <color name="card_purple_dark">#BA68C8</color>
+    <color name="card_purple_shadow">#7B1FA2</color>
+
+    <!-- Header Colors -->
+    <color name="header_green_light">#B9F6CA</color>
+    <color name="header_green_dark">#69F0AE</color>
+    <color name="header_green_shadow">#00C853</color>
 </resources>
