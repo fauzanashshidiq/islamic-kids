@@ -1,6 +1,8 @@
 package com.pam.uas
 
+import android.content.res.AssetFileDescriptor // Tambahan import
 import android.graphics.Color
+import android.media.MediaPlayer // Tambahan import
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -8,15 +10,22 @@ import androidx.core.graphics.ColorUtils
 import com.bumptech.glide.Glide
 import com.pam.uas.databinding.ActivityDetailKisahNabiBinding
 import com.pam.uas.sfx.SfxPlayer
+import java.io.IOException // Tambahan import
 
 class DetailKisahNabiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailKisahNabiBinding
 
+    // --- TAMBAHAN: Variabel MediaPlayer ---
+    private var mediaPlayer: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailKisahNabiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // --- TAMBAHAN: Setup Musik ---
+        setupBackgroundMusic()
 
         // --- 1. LOGIKA TOMBOL KEMBALI ---
         binding.btnBack.setOnClickListener { view ->
@@ -37,6 +46,8 @@ class DetailKisahNabiActivity : AppCompatActivity() {
                 }
                 .start()
         }
+
+        // ... (Kode ambil data Intent dan logika warna TETAP SAMA seperti sebelumnya) ...
 
         // 2. Ambil Data dari Intent
         val nama = intent.getStringExtra("EXTRA_NAMA") ?: "Nama Nabi"
@@ -79,17 +90,69 @@ class DetailKisahNabiActivity : AppCompatActivity() {
             nama.contains("Yahya", ignoreCase = true) -> R.color.color_kisah_yellow
             nama.contains("Isa", ignoreCase = true) -> R.color.color_kisah_purple
             nama.contains("Muhammad", ignoreCase = true) -> R.color.color_kisah_red
-            else -> R.color.white // Warna default (Putih)
+            else -> R.color.white
         }
 
-        // 1. Ambil warna utama
         val colorMain = ContextCompat.getColor(context, warnaResId)
-
-        // 2. Buat warna shadow (lebih gelap 20%)
         val colorShadow = ColorUtils.blendARGB(colorMain, Color.BLACK, 0.2f)
 
-        // 3. Terapkan ke ID layout yang baru di XML
         binding.layoutHeaderMain.background.setTint(colorMain)
         binding.viewHeaderShadow.background.setTint(colorShadow)
+    }
+
+    // --- TAMBAHAN: FUNGSI SETUP MUSIK ---
+    // --- UBAH FUNGSI SETUP MUSIK ---
+    private fun setupBackgroundMusic() {
+        // Cek dulu: Kalau player sudah ada, jangan buat baru biar ga restart
+        if (mediaPlayer != null) return
+
+        try {
+            mediaPlayer = MediaPlayer()
+            val afd: AssetFileDescriptor = assets.openFd("music/bg_music2.mp3")
+
+            mediaPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+            afd.close()
+
+            mediaPlayer?.prepare()
+            mediaPlayer?.isLooping = true
+            mediaPlayer?.setVolume(0.5f, 0.5f)
+
+            // Jangan langsung start() di sini kalau ingin kontrol penuh di onResume,
+            // tapi start() di sini aman untuk inisialisasi pertama.
+            mediaPlayer?.start()
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    // --- UBAH LIFECYCLE MUSIK ---
+
+    override fun onResume() {
+        super.onResume()
+        // Cek null safety dan apakah sedang TIDAK main
+        if (mediaPlayer != null && !mediaPlayer!!.isPlaying) {
+            // Ini akan melanjutkan (RESUME) dari posisi terakhir dipause
+            mediaPlayer?.start()
+        } else if (mediaPlayer == null) {
+            // Jaga-jaga kalau player null (misal memori dibersihkan), buat baru
+            setupBackgroundMusic()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
+            mediaPlayer?.pause() // Pause di posisi detik ke-sekian
+        }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Bersihkan memori saat activity dihancurkan
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 }

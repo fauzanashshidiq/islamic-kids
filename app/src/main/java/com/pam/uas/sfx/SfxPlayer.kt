@@ -11,7 +11,7 @@ object SfxPlayer {
     enum class SoundType(val fileName: String) {
         POP("sfx/pop.mp3"),
         SUCCESS("sfx/success.mp3"),
-        VOICE_WELCOME("sfx/voice_welcome.mp3"),
+        CUTE("sfx/cute.mp3"),
         // Tambahkan jenis suara lain di sini jika perlu
         // ERROR("sfx/error.mp3")
     }

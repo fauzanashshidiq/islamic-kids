@@ -14,6 +14,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.pam.uas.sfx.SfxPlayer
 
 class SplahScreen : AppCompatActivity() {
     // Simpan handler dan runnable sebagai variabel agar bisa dibatalkan
@@ -82,6 +83,7 @@ class SplahScreen : AppCompatActivity() {
                 val intent = Intent(this, Welcome::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
+                SfxPlayer.play(this, SfxPlayer.SoundType.CUTE)
                 overridePendingTransition(R.anim.rotate_grow, R.anim.stay_still)
                 finish()
             }
