@@ -1,11 +1,15 @@
 package com.pam.uas
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.pam.uas.data.local.entity.PembelajaranEntity
 import com.pam.uas.databinding.ActivityDetailTataCaraWudhuBinding // PENTING: Gunakan binding yang baru
 import com.pam.uas.viewmodel.PembelajaranViewModel
@@ -37,6 +41,7 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             if (list.isNotEmpty()) {
                 materiList = list.sortedBy { it.urutan }
                 currentIndex = 0
+                setupDots()
                 tampilkanData()
             } else {
                 Toast.makeText(this, "Data materi kosong untuk $kategoriKey", Toast.LENGTH_SHORT).show()
@@ -78,6 +83,50 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupDots() {
+        binding.layoutDots.removeAllViews()
+        val dotsCount = materiList.size
+
+        for (i in 0 until dotsCount) {
+            val dot = View(this)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(8, 0, 8, 0)
+            dot.layoutParams = params
+            binding.layoutDots.addView(dot)
+        }
+        updateDots()
+    }
+
+    private fun updateDots() {
+        val count = binding.layoutDots.childCount
+        for (i in 0 until count) {
+            val dot = binding.layoutDots.getChildAt(i)
+            val params = dot.layoutParams as LinearLayout.LayoutParams
+
+            if (i == currentIndex) {
+                // Active Dot: Panjang (Pill)
+                params.width = dpToPx(24)
+                params.height = dpToPx(8)
+                dot.background = ContextCompat.getDrawable(this, R.drawable.bg_pill_beige)
+                dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFC9A0"))
+            } else {
+                // Inactive Dot: Bulat Kecil - Gray
+                params.width = dpToPx(8)
+                params.height = dpToPx(8)
+                dot.background = ContextCompat.getDrawable(this, R.drawable.bg_circle_white_solid)
+                dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#BDBDBD"))
+            }
+            dot.layoutParams = params
+        }
+    }
+
+    private fun dpToPx(dp: Int): Int {
+        return (dp * resources.displayMetrics.density).toInt()
+    }
+
     private fun tampilkanData() {
         if (materiList.isEmpty()) return
         val item = materiList[currentIndex]
@@ -112,6 +161,7 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         binding.btnPrev.visibility = if (currentIndex == 0) View.INVISIBLE else View.VISIBLE
         binding.btnNext.visibility = if (currentIndex == materiList.size - 1) View.INVISIBLE else View.VISIBLE
 
+        updateDots()
         stopVoice()
     }
 
