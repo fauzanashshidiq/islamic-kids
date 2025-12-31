@@ -106,6 +106,8 @@ class SplahScreen : AppCompatActivity() {
     }
 
     private fun shakeView(view: View) {
+        SfxPlayer.play(this, SfxPlayer.SoundType.CLANG)
+
         val animator = ObjectAnimator.ofFloat(view, "rotation", 0f, -3f, 3f, -3f, 0f)
         animator.duration = 400
         animator.start()

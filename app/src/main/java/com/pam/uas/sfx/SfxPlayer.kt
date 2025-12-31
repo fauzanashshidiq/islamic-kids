@@ -12,6 +12,7 @@ object SfxPlayer {
         POP("sfx/pop.mp3"),
         SUCCESS("sfx/success.mp3"),
         CUTE("sfx/cute.mp3"),
+        CLANG("sfx/clang.mp3"),
         // Tambahkan jenis suara lain di sini jika perlu
         // ERROR("sfx/error.mp3")
     }
