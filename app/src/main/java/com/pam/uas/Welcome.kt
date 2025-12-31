@@ -23,7 +23,6 @@ class Welcome : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private var shakeRunnable: Runnable? = null
 
-    // 1. Variabel MediaPlayer lokal untuk Voice Welcome
     private var welcomePlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +39,7 @@ class Welcome : AppCompatActivity() {
         val tvTitle = findViewById<View>(R.id.tv_welcome_title)
         val tvSubtitle = findViewById<View>(R.id.tv_welcome_subtitle)
         val imgHero = findViewById<ImageView>(R.id.img_hero_welcome)
+        val btnContainer = findViewById<View>(R.id.btn_mulai_container)
         val btnMulai = findViewById<AppCompatButton>(R.id.btn_mulai)
 
         tvTitle.alpha = 0f
@@ -51,8 +51,8 @@ class Welcome : AppCompatActivity() {
         imgHero.scaleY = 0.8f
         btnMulai.alpha = 0f
         btnMulai.translationY = 100f
-
-        // 2. Mainkan Voice Welcome menggunakan fungsi lokal
+        btnContainer.alpha = 0f
+        btnContainer.translationY = 100f
         playWelcomeVoice()
 
         // Animasi Masuk
@@ -81,6 +81,17 @@ class Welcome : AppCompatActivity() {
             .setDuration(600)
             .setStartDelay(500)
             .setInterpolator(OvershootInterpolator())
+            .start()
+
+        btnContainer.animate()
+            .alpha(1f)
+            .translationY(0f)
+            .setDuration(600)
+            .setStartDelay(800)
+            .setInterpolator(OvershootInterpolator())
+            .withEndAction {
+                startButtonShakeEvery2Seconds(btnContainer)
+            }
             .start()
 
         btnMulai.animate()
