@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pam.uas.R
 import com.pam.uas.databinding.FragmentMainBinding
+import com.pam.uas.sfx.SfxPlayer
 import com.pam.uas.ui.DoaMainAdapter
 import com.pam.uas.viewmodel.DoaViewModel
 
@@ -90,6 +91,11 @@ class MainFragment : Fragment() {
 
  private fun setupRecyclerView() {
   adapter = DoaMainAdapter(emptyList()) { doa, isMemorized ->
+   if (isMemorized) {
+    SfxPlayer.play(requireContext(), SfxPlayer.SoundType.SUCCESS)
+   } else {
+    SfxPlayer.play(requireContext(), SfxPlayer.SoundType.POP)
+   }
    viewModel.updateMemorizedStatus(doa, isMemorized)
   }
   binding.rvDoaMain.layoutManager = LinearLayoutManager(requireContext())
@@ -105,6 +111,7 @@ class MainFragment : Fragment() {
 
   // Listener Tombol SEMUA
   binding.btnFilterSemua.setOnClickListener {
+   SfxPlayer.play(requireContext(), SfxPlayer.SoundType.POP)
    animateButton(it) // Animasi Pop
    updateButtonVisual(it, buttons) // Update Warna
    currentFilterMode = DoaViewModel.FilterMode.ALL
@@ -113,6 +120,7 @@ class MainFragment : Fragment() {
 
   // Listener Tombol SUDAH HAPAL
   binding.btnFilterSudah.setOnClickListener {
+   SfxPlayer.play(requireContext(), SfxPlayer.SoundType.POP)
    animateButton(it)
    updateButtonVisual(it, buttons)
    currentFilterMode = DoaViewModel.FilterMode.MEMORIZED
@@ -121,6 +129,7 @@ class MainFragment : Fragment() {
 
   // Listener Tombol BELUM HAPAL
   binding.btnFilterBelum.setOnClickListener {
+   SfxPlayer.play(requireContext(), SfxPlayer.SoundType.POP)
    animateButton(it)
    updateButtonVisual(it, buttons)
    currentFilterMode = DoaViewModel.FilterMode.NOT_MEMORIZED

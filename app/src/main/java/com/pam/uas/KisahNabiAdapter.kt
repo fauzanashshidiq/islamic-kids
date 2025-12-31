@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.pam.uas.R
 import com.pam.uas.data.local.entity.KisahNabiEntity
 import com.pam.uas.databinding.ItemKisahNabiBinding
+import com.pam.uas.sfx.SfxPlayer
 
 class KisahNabiAdapter(
     private var list: List<KisahNabiEntity>,
@@ -94,6 +95,7 @@ class KisahNabiAdapter(
 
         // KLIK ITEM
         holder.itemView.setOnClickListener { view ->
+            SfxPlayer.play(view.context, SfxPlayer.SoundType.POP)
             // 1. Animasi Mengecil (Efek Ditekan)
             view.animate()
                 .scaleX(0.95f) // Kecilkan dikit ke 95%
