@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pam.uas.sfx.SfxPlayer
 
+@Suppress("DEPRECATION")
 class SplahScreen : AppCompatActivity() {
     // Simpan handler dan runnable sebagai variabel agar bisa dibatalkan
     private val handler = Handler(Looper.getMainLooper())

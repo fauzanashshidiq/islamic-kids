@@ -9,7 +9,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.pam.uas"
+        applicationId = "com.islamickids.uas"
         minSdk = 27
         targetSdk = 36
         versionCode = 1
