@@ -6,37 +6,111 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgwelcome">
 
-    <!-- HERO IMAGE -->
+    android:clipChildren="false"
+    android:clipToPadding="false"
+
+    android:background="@drawable/bgsplashscreen"
+    tools:context=".Welcome">
+
+    <com.pam.uas.ui.custom.StrokeTextView
+        android:id="@+id/tv_welcome_title"
+        android:layout_width="382dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+
+        android:fontFamily="@font/fredoka_bold"
+        android:padding="10dp"
+        android:shadowColor="#FFFFFF"
+        android:shadowRadius="20"
+        android:text="Halo Teman Kecil"
+        android:textAlignment="center"
+
+        android:textAllCaps="true"
+        android:textColor="#FB923C"
+
+        android:textSize="36sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.pam.uas.ui.custom.StrokeTextView
+        android:id="@+id/tv_welcome_subtitle"
+        android:layout_width="332dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="-15dp"
+
+        android:fontFamily="@font/fredoka_bold"
+        android:padding="8dp"
+        android:shadowColor="#FFFFFF"
+        android:shadowRadius="10"
+        android:text="Ayo belajar islam dengan ceria"
+        android:textAlignment="center"
+
+        android:textAllCaps="true"
+        android:textColor="#FB923C"
+
+        android:textSize="18sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_title" />
+
     <ImageView
         android:id="@+id/img_hero_welcome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/logoislamic"
-        android:layout_marginHorizontal="40dp"
-        app:layout_constraintWidth_percent="0.85"
-        app:layout_constraintBottom_toTopOf="@id/btn_mulai"
+
+        app:layout_constraintBottom_toTopOf="@id/btn_mulai_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_subtitle"
+        app:layout_constraintVertical_bias="0.294"
+        app:layout_constraintWidth_percent="0.6" />
 
-    <!-- BUTTON MULAI -->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_mulai"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_mulai_container"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="150dp"
-        android:background="@drawable/button_start"
-        android:text="Mulai Belajar   ▶"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:fontFamily="@font/baloo_bold"
-        android:textAllCaps="false"
+        android:layout_marginBottom="50dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_start"
+            android:backgroundTint="#CC7A29"
+            android:translationY="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_mulai"
+            app:layout_constraintEnd_toEndOf="@id/btn_mulai"
+            app:layout_constraintStart_toStartOf="@id/btn_mulai"
+            app:layout_constraintTop_toTopOf="@id/btn_mulai" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_mulai"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/button_start"
+            android:fontFamily="@font/baloo_bold"
+            android:paddingBottom="4dp"
+            android:text="Mulai Belajar   ▶"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
