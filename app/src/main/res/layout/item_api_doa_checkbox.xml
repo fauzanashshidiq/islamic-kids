@@ -1,97 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_marginBottom="16dp"
-    android:clipToPadding="false">
+    android:layout_marginBottom="12dp"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#FFF8E1">
 
-    <!-- BARIS 1: Checkbox & Judul -->
     <LinearLayout
+        android:id="@+id/layoutMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="4dp"> <!-- Padding dikit biar shadow ga kepotong -->
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Checkbox Custom -->
-        <CheckBox
-            android:id="@+id/cbSelect"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:button="@drawable/selector_checkbox_cartoon"
-            android:background="@null"
-            android:layout_marginEnd="16dp"
-            app:buttonTint="@null"
-            android:buttonTint="@null" /> <!-- PENTING: Matikan pewarnaan otomatis -->
-
-
-        <!-- Teks dengan Shadow Putih -->
-        <TextView
-            android:id="@+id/tvTitleApiDoa"
-            android:layout_width="0dp"
+        <!-- BARIS 1: Checkbox & Judul -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Judul Doa"
-            android:fontFamily="@font/baloo_bold"
-            android:textSize="22sp"
-            android:textColor="@android:color/black"
-            android:shadowColor="#FFFFFF"
-            android:shadowDx="4"
-            android:shadowDy="4"
-            android:shadowRadius="1"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Checkbox Custom -->
+            <CheckBox
+                android:id="@+id/cbSelect"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:button="@drawable/selector_checkbox_cartoon"
+                android:background="@null"
+                android:layout_marginEnd="12dp"
+                app:buttonTint="@null"
+                android:buttonTint="@null" />
+
+            <!-- Teks Judul -->
+            <TextView
+                android:id="@+id/tvTitleApiDoa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Judul Doa"
+                android:fontFamily="@font/baloo_bold"
+                android:textSize="20sp"
+                android:textColor="#5E35B1"
+                android:lineSpacingExtra="2dp"/>
+        </LinearLayout>
+
+        <!-- BARIS 2: Input Catatan (Hidden by Default) -->
+        <LinearLayout
+            android:id="@+id/layoutCatatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_rounded_purple_light"
+            android:padding="12dp">
+
+            <!-- EditText Multiline -->
+            <EditText
+                android:id="@+id/etCatatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tulis catatan di sini..."
+                android:textColorHint="#9575CD"
+                android:textSize="14sp"
+                android:fontFamily="@font/baloo_semibold"
+                android:textColor="#4A148C"
+                android:background="@null"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minLines="2"
+                android:maxLines="4"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Tombol Simpan -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSimpanCatatan"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_gravity="end"
+                android:text="Simpan Catatan"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="@font/baloo_bold"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_button_simpan"
+                android:paddingHorizontal="20dp"/>
+        </LinearLayout>
+
     </LinearLayout>
 
-    <!-- BARIS 2: Input Catatan -->
-    <LinearLayout
-        android:id="@+id/layoutCatatan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="gone"
-
-        android:gravity="center_vertical"
-
-        android:layout_marginStart="58dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_input_border"
-        android:padding="8dp">
-
-        <!-- EditText Multiline -->
-        <EditText
-            android:id="@+id/etCatatan"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="tulis catatan di sini..."
-            android:textColorHint="#999999"
-            android:textSize="14sp"
-            android:fontFamily="@font/baloo_bold"
-            android:textColor="#333333"
-            android:background="@null"
-            android:paddingHorizontal="4dp"
-            android:inputType="textMultiLine|textCapSentences"
-            android:minLines="1"
-            android:maxLines="4"
-            android:scrollbars="vertical"
-            android:gravity="top|start"/>
-
-        <!-- Tombol Simpan (Ubah gravity ke center_vertical) -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSimpanCatatan"
-            android:layout_width="wrap_content"
-            android:layout_height="26dp"
-            android:layout_gravity="center_vertical"
-            android:text="Simpan"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:fontFamily="@font/baloo_bold"
-            android:textAllCaps="false"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/bg_button_simpan"
-            android:paddingHorizontal="12dp"/>
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>

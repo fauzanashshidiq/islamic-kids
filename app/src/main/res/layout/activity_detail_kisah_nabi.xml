@@ -231,14 +231,14 @@
                     app:layout_constraintStart_toStartOf="@id/layoutContentMain"
                     app:layout_constraintTop_toTopOf="@id/layoutContentMain" />
 
-                <!-- Main Content Putih -->
+                <!-- Main Content -->
                 <LinearLayout
                     android:id="@+id/layoutContentMain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:background="@drawable/bg_item_capsule"
-                    android:backgroundTint="#FFFFFF"
+                    android:backgroundTint="#FFF8E1"
                     android:padding="24dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -248,9 +248,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        android:layout_gravity="center"
                         android:text="Kisah Perjuangan"
                         android:fontFamily="@font/baloo_bold"
-                        android:textColor="#333333"
+                        android:textColor="#EF6C00"
+                        android:shadowColor="#FFFFFF"
                         android:textSize="22sp" />
 
                     <!-- TEKS DESKRIPSI -->
@@ -259,7 +261,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Lorem ipsum..."
-                        android:fontFamily="@font/baloo_reguler"
+                        android:fontFamily="@font/baloo_semibold"
                         android:textColor="#424242"
                         android:textSize="18sp"
                         android:lineSpacingMultiplier="1.5"

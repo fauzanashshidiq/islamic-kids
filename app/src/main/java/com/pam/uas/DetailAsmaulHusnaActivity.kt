@@ -18,6 +18,7 @@ class DetailAsmaulHusnaActivity : AppCompatActivity() {
     private var materiList: List<PembelajaranEntity> = emptyList()
     private var currentIndex = 0
     private var mediaPlayer: MediaPlayer? = null
+    private var isMuted = false // Status mute awal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,14 +108,49 @@ class DetailAsmaulHusnaActivity : AppCompatActivity() {
         }
 
         binding.btnSuara.setOnClickListener {
-            val item = materiList.getOrNull(currentIndex)
-            item?.let {
-                if (!it.voice_path.isNullOrEmpty()) {
-                    playVoice(it.voice_path)
-                } else {
-                    Toast.makeText(this, "Suara tidak tersedia", Toast.LENGTH_SHORT).show()
+            // Logika Toggle Play/Stop dan Mute/Unmute
+            
+            // Cek apakah sedang playing?
+            if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
+                // Jika sedang playing, maka stop (ini dianggap "mute" atau "stop")
+                // Namun user ingin "opsi click menyala dan click silent"
+                // Dan juga "ketika di click suara nanti suara music bakal play, dan ketika di mute suara nya akan hilang"
+                // Dan juga "ketika di icon play music ter play dan kemute suara tidak ada"
+                
+                // Mari kita buat simple: Tombol ini toggle ON/OFF suara.
+                isMuted = true
+                stopVoice()
+                updateMuteIcon()
+            } else {
+                // Jika tidak playing (atau stop), maka play (unmute)
+                isMuted = false
+                updateMuteIcon()
+                
+                // Coba play musik
+                try {
+                    val afd = assets.openFd("music/bg_music2.mp3")
+                    mediaPlayer = MediaPlayer().apply {
+                        setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                        afd.close()
+                        prepare()
+                        start()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(this, "Gagal memutar musik", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+        
+        // Inisialisasi icon mute
+        updateMuteIcon()
+    }
+
+    private fun updateMuteIcon() {
+        if (isMuted) {
+            binding.btnSuara.setImageResource(R.drawable.ic_mute) // Icon Mute
+        } else {
+            binding.btnSuara.setImageResource(R.drawable.sound) // Icon Sound (Nyala)
         }
     }
 
@@ -174,24 +210,8 @@ class DetailAsmaulHusnaActivity : AppCompatActivity() {
         binding.btnPrev.visibility = if (currentIndex == 0) View.INVISIBLE else View.VISIBLE
         binding.btnNext.visibility = if (currentIndex == materiList.size - 1) View.INVISIBLE else View.VISIBLE
 
-        stopVoice()
-    }
-
-    private fun playVoice(fileName: String) {
-        stopVoice()
-        try {
-            val finalName = if (fileName.endsWith(".mp3")) fileName else "$fileName.mp3"
-            val descriptor = assets.openFd(finalName)
-            mediaPlayer = MediaPlayer().apply {
-                setDataSource(descriptor.fileDescriptor, descriptor.startOffset, descriptor.length)
-                descriptor.close()
-                prepare()
-                start()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Toast.makeText(this, "Gagal memutar: $fileName", Toast.LENGTH_SHORT).show()
-        }
+        // Saat pindah slide, musik tetap jalan kalau tidak mute.
+        // Jika mute, tetap diam.
     }
 
     private fun stopVoice() {
@@ -200,6 +220,22 @@ class DetailAsmaulHusnaActivity : AppCompatActivity() {
             it.release()
         }
         mediaPlayer = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Lanjut mainkan musik jika aplikasi dibuka kembali dan status tidak mute
+        if (!isMuted && mediaPlayer != null && !mediaPlayer!!.isPlaying) {
+             mediaPlayer?.start()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Pause musik jika pindah aplikasi / tekan home
+        if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
+            mediaPlayer?.pause()
+        }
     }
 
     override fun onDestroy() {

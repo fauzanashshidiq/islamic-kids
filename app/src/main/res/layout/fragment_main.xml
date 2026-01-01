@@ -139,33 +139,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Gambar Ikon Lucu -->
+        <!-- Gambar Ikon Lucu (Kaca Pembesar) -->
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_launcher_foreground"
-            android:alpha="0.8"/>
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/ic_search_preview"
+            android:alpha="0.9"/>
 
         <!-- Judul -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belum Ada Doa"
+            android:text="Wah, List Doanya Masih Kosong!"
             android:fontFamily="@font/baloo_bold"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textColor="#333333"
-            android:layout_marginTop="16dp"/>
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:shadowColor="#40FFFFFF"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"/>
 
         <!-- Deskripsi -->
         <TextView
-            android:layout_width="250dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="Yuk, tambah doa harianmu dulu di menu Tambah Doa!"
+            android:text="Yuk, minta Ayah atau Bunda\nuntuk tambah doa baru di sini.\nSemangat ya!"
             android:fontFamily="@font/baloo_bold"
-            android:textSize="15sp"
-            android:textColor="#757575"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
             android:gravity="center"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

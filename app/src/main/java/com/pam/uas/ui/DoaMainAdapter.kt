@@ -22,6 +22,7 @@ class DoaMainAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val item = list[position]
 
+
         // Set Data Text
         holder.binding.tvJudulMain.text = item.doa
         holder.binding.tvArtiMain.text = item.artinya
