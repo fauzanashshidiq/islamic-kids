@@ -42,7 +42,11 @@
             android:text="MODE ORANGTUA"
             android:fontFamily="@font/baloo_bold"
             android:textSize="22sp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:shadowColor="#40000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,8 +55,13 @@
             android:textSize="12sp"
             android:letterSpacing="0.2"
             android:textColor="#F57C00"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:shadowColor="#40000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"/>
     </LinearLayout>
+
     <ImageView
         android:id="@+id/ivLock"
         android:layout_width="80dp"
@@ -63,9 +72,11 @@
         android:padding="20dp"
         android:src="@drawable/icon_lock"
         app:tint="#FFFFFF"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerText" />
+
     <TextView
         android:id="@+id/tvPinTitle"
         android:layout_width="wrap_content"
@@ -73,8 +84,12 @@
         android:layout_marginTop="16dp"
         android:text="PIN"
         android:fontFamily="@font/baloo_bold"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textColor="#FFFFFF"
+        android:shadowColor="#40000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivLock" />
@@ -83,10 +98,17 @@
         android:id="@+id/tvInstruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masukkan Pin Untuk\nMenambahkan List Doa"
-        android:fontFamily="@font/baloo_semibold"
+        android:text="Masukkan PIN untuk\nMenambahkan List Doa"
+        android:fontFamily="@font/baloo_bold"
+        android:textSize="18sp"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#FFFFFF"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:lineSpacingExtra="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPinTitle" />
@@ -95,7 +117,7 @@
         android:id="@+id/pinIndicators"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,11 +128,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:letterSpacing="0.5"
             android:textColor="#FFFFFF"
             android:hint="••••"
-            android:textColorHint="#80FFFFFF"/>
+            android:textColorHint="#80FFFFFF"
+            android:shadowColor="#40000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:fontFamily="@font/baloo_bold"/>
     </LinearLayout>
 
 
