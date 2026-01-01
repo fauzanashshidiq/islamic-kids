@@ -4,7 +4,10 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -22,6 +25,10 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
     private var materiList: List<PembelajaranEntity> = emptyList()
     private var currentIndex = 0
     private var mediaPlayer: MediaPlayer? = null
+
+    // Handler untuk update progress bar suara
+    private val handler = Handler(Looper.getMainLooper())
+    private var progressRunnable: Runnable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,77 +56,88 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         }
 
         // 3. Setup Tombol Logic dengan Animasi
+
+        // Tombol NEXT
         binding.btnNext.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
-            // Animasi Tombol
-            view.animate()
-                .scaleX(0.9f)
-                .scaleY(0.9f)
-                .setDuration(100)
-                .withEndAction {
-                    view.animate()
-                        .scaleX(1.0f)
-                        .scaleY(1.0f)
-                        .setDuration(300)
-                        .setInterpolator(android.view.animation.BounceInterpolator())
-                        .start()
-
-                    if (currentIndex < materiList.size - 1) {
-                         // Jalankan Animasi Card Transisi
-                        animateCardTransition {
-                            currentIndex++
-                            tampilkanData()
-                        }
-                    } else {
-                        Toast.makeText(this, "Sudah di akhir materi", Toast.LENGTH_SHORT).show()
+            animateButton(view) {
+                if (currentIndex < materiList.size - 1) {
+                    // Jalankan Animasi Card Transisi
+                    animateCardTransition {
+                        currentIndex++
+                        tampilkanData()
                     }
-                }
-                .start()
-        }
-
-        binding.btnPrev.setOnClickListener { view ->
-            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
-            // Animasi Tombol
-            view.animate()
-                .scaleX(0.9f)
-                .scaleY(0.9f)
-                .setDuration(100)
-                .withEndAction {
-                    view.animate()
-                        .scaleX(1.0f)
-                        .scaleY(1.0f)
-                        .setDuration(300)
-                        .setInterpolator(android.view.animation.BounceInterpolator())
-                        .start()
-
-                    if (currentIndex > 0) {
-                        // Jalankan Animasi Card Transisi
-                        animateCardTransition {
-                            currentIndex--
-                            tampilkanData()
-                        }
-                    } else {
-                        Toast.makeText(this, "Ini materi pertama", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .start()
-        }
-
-        binding.btnBack.setOnClickListener {
-            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
-            finish()
-        }
-
-        binding.btnSuara.setOnClickListener {
-            val item = materiList.getOrNull(currentIndex)
-            item?.let {
-                if (!it.voice_path.isNullOrEmpty()) {
-                    playVoice(it.voice_path)
                 } else {
-                    Toast.makeText(this, "Suara tidak tersedia", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Sudah di akhir materi", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
+        // Tombol PREV
+        binding.btnPrev.setOnClickListener { view ->
+            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
+            animateButton(view) {
+                if (currentIndex > 0) {
+                    // Jalankan Animasi Card Transisi
+                    animateCardTransition {
+                        currentIndex--
+                        tampilkanData()
+                    }
+                } else {
+                    Toast.makeText(this, "Ini materi pertama", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        // Tombol BACK
+        binding.btnBack.setOnClickListener { view ->
+            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
+            animateButton(view) {
+                finish()
+            }
+        }
+
+        // Tombol SUARA
+        binding.btnSuara.setOnClickListener { view ->
+            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
+            animateButton(view) {
+                // Logic Play/Stop Toggle
+                if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
+                    stopVoice()
+                } else {
+                    val item = materiList.getOrNull(currentIndex)
+                    item?.let {
+                        if (!it.voice_path.isNullOrEmpty()) {
+                            playVoice(it.voice_path)
+                        } else {
+                            Toast.makeText(this, "Suara tidak tersedia", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Helper Function untuk animasi tombol klik (Scale + Bounce)
+     */
+    private fun animateButton(view: View, onEndAction: () -> Unit) {
+        view.animate()
+            .scaleX(0.85f)
+            .scaleY(0.85f)
+            .setDuration(100)
+            .withEndAction {
+                view.animate()
+                    .scaleX(1.0f)
+                    .scaleY(1.0f)
+                    .setDuration(300)
+                    .setInterpolator(OvershootInterpolator(2f)) // Efek membal
+                    .withEndAction {
+                        onEndAction()
+                    }
+                    .start()
+            }
+            .start()
     }
 
     /**
@@ -143,7 +161,7 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
                     if (v == binding.cardContent) {
                         onUpdate()
                     }
-                    
+
                     // Kembalikan ke ukuran normal dengan efek bounce
                     v.animate()
                         .scaleX(1.0f)
@@ -180,11 +198,11 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             val params = dot.layoutParams as LinearLayout.LayoutParams
 
             if (i == currentIndex) {
-                // Active Dot: Panjang (Pill)
+                // Active Dot: Panjang (Pill) - Cream/Orange Theme (#FFC9A0 / #E67E22)
                 params.width = dpToPx(24)
                 params.height = dpToPx(8)
                 dot.background = ContextCompat.getDrawable(this, R.drawable.bg_pill_beige)
-                dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFC9A0"))
+                dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E67E22")) // Oranye Tua
             } else {
                 // Inactive Dot: Bulat Kecil - Gray
                 params.width = dpToPx(8)
@@ -238,16 +256,27 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         stopVoice()
     }
 
+    // --- LOGIC SUARA BARU ---
+
     private fun playVoice(fileName: String) {
-        stopVoice()
+        stopVoice() // Reset suara sebelumnya
+
         try {
             val finalName = if (fileName.endsWith(".mp3")) fileName else "$fileName.mp3"
             val descriptor = assets.openFd(finalName)
+
             mediaPlayer = MediaPlayer().apply {
                 setDataSource(descriptor.fileDescriptor, descriptor.startOffset, descriptor.length)
                 descriptor.close()
                 prepare()
                 start()
+            }
+
+            // Jalankan updater progress bar
+            startProgressUpdater()
+
+            mediaPlayer?.setOnCompletionListener {
+                stopVoice()
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -255,7 +284,34 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         }
     }
 
+    private fun startProgressUpdater() {
+        // Reset progress bar
+        binding.progressSuara.progress = 0
+        binding.progressSuara.max = mediaPlayer?.duration ?: 100
+
+        progressRunnable = object : Runnable {
+            override fun run() {
+                mediaPlayer?.let { player ->
+                    if (player.isPlaying) {
+                        // Update UI
+                        binding.progressSuara.progress = player.currentPosition
+                        // Ulangi setiap 50ms
+                        handler.postDelayed(this, 50)
+                    }
+                }
+            }
+        }
+        handler.post(progressRunnable!!)
+    }
+
     private fun stopVoice() {
+        // Matikan updater
+        progressRunnable?.let { handler.removeCallbacks(it) }
+        progressRunnable = null
+
+        // Reset Progress Bar ke 0
+        binding.progressSuara.progress = 0
+
         mediaPlayer?.let {
             if (it.isPlaying) it.stop()
             it.release()

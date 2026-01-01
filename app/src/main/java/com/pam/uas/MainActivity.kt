@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_pembelajaran -> {
                     loadFragment(PembelajaranFragment())
                     updateBottomNavAnimation(navView, R.id.nav_pembelajaran)
-                    binding.rootLayout.setBackgroundResource(R.drawable.bgsplashscreen)
+                    binding.rootLayout.setBackgroundResource(R.drawable.bgpembelajaran)
                     true
                 }
                 else -> false

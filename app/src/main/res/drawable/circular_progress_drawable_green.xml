@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="270"
+    android:toDegrees="270">
+
+    <shape
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="2"
+        android:useLevel="true">
+
+        <!-- Warna HIJAU (#1F7A55) dengan Opacity 50% (80) -->
+        <solid android:color="#B334D399" />
+
+    </shape>
+</rotate>

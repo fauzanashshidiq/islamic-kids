@@ -68,20 +68,56 @@
         app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"
         app:layout_constraintTop_toTopOf="@id/tvHeaderKategori"/>
 
-    <!-- Tombol Suara -->
-    <ImageButton
-        android:id="@+id/btnSuara"
+    <!-- CONTAINER TOMBOL SUARA & PROGRESS -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBtnSuara"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_marginEnd="24dp"
-        android:src="@drawable/sound"
-        android:background="@drawable/bg_circle_white_solid"
         android:elevation="8dp"
-        android:padding="12dp"
-        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"
-        app:layout_constraintTop_toTopOf="@id/tvHeaderKategori"/>
+        app:layout_constraintTop_toTopOf="@id/tvHeaderKategori">
+
+        <!-- LAYER 1: Background Putih -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_circle_white_solid" />
+
+        <!-- LAYER 2: Progress Bar Model PIE (UNGU) -->
+        <!-- progressDrawable diarahkan ke circular_progress_drawable_purple -->
+        <ProgressBar
+            android:id="@+id/progressSuara"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:progressDrawable="@drawable/circular_progress_drawable_purple"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- LAYER 3: Tombol Ikon -->
+        <ImageButton
+            android:id="@+id/btnSuara"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/sound"
+            android:background="@android:color/transparent"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!-- =========== KARTU KONTEN UTAMA DENGAN EFEK 3D =========== -->
