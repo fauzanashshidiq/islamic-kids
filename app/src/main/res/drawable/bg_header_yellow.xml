@@ -4,15 +4,15 @@
     <!-- Lapisan Bawah (Warna Gelap untuk efek 3D/Bayangan) -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#E65100"/> <!-- Orange Tua -->
+            <solid android:color="#FBC02D"/> <!-- Kuning Tua -->
             <corners android:radius="50dp"/>
         </shape>
     </item>
 
     <!-- Lapisan Atas (Warna Utama, digeser ke atas sedikit) -->
-    <item android:bottom="6dp">
+    <item android:bottom="4dp">
         <shape android:shape="rectangle">
-            <solid android:color="#FF9800"/> <!-- Orange Cerah -->
+            <solid android:color="#FFF176"/> <!-- Kuning Cerah -->
             <corners android:radius="50dp"/>
         </shape>
     </item>

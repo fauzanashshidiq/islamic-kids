@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.pam.uas.data.local.entity.PembelajaranEntity
 import com.pam.uas.databinding.ActivityDetailShalatWajibBinding
+import com.pam.uas.sfx.SfxPlayer
 import com.pam.uas.viewmodel.PembelajaranViewModel
 
 class DetailShalatWajibActivity : AppCompatActivity() {
@@ -48,26 +49,65 @@ class DetailShalatWajibActivity : AppCompatActivity() {
             }
         }
 
-        // 3. Setup Tombol Logic
-        binding.btnNext.setOnClickListener {
-            if (currentIndex < materiList.size - 1) {
-                currentIndex++
-                tampilkanData()
-            } else {
-                Toast.makeText(this, "Sudah di akhir materi", Toast.LENGTH_SHORT).show()
-            }
+        // 3. Setup Tombol Logic dengan Animasi
+        binding.btnNext.setOnClickListener { view ->
+            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
+            // Animasi Tombol
+            view.animate()
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(100)
+                .withEndAction {
+                    view.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(300)
+                        .setInterpolator(android.view.animation.BounceInterpolator())
+                        .start()
+
+                    if (currentIndex < materiList.size - 1) {
+                         // Jalankan Animasi Card Transisi
+                        animateCardTransition {
+                            currentIndex++
+                            tampilkanData()
+                        }
+                    } else {
+                        Toast.makeText(this, "Sudah di akhir materi", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .start()
         }
 
-        binding.btnPrev.setOnClickListener {
-            if (currentIndex > 0) {
-                currentIndex--
-                tampilkanData()
-            } else {
-                Toast.makeText(this, "Ini materi pertama", Toast.LENGTH_SHORT).show()
-            }
+        binding.btnPrev.setOnClickListener { view ->
+            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
+            // Animasi Tombol
+            view.animate()
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(100)
+                .withEndAction {
+                    view.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(300)
+                        .setInterpolator(android.view.animation.BounceInterpolator())
+                        .start()
+
+                    if (currentIndex > 0) {
+                        // Jalankan Animasi Card Transisi
+                        animateCardTransition {
+                            currentIndex--
+                            tampilkanData()
+                        }
+                    } else {
+                        Toast.makeText(this, "Ini materi pertama", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .start()
         }
 
         binding.btnBack.setOnClickListener {
+            SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             finish()
         }
 
@@ -80,6 +120,40 @@ class DetailShalatWajibActivity : AppCompatActivity() {
                     Toast.makeText(this, "Suara tidak tersedia", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    /**
+     * Animasi Card mengecil lalu membal (bounce) saat konten berubah.
+     */
+    private fun animateCardTransition(onUpdate: () -> Unit) {
+        val durationShrink = 150L
+        val durationExpand = 400L
+        val interpolator = android.view.animation.BounceInterpolator()
+
+        // Objek yang ingin dianimasikan: Card Utama, Shadow-nya, dan Badge Nomor
+        val viewsToAnimate = listOf(binding.cardContent, binding.cardShadow, binding.tvNomorUrut)
+
+        viewsToAnimate.forEach { v ->
+            v.animate()
+                .scaleX(0.9f) // Kecilkan ke 90%
+                .scaleY(0.9f)
+                .setDuration(durationShrink)
+                .withEndAction {
+                    // Hanya panggil update sekali (misal trigger dari cardContent)
+                    if (v == binding.cardContent) {
+                        onUpdate()
+                    }
+                    
+                    // Kembalikan ke ukuran normal dengan efek bounce
+                    v.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(durationExpand)
+                        .setInterpolator(interpolator)
+                        .start()
+                }
+                .start()
         }
     }
 

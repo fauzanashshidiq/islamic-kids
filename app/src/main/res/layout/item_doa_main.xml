@@ -1,121 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginBottom="16dp"
-    android:background="@drawable/bg_input_border"
-    android:padding="16dp"
-    android:clipToPadding="false">
+    android:paddingBottom="12dp">
 
-    <!-- Header: Judul & Checkbox Hapal -->
-    <LinearLayout
+    <!-- 2. Layer Utama Card (Container Konten) - Tanpa Shadow 3D -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:background="@drawable/bg_item_capsule"
+        android:backgroundTint="#FFF8E1"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Header: Judul (Tengah) -->
         <TextView
             android:id="@+id/tvJudulMain"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Judul Doa"
-            android:fontFamily="@font/baloo_bold"
-            android:textSize="22sp"
-            android:textColor="@android:color/black"
-            android:shadowColor="#FFFFFF"
-            android:shadowDx="3"
-            android:shadowDy="3"
-            android:shadowRadius="1"/>
-
-        <!-- Teks "Hapal" -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hapal"
-            android:fontFamily="@font/baloo_bold"
-            android:textSize="15sp"
-            android:textColor="#4CAF50"
-            android:layout_marginEnd="2dp"/>
-
-        <!-- Checkbox Hapal -->
-        <CheckBox
-            android:id="@+id/cbHapal"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:button="@drawable/selector_checkbox_cartoon"
-            android:background="@null"
-            app:buttonTint="@null"
-            android:buttonTint="@null" />
-
-    </LinearLayout>
-
-    <!-- Ayat Arab (Rata Kanan) -->
-    <!-- textAlignment="viewEnd" dan gravity="end" memaksa teks ke kanan -->
-    <TextView
-        android:id="@+id/tvAyat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
-        android:textDirection="rtl"
-        android:textAlignment="viewEnd"
-        android:gravity="end"
-        android:fontFamily="@font/baloo_semibold"
-        android:text="بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم"/>
-
-    <!-- Latin -->
-    <TextView
-        android:id="@+id/tvLatin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#555555"
-        android:text="Latin"
-        android:textStyle="italic"
-        android:fontFamily="@font/baloo_reguler"
-        android:layout_marginBottom="8dp"/>
-
-    <!-- Arti -->
-    <TextView
-        android:id="@+id/tvArtiMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Terjemahan"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:fontFamily="@font/baloo_reguler"/>
-
-    <!-- Catatan -->
-    <LinearLayout
-        android:id="@+id/layoutCatatanItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#FFF3E0"
-        android:padding="8dp"
-        android:layout_marginTop="12dp"
-        android:gravity="center_vertical"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_semua_doa"/>
-
-        <TextView
-            android:id="@+id/tvCatatan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Catatan kamu..."
-            android:textSize="15sp"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/baloo_semibold"
-            android:textColor="#E65100"/>
-    </LinearLayout>
+            android:text="Judul Doa"
+            android:fontFamily="@font/baloo_bold"
+            android:textSize="19sp"
+            android:textColor="#EF6C00"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:textAlignment="center"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-</LinearLayout>
+        <!-- Garis Pemisah Tipis -->
+        <View
+            android:id="@+id/dividerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#FFE0B2"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tvJudulMain"/>
+
+        <!-- Ayat Arab (Justified / Rata Kanan-Kiri) -->
+        <TextView
+            android:id="@+id/tvAyat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#3E2723"
+            android:layout_marginTop="16dp"
+            android:textDirection="rtl"
+            android:justificationMode="inter_word"
+            android:fontFamily="@font/scheherazadenew_semibold"
+            android:text="بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم"
+            app:layout_constraintTop_toBottomOf="@id/dividerHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Latin (Justified / Rata Kanan-Kiri) -->
+        <TextView
+            android:id="@+id/tvLatin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#795548"
+            android:text="Bismillaahirrahmaanirrahiim"
+            android:textStyle="italic"
+            android:fontFamily="@font/baloo_reguler"
+            android:justificationMode="inter_word"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvAyat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Arti (Justified / Rata Kanan-Kiri) -->
+        <TextView
+            android:id="@+id/tvArtiMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dengan menyebut nama Allah Yang Maha Pengasih lagi Maha Penyayang."
+            android:textSize="15sp"
+            android:textColor="#3E2723"
+            android:fontFamily="@font/baloo_semibold"
+            android:justificationMode="inter_word"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvLatin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Bagian Hapal (Rata Kanan, di bawah Arti, di atas Catatan) -->
+        <LinearLayout
+            android:id="@+id/layoutHapal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tvArtiMain"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Teks "Hapal" -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sudah Hapal?"
+                android:fontFamily="@font/baloo_semibold"
+                android:textSize="16sp"
+                android:textColor="#4CAF50"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Checkbox Hapal -->
+            <CheckBox
+                android:id="@+id/cbHapal"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:button="@drawable/selector_checkbox_cartoon"
+                android:background="@null"
+                app:buttonTint="@null"
+                android:buttonTint="@null" />
+        </LinearLayout>
+
+        <!-- Catatan Container -->
+        <LinearLayout
+            android:id="@+id/layoutCatatanItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_rounded_beige"
+            android:backgroundTint="#FFCC80"
+            android:padding="10dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/layoutHapal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_semua_doa"/>
+
+            <TextView
+                android:id="@+id/tvCatatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Catatan kamu..."
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/baloo_semibold"
+                android:textColor="#BF360C"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

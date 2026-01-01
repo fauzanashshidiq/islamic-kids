@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- KEADAAN 1: DIPILIH (Warna Kuning Emas Cerah + Border Putih) -->
+    <item android:state_selected="true">
+        <layer-list>
+            <!-- Shadow (Layer Bawah) -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#66BB6A"/> <!-- Kuning Tua -->
+                    <corners android:radius="24dp"/>
+                </shape>
+            </item>
+            <!-- Main Button (Layer Atas, geser 4dp ke atas) -->
+            <item android:bottom="4dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#2E7D32"/> <!-- Kuning Cerah -->
+                    <corners android:radius="24dp"/>
+                    <stroke android:width="2dp" android:color="#FFFFFF"/> <!-- Border Putih -->
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- KEADAAN 2: TIDAK DIPILIH (Warna Putih/Abu + Shadow Tipis) -->
+    <item>
+        <layer-list>
+            <!-- Shadow (Layer Bawah) -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#BDBDBD"/> <!-- Abu Gelap -->
+                    <corners android:radius="24dp"/>
+                </shape>
+            </item>
+            <!-- Main Button (Layer Atas, geser 4dp ke atas) -->
+            <item android:bottom="4dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#F5F5F5"/> <!-- Abu Terang / Putih -->
+                    <corners android:radius="24dp"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>
