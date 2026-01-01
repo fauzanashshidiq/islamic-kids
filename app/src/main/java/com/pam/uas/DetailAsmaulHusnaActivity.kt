@@ -18,7 +18,7 @@ class DetailAsmaulHusnaActivity : AppCompatActivity() {
     private var materiList: List<PembelajaranEntity> = emptyList()
     private var currentIndex = 0
     private var mediaPlayer: MediaPlayer? = null
-    private var isMuted = false // Status mute awal
+    private var isMuted = true // Status mute awal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

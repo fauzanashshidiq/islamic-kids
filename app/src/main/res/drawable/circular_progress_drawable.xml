@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="270"
+    android:toDegrees="270">
+    <!-- fromDegrees 270 agar mulai dari jam 12 (atas) -->
+
+    <shape
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="2"
+        android:useLevel="true">
+
+        <!-- Warna Biru dengan Alpha (80 = 50% Transparan) -->
+        <!-- Kode warna #8000B2FF: 80(Alpha) + 00B2FF(Biru) -->
+        <solid android:color="#B300B2FF" />
+
+    </shape>
+</rotate>
