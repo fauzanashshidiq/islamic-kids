@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.animation.OvershootInterpolator
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -37,11 +38,12 @@ class DetailRukunIslamActivity : AppCompatActivity() {
         binding = ActivityDetailRukunIslamBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // ... (Kode setup Intent & ViewModel SAMA seperti sebelumnya) ...
+        // Setup Header Title
         val kategoriKey = intent.getStringExtra("EXTRA_KATEGORI") ?: "RUKUN_ISLAM"
         val judulKategori = intent.getStringExtra("EXTRA_JUDUL") ?: "Rukun Islam"
         binding.tvHeaderKategori.text = judulKategori
 
+        // Load Data
         viewModel.getMateri(kategoriKey).observe(this) { list ->
             if (list.isNotEmpty()) {
                 materiList = list.sortedBy { it.urutan }
@@ -85,9 +87,8 @@ class DetailRukunIslamActivity : AppCompatActivity() {
         // --- SETUP TOMBOL BACK (Dengan Animasi) ---
         binding.btnBack.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
-            // Menggunakan helper function agar animasi seragam
             animateButton(view) {
-                finish() // Aksi dilakukan setelah animasi selesai
+                finish()
             }
         }
 
@@ -95,7 +96,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
         binding.btnSuara.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
-                // Logic Play/Stop
                 if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
                     stopVoice()
                 } else {
@@ -112,9 +112,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Helper Function untuk animasi tombol klik (Scale + Bounce)
-     */
     private fun animateButton(view: View, onEndAction: () -> Unit) {
         view.animate()
             .scaleX(0.85f)
@@ -125,7 +122,7 @@ class DetailRukunIslamActivity : AppCompatActivity() {
                     .scaleX(1.0f)
                     .scaleY(1.0f)
                     .setDuration(300)
-                    .setInterpolator(OvershootInterpolator(2f)) // Efek membal
+                    .setInterpolator(OvershootInterpolator(2f))
                     .withEndAction {
                         onEndAction()
                     }
@@ -133,9 +130,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
             }
             .start()
     }
-
-    // ... (Fungsi animateCardTransition, setupDots, updateDots, dpToPx, tampilkanData SAMA) ...
-    // Pastikan copy paste fungsi-fungsi tsb dari kode lamamu atau biarkan jika sudah ada
 
     private fun animateCardTransition(onUpdate: () -> Unit) {
         val durationShrink = 150L
@@ -156,39 +150,85 @@ class DetailRukunIslamActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupDots() { /* ... kode lama ... */ }
-    private fun updateDots() { /* ... kode lama ... */ }
-    private fun dpToPx(dp: Int): Int { return (dp * resources.displayMetrics.density).toInt() }
+    // --- SETUP DOTS INDICATOR ---
+    private fun setupDots() {
+        binding.layoutDots.removeAllViews()
+        val dotsCount = materiList.size
+
+        for (i in 0 until dotsCount) {
+            val dot = View(this)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(8, 0, 8, 0)
+            dot.layoutParams = params
+            binding.layoutDots.addView(dot)
+        }
+        updateDots()
+    }
+
+    private fun updateDots() {
+        val count = binding.layoutDots.childCount
+        for (i in 0 until count) {
+            val dot = binding.layoutDots.getChildAt(i)
+            val params = dot.layoutParams as LinearLayout.LayoutParams
+
+            if (i == currentIndex) {
+                // Active Dot: Panjang (Pill) - Purple #D900FF
+                params.width = dpToPx(24)
+                params.height = dpToPx(8)
+                dot.background = ContextCompat.getDrawable(this, R.drawable.bg_header_blue_gradient)
+                dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#29B6F6"))
+            } else {
+                // Inactive Dot: Bulat Kecil - Gray
+                params.width = dpToPx(8)
+                params.height = dpToPx(8)
+                dot.background = ContextCompat.getDrawable(this, R.drawable.bg_circle_white_solid)
+                dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#BDBDBD"))
+            }
+            dot.layoutParams = params
+        }
+    }
+
+    private fun dpToPx(dp: Int): Int {
+        return (dp * resources.displayMetrics.density).toInt()
+    }
 
     private fun tampilkanData() {
         if (materiList.isEmpty()) return
         val item = materiList[currentIndex]
 
-        // ... (kode binding data view SAMA) ...
         binding.tvNomorUrut.text = item.urutan.toString()
         binding.tvJudulMateri.text = item.nama
         binding.tvDeskripsiMateri.text = item.deskripsi
 
-        // Gambar dll ...
+        // Image
         if (!item.image_path.isNullOrEmpty()) {
             val resId = resources.getIdentifier(item.image_path, "drawable", packageName)
             if (resId != 0) binding.ivMateri.setImageResource(resId)
             else binding.ivMateri.setImageResource(R.drawable.ic_launcher_foreground)
+        } else {
+             binding.ivMateri.setImageResource(R.drawable.ic_launcher_foreground)
         }
 
-        // Handle Button Visibility
+        // Handle Arab
+        if (item.teks_arab.isNullOrEmpty()) {
+            binding.tvArabMateri.visibility = View.GONE
+        } else {
+            binding.tvArabMateri.visibility = View.VISIBLE
+            binding.tvArabMateri.text = item.teks_arab
+        }
+
         binding.btnPrev.visibility = if (currentIndex == 0) View.INVISIBLE else View.VISIBLE
         binding.btnNext.visibility = if (currentIndex == materiList.size - 1) View.INVISIBLE else View.VISIBLE
 
         updateDots()
-        stopVoice() // Reset suara jika pindah halaman
+        stopVoice()
     }
 
-
-    // --- LOGIC SUARA & PROGRESS BAR ---
-
     private fun playVoice(fileName: String) {
-        stopVoice() // Reset player sebelumnya
+        stopVoice()
 
         try {
             val finalName = if (fileName.endsWith(".mp3")) fileName else "$fileName.mp3"
@@ -200,17 +240,10 @@ class DetailRukunIslamActivity : AppCompatActivity() {
                 prepare()
                 start()
             }
-
-            // Ubah icon jadi stop/pause (opsional, visual feedback)
-            // binding.btnSuara.setImageResource(R.drawable.ic_pause)
-
-            // Setup Progress Bar Update
             startProgressUpdater()
-
             mediaPlayer?.setOnCompletionListener {
                 stopVoice()
             }
-
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(this, "Gagal memutar suara", Toast.LENGTH_SHORT).show()
@@ -218,7 +251,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
     }
 
     private fun startProgressUpdater() {
-        // Reset progress bar
         binding.progressSuara.progress = 0
         binding.progressSuara.max = mediaPlayer?.duration ?: 100
 
@@ -227,10 +259,7 @@ class DetailRukunIslamActivity : AppCompatActivity() {
                 mediaPlayer?.let { player ->
                     if (player.isPlaying) {
                         val currentPosition = player.currentPosition
-                        // Update UI
                         binding.progressSuara.progress = currentPosition
-
-                        // Ulangi setiap 50ms agar animasi lingkaran terlihat smooth
                         handler.postDelayed(this, 50)
                     }
                 }
@@ -240,13 +269,9 @@ class DetailRukunIslamActivity : AppCompatActivity() {
     }
 
     private fun stopVoice() {
-        // Hentikan update progress
         progressRunnable?.let { handler.removeCallbacks(it) }
         progressRunnable = null
-
-        // Reset UI Progress Bar
         binding.progressSuara.progress = 0
-        // binding.btnSuara.setImageResource(R.drawable.sound) // Balikin icon play
 
         mediaPlayer?.let {
             if (it.isPlaying) it.stop()
