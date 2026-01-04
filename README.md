@@ -1,16 +1,34 @@
 <div align="center">
 
-# 👥 Tim Pengembang Islamic Kids
+# 👥 Tim Pengembang - Team 3
+**Teknik Informatika UIN Sunan Gunung Djati Bandung**
 
-<p>Proyek ini dikembangkan oleh kelompok kami untuk memberikan edukasi agama yang interaktif bagi anak-anak menggunakan Native Android Development.</p>
+<p align="center">
+  Proyek ini dikembangkan oleh kelompok kami untuk memberikan edukasi agama yang interaktif bagi anak-anak menggunakan Native Android Development (Kotlin).
+</p>
 
-| **Fauzan Ashshidiq** | **M. Rahardian Baihaqi** |
-| :---: | :---: |
-| <img src="https://github.com/fauzanashshidiq.png" width="140" style="border-radius: 50%;" alt="Fauzan"> | <img src="https://via.placeholder.com/140?text=Rahardian" width="140" style="border-radius: 50%;" alt="Rahardian"> |
-| [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/fauzanashshidiq) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/) |
-| **Nazwa Yulianti Munjana** | **Raflhy Nur Ramadhan** |
-| <img src="https://via.placeholder.com/140?text=Nazwa" width="140" style="border-radius: 50%;" alt="Nazwa"> | <img src="https://via.placeholder.com/140?text=Raflhy" width="140" style="border-radius: 50%;" alt="Raflhy"> |
-| [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/) |
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/fauzanashshidiq.png" width="120" style="border-radius: 50%; border: 3px solid #FFD700;" alt="Fauzan"><br>
+      <img src="https://img.shields.io/badge/001-Fauzan%20Ashshidiq-blue?style=flat-square" alt="Badge Fauzan">
+    </td>
+    <td align="center">
+      <img src="https://via.placeholder.com/120?text=Rahardian" width="120" style="border-radius: 50%; border: 3px solid #FFD700;" alt="Rahardian"><br>
+      <img src="https://img.shields.io/badge/002-M.%20Rahardian%20B-blue?style=flat-square" alt="Badge Rahardian">
+    </td>
+    <td align="center">
+      <img src="https://via.placeholder.com/120?text=Nazwa" width="120" style="border-radius: 50%; border: 3px solid #FFD700;" alt="Nazwa"><br>
+      <img src="https://img.shields.io/badge/003-Nazwa%20Yulianti-blue?style=flat-square" alt="Badge Nazwa">
+    </td>
+    <td align="center">
+      <img src="https://via.placeholder.com/120?text=Raflhy" width="120" style="border-radius: 50%; border: 3px solid #FFD700;" alt="Raflhy"><br>
+      <img src="https://img.shields.io/badge/004-Raflhy%20Nur%20R-blue?style=flat-square" alt="Badge Raflhy">
+    </td>
+  </tr>
+</table>
+
+<br>
 
 ---
 
@@ -28,62 +46,81 @@
   </a>
 </p>
 
-<img src="https://via.placeholder.com/800x300/3DDC84/FFFFFF?text=Islamic+Kids+Android+Banner" width="100%" alt="Islamic Kids Banner">
-
-<p>
-  <b>Aplikasi Android Native edukatif untuk membantu anak-anak belajar doa harian dan bacaan shalat dengan antarmuka yang modern dan interaktif.</b>
-</p>
+<img src="https://via.placeholder.com/800x300/3DDC84/FFFFFF?text=Islamic+Kids+Native+Android+Project" width="100%" alt="Islamic Kids Banner">
 
 </div>
 
 ---
 
 ## 📋 Daftar Isi
-- [📖 Tentang Proyek](#-tentang-proyek)
+- [📖 Latar Belakang](#-latar-belakang)
+- [⚠️ Masalah](#️-masalah)
+- [✅ Solusi](#-solusi)
+- [📊 Market Pasar](#-market-pasar)
 - [✨ Fitur Utama](#-fitur-utama)
 - [📱 Pratinjau Aplikasi](#-pratinjau-aplikasi)
-- [🛠️ Teknologi & Library](#️-teknologi--library)
+- [🛠️ Teknologi](#️-teknologi--library)
 - [🚀 Cara Menjalankan](#-cara-menjalankan)
 
 ---
 
-## 📖 Tentang Proyek
-**Islamic Kids** adalah aplikasi mobile berbasis **Android Native** yang dibangun menggunakan bahasa pemrograman **Kotlin**. Aplikasi ini dirancang khusus untuk memfasilitasi anak-anak dalam menghafal doa-doa harian, niat shalat, serta tata cara bacaan shalat secara digital.
+## 📖 Latar Belakang
+Di era digital saat ini, anak-anak lebih banyak menghabiskan waktu dengan perangkat mobile. Namun, konten edukasi agama yang interaktif dan menarik untuk anak usia dini masih terbatas. Penanaman nilai agama seperti doa harian dan tata cara shalat perlu dilakukan sejak dini dengan cara yang menyenangkan.
 
-Dengan memanfaatkan library animasi dan multimedia pada Android Studio, aplikasi ini menawarkan pengalaman belajar yang tidak membosankan melalui visual yang menarik dan audio yang jernih.
+## ⚠️ Masalah
+1. **Metode Konvensional Membosankan:** Belajar melalui buku teks seringkali membuat anak cepat bosan.
+2. **Kurangnya Media Interaktif:** Sedikitnya aplikasi Android Native yang menggabungkan teks Arab, audio, dan animasi secara lengkap.
+3. **Ketergantungan Gadget:** Gadget sering hanya digunakan untuk hiburan tanpa nilai edukasi agama.
+
+## ✅ Solusi
+Aplikasi **Islamic Kids** hadir sebagai solusi media pembelajaran digital yang:
+* **Interaktif:** Menggunakan animasi **Lottie** untuk menarik perhatian visual.
+* **Audio-Visual:** Menyediakan teks doa lengkap dengan audio pelafalan untuk membantu hafalan.
+* **Mudah Digunakan:** Desain UI ceria yang ramah untuk anak-anak (PAUD/TK).
+
+## 📊 Market Pasar
+* **Target Utama:** Anak-anak Muslim usia 4-10 tahun.
+* **Target Sekunder:** Orang tua dan Guru Mengaji yang membutuhkan alat bantu ajar digital.
 
 ---
 
 ## ✨ Fitur Utama
-* **🤲 Doa Harian Lengkap:** List doa harian dengan teks Arab, transliterasi Latin, dan arti Bahasa Indonesia.
-* **🕌 Panduan Shalat:** Niat shalat fardhu dan bacaan lengkap dari takbir hingga salam.
-* **🔊 Audio Pembelajaran:** Fitur suara untuk mendengarkan pelafalan doa dan bacaan yang benar.
-* **🎨 Animasi Lottie:** Integrasi animasi interaktif untuk mempercantik tampilan UI.
-* **📱 Jetpack Components:** Implementasi teknologi Android terbaru untuk performa yang optimal.
+* **🤲 Doa Harian:** Dilengkapi teks Arab, transliterasi, dan terjemahan.
+* **🕌 Panduan Shalat:** Niat dan bacaan shalat fardhu lengkap.
+* **🔊 Audio Player:** Suara jernih untuk memandu pelafalan yang benar.
+* **🎨 Animasi Lottie:** Membuat tampilan aplikasi lebih hidup dan disukai anak-anak.
 
 ---
 
 ## 📱 Pratinjau Aplikasi
-Berikut adalah tampilan antarmuka dari aplikasi Islamic Kids (Android Version):
-
-| Halaman Utama | Daftar Doa | Detail Bacaan |
+| Halaman Utama | Daftar Doa | Detail & Audio |
 |:---:|:---:|:---:|
-| <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Home+Activity" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=List+Doa" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Detail+Audio" width="220"> |
+| <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Home+Activity" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=List+Activity" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Detail+Activity" width="220"> |
 
 ---
 
 ## 🛠️ Teknologi & Library
-* **Bahasa:** [Kotlin](https://kotlinlang.org/)
-* **IDE:** [Android Studio](https://developer.android.com/studio)
-* **Library Utama:**
-  * `Lottie-Android` - Untuk render animasi interaktif.
-  * `MediaPlayer` - Untuk fitur pemutar audio doa.
-  * `RecyclerView` - Untuk menampilkan daftar doa secara efisien.
-  * `Google Fonts` - Untuk tipografi khusus anak-anak.
+* **Language:** Kotlin
+* **IDE:** Android Studio
+* **Libraries:**
+  * `Lottie-Android` (Animasi)
+  * `MediaPlayer` (Audio)
+  * `RecyclerView` (Daftar Data)
 
 ---
 
 ## 🚀 Cara Menjalankan
-1. **Clone Repo:**
-   ```bash
-   git clone [https://github.com/fauzanashshidiq/islamic-kids.git](https://github.com/fauzanashshidiq/islamic-kids.git)
+1. `git clone https://github.com/fauzanashshidiq/islamic-kids.git`
+2. Buka project di **Android Studio**.
+3. Lakukan **Sync Gradle**.
+4. Klik **Run** pada Emulator atau Perangkat Android.
+
+---
+
+<div align="center">
+
+<img src="https://komarev.com/ghpvc/?username=fauzanashshidiq&color=3ddc84&style=flat-square&label=PENGUNJUNG" alt="visitor counter" />
+
+**Dibuat dengan ❤️ oleh Kelompok Islamic Kids**
+
+</div>
