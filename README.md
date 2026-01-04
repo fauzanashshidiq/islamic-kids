@@ -1,6 +1,6 @@
 <div align="center">
 
-# Tim Pengembang - Kelompok 3
+# Tim Pengembang - 
 ### Teknik Informatika UIN Sunan Gunung Djati Bandung
 
 ---
@@ -9,7 +9,7 @@
   <tr>
     <td align="center">
       <img src="https://github.com/fauzanashshidiq.png" width="120" style="border-radius: 50%; border: 3px solid #EBCB8B;" alt="Fauzan"><br>
-      <img src="https://img.shields.io/badge/001-Fauzan%20Ashshidiq-blue?style=flat-square" alt="Badge Fauzan">
+      <img src="" alt="Badge Fauzan">
     </td>
     <td align="center">
       <img src="https://via.placeholder.com/120?text=Rahardian" width="120" style="border-radius: 50%; border: 3px solid #EBCB8B;" alt="Rahardian"><br>
@@ -21,7 +21,8 @@
     </td>
     <td align="center">
       <img src="https://via.placeholder.com/120?text=Raflhy" width="120" style="border-radius: 50%; border: 3px solid #EBCB8B;" alt="Raflhy"><br>
-      <img src="https://img.shields.io/badge/004-Raflhy%20Nur%20R-blue?style=flat-square" alt="Badge Raflhy">
+      <img src="![WhatsApp Image 2026-01-04 at 20 28 16](https://github.com/user-attachments/assets/c597d019-87ed-4c59-bcb9-25e8cb640b97)
+ " alt="Badge Raflhy">
     </td>
   </tr>
 </table>
