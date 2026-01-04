@@ -31,7 +31,6 @@ class JsonHelper(private val context: Context) {
             return emptyList()
         }
 
-        // Langsung convert ke Entity karena struktur JSON sudah cocok
         val listType = object : TypeToken<List<PembelajaranEntity>>() {}.type
         return Gson().fromJson(jsonString, listType)
     }

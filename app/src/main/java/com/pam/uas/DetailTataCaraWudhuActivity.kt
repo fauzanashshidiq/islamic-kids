@@ -26,24 +26,22 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
     private var currentIndex = 0
     private var mediaPlayer: MediaPlayer? = null
 
-    // Handler untuk update progress bar suara
     private val handler = Handler(Looper.getMainLooper())
     private var progressRunnable: Runnable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inflate binding
         binding = ActivityDetailTataCaraWudhuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Ambil Data dari Intent
+        // Ambil Data dari Intent
         val kategoriKey = intent.getStringExtra("EXTRA_KATEGORI") ?: "TATA_CARA_WUDHU"
         val judulKategori = intent.getStringExtra("EXTRA_JUDUL") ?: "Tata Cara Wudhu"
 
         // Set Header
         binding.tvHeaderKategori.text = judulKategori
 
-        // 2. Load Data dari Database
+        // Load Data dari Database
         viewModel.getMateri(kategoriKey).observe(this) { list ->
             if (list.isNotEmpty()) {
                 materiList = list.sortedBy { it.urutan }
@@ -55,14 +53,11 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             }
         }
 
-        // 3. Setup Tombol Logic dengan Animasi
-
-        // Tombol NEXT
+        // Setup Tombol Logic dengan Animasi
         binding.btnNext.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
                 if (currentIndex < materiList.size - 1) {
-                    // Jalankan Animasi Card Transisi
                     animateCardTransition {
                         currentIndex++
                         tampilkanData()
@@ -78,7 +73,6 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
                 if (currentIndex > 0) {
-                    // Jalankan Animasi Card Transisi
                     animateCardTransition {
                         currentIndex--
                         tampilkanData()
@@ -101,7 +95,6 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         binding.btnSuara.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
-                // Logic Play/Stop Toggle
                 if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
                     stopVoice()
                 } else {
@@ -118,9 +111,6 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Helper Function untuk animasi tombol klik (Scale + Bounce)
-     */
     private fun animateButton(view: View, onEndAction: () -> Unit) {
         view.animate()
             .scaleX(0.85f)
@@ -140,29 +130,23 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             .start()
     }
 
-    /**
-     * Animasi Card mengecil lalu membal (bounce) saat konten berubah.
-     */
     private fun animateCardTransition(onUpdate: () -> Unit) {
         val durationShrink = 150L
         val durationExpand = 400L
         val interpolator = android.view.animation.BounceInterpolator()
 
-        // Objek yang ingin dianimasikan: Card Utama, Shadow-nya, dan Badge Nomor
         val viewsToAnimate = listOf(binding.cardContent, binding.cardShadow, binding.tvNomorUrut)
 
         viewsToAnimate.forEach { v ->
             v.animate()
-                .scaleX(0.9f) // Kecilkan ke 90%
+                .scaleX(0.9f)
                 .scaleY(0.9f)
                 .setDuration(durationShrink)
                 .withEndAction {
-                    // Hanya panggil update sekali (misal trigger dari cardContent)
                     if (v == binding.cardContent) {
                         onUpdate()
                     }
 
-                    // Kembalikan ke ukuran normal dengan efek bounce
                     v.animate()
                         .scaleX(1.0f)
                         .scaleY(1.0f)
@@ -198,13 +182,11 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             val params = dot.layoutParams as LinearLayout.LayoutParams
 
             if (i == currentIndex) {
-                // Active Dot: Panjang (Pill) - Cream/Orange Theme (#FFC9A0 / #E67E22)
                 params.width = dpToPx(24)
                 params.height = dpToPx(8)
                 dot.background = ContextCompat.getDrawable(this, R.drawable.bg_pill_beige)
                 dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E67E22")) // Oranye Tua
             } else {
-                // Inactive Dot: Bulat Kecil - Gray
                 params.width = dpToPx(8)
                 params.height = dpToPx(8)
                 dot.background = ContextCompat.getDrawable(this, R.drawable.bg_circle_white_solid)
@@ -222,13 +204,11 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         if (materiList.isEmpty()) return
         val item = materiList[currentIndex]
 
-        // Binding View
         binding.tvNomorUrut.text = item.urutan.toString()
         binding.tvJudulMateri.text = item.nama
         binding.tvDeskripsiMateri.text = item.deskripsi
         binding.tvKeterangan.text = item.keterangan
 
-        // Handle Arab
         if (item.teks_arab.isNullOrEmpty()) {
             binding.tvArabMateri.visibility = View.GONE
         } else {
@@ -236,7 +216,6 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             binding.tvArabMateri.text = item.teks_arab
         }
 
-        // Handle Gambar
         if (!item.image_path.isNullOrEmpty()) {
             val resId = resources.getIdentifier(
                 item.image_path, "drawable", packageName
@@ -248,7 +227,6 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             }
         }
 
-        // Handle Visibility Button
         binding.btnPrev.visibility = if (currentIndex == 0) View.INVISIBLE else View.VISIBLE
         binding.btnNext.visibility = if (currentIndex == materiList.size - 1) View.INVISIBLE else View.VISIBLE
 
@@ -256,10 +234,8 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
         stopVoice()
     }
 
-    // --- LOGIC SUARA BARU ---
-
     private fun playVoice(fileName: String) {
-        stopVoice() // Reset suara sebelumnya
+        stopVoice()
 
         try {
             val finalName = if (fileName.endsWith(".mp3")) fileName else "$fileName.mp3"
@@ -272,7 +248,6 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
                 start()
             }
 
-            // Jalankan updater progress bar
             startProgressUpdater()
 
             mediaPlayer?.setOnCompletionListener {
@@ -285,7 +260,6 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
     }
 
     private fun startProgressUpdater() {
-        // Reset progress bar
         binding.progressSuara.progress = 0
         binding.progressSuara.max = mediaPlayer?.duration ?: 100
 
@@ -293,9 +267,7 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
             override fun run() {
                 mediaPlayer?.let { player ->
                     if (player.isPlaying) {
-                        // Update UI
                         binding.progressSuara.progress = player.currentPosition
-                        // Ulangi setiap 50ms
                         handler.postDelayed(this, 50)
                     }
                 }
@@ -305,11 +277,9 @@ class DetailTataCaraWudhuActivity : AppCompatActivity() {
     }
 
     private fun stopVoice() {
-        // Matikan updater
         progressRunnable?.let { handler.removeCallbacks(it) }
         progressRunnable = null
 
-        // Reset Progress Bar ke 0
         binding.progressSuara.progress = 0
 
         mediaPlayer?.let {

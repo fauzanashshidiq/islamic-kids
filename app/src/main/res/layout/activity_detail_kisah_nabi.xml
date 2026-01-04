@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- JUDUL HEADER (Opsional, agar user tau ini halaman apa) -->
+    <!-- JUDUL HEADER -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,7 +64,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBack">
 
-    <!-- Konten di dalam ScrollView harus dibungkus SATU Layout (LinearLayout) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +71,6 @@
             android:paddingHorizontal="20dp"
             android:paddingTop="10dp">
 
-            <!-- BAGIAN 1: INFO NABI (GAYA 3D WARNA-WARNI) -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +79,6 @@
                 android:clipToPadding="false"
                 android:paddingBottom="10dp">
 
-                <!-- Layer Shadow (Bayangan) -->
                 <View
                     android:id="@+id/viewHeaderShadow"
                     android:layout_width="0dp"
@@ -94,7 +91,6 @@
                     app:layout_constraintStart_toStartOf="@id/layoutHeaderMain"
                     app:layout_constraintTop_toTopOf="@id/layoutHeaderMain" />
 
-                <!-- Layer Utama (Warna akan di-set di Kotlin) -->
                 <LinearLayout
                     android:id="@+id/layoutHeaderMain"
                     android:layout_width="match_parent"
@@ -123,7 +119,6 @@
                         android:shadowDy="2"
                         android:shadowRadius="4"/>
 
-                    <!-- Info Baris (Usia, Tempat, Tahun) -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -209,7 +204,6 @@
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- BAGIAN 2: KISAH PERJUANGAN (GAYA 3D PUTIH) -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -218,7 +212,6 @@
                 android:clipToPadding="false"
                 android:paddingBottom="10dp">
 
-                <!-- Shadow (Bayangan Bawah) -->
                 <View
                     android:id="@+id/viewContentShadow"
                     android:layout_width="0dp"

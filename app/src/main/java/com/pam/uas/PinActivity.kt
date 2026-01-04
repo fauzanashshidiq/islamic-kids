@@ -25,7 +25,6 @@ class PinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
 
-        // 1. Inisialisasi View
         tvPinDisplay = findViewById(R.id.tvPinDisplay)
         tvTitle = findViewById(R.id.tvPinTitle)
         tvInstruction = findViewById(R.id.tvInstruction)
@@ -33,14 +32,11 @@ class PinActivity : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val btnDelete = findViewById<ImageButton>(R.id.btnDelete)
 
-        // 2. Cek Mode (Buat Baru vs Verifikasi)
         val isCreateMode = !PinManager.isPinExists(this)
         setupTextUI(isCreateMode)
 
-        // 3. Setup Tombol Angka dengan Animasi & SFX
         setupKeypad(isCreateMode)
 
-        // 4. Logic Tombol Hapus dengan Animasi & SFX
         setupButtonAnimation(btnDelete) {
             if (currentPin.isNotEmpty()) {
                 currentPin = currentPin.dropLast(1)
@@ -48,7 +44,6 @@ class PinActivity : AppCompatActivity() {
             }
         }
 
-        // 5. Logic Tombol Back dengan Animasi & SFX
         setupButtonAnimation(btnBack) {
             finish()
         }
@@ -65,7 +60,6 @@ class PinActivity : AppCompatActivity() {
     }
 
     private fun setupKeypad(isCreateMode: Boolean) {
-        // Daftar ID tombol angka
         val buttonIds = listOf(
             R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,
             R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9
@@ -74,15 +68,12 @@ class PinActivity : AppCompatActivity() {
         for (id in buttonIds) {
             val button = findViewById<AppCompatButton>(id)
 
-            // Gunakan fungsi animasi kita
             setupButtonAnimation(button) {
-                // Logika saat tombol angka ditekan
                 if (currentPin.length < MAX_PIN_LENGTH) {
                     val number = button.text.toString()
                     currentPin += number
                     updatePinDisplay()
 
-                    // Auto Submit jika sudah penuh
                     if (currentPin.length == MAX_PIN_LENGTH) {
                         processPin(isCreateMode)
                     }
@@ -91,29 +82,24 @@ class PinActivity : AppCompatActivity() {
         }
     }
 
-    // --- FUNGSI UTAMA UNTUK ANIMASI DAN SUARA ---
     private fun setupButtonAnimation(view: View, onClickAction: () -> Unit) {
         view.setOnClickListener {
-            // 1. Mainkan Suara
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
 
-            // 2. Jalankan logika (simpan angka/hapus/back)
             onClickAction()
 
-            // 3. Jalankan Animasi
             view.animate()
-                .scaleX(0.85f)      // Mengecil
+                .scaleX(0.85f)
                 .scaleY(0.85f)
-                .alpha(0.5f)        // Transparan (efek blur/tekan)
-                .setDuration(50)    // Cepat
+                .alpha(0.5f)
+                .setDuration(50)
                 .withEndAction {
-                    // Animasi Balik (Membal)
                     view.animate()
                         .scaleX(1f)
                         .scaleY(1f)
-                        .alpha(1f)  // Jelas kembali
+                        .alpha(1f)
                         .setDuration(150)
-                        .setInterpolator(OvershootInterpolator(2f)) // Membal
+                        .setInterpolator(OvershootInterpolator(2f))
                         .start()
                 }
                 .start()
@@ -125,7 +111,6 @@ class PinActivity : AppCompatActivity() {
     }
 
     private fun processPin(isCreateMode: Boolean) {
-        // Tambahkan sedikit delay agar animasi tombol terakhir terlihat sebelum pindah/toast
         tvPinDisplay.postDelayed({
             if (isCreateMode) {
                 PinManager.savePin(this, currentPin)
@@ -146,7 +131,7 @@ class PinActivity : AppCompatActivity() {
                     updatePinDisplay()
                 }
             }
-        }, 100) // Delay 100ms
+        }, 100)
     }
 
     private fun goToAddDoa() {

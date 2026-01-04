@@ -17,20 +17,15 @@ class KisahNabiViewModel(application: Application) : AndroidViewModel(applicatio
     val kisahNabiList: LiveData<List<KisahNabiEntity>>
 
     init {
-        // 1. Dapatkan instance Database
         val db = AppDatabase.getDatabase(application)
 
-        // 2. Ambil DAO yang sudah kamu buat
         val dao = db.kisahNabiDao()
 
-        // 3. Inisialisasi Repository
         repo = KisahNabiRepository(dao)
 
-        // 4. Hubungkan LiveData
         kisahNabiList = repo.allKisahNabi
     }
 
-    // Fungsi ini dipanggil sekali saja saat aplikasi pertama kali dibuka/install
     fun preloadKisahNabi() = viewModelScope.launch {
         if (repo.isKisahNabiEmpty()) {
             val helper = JsonHelper(getApplication())

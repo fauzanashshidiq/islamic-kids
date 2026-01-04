@@ -8,9 +8,6 @@
     android:background="@drawable/bgsifatwajib"
     tools:context=".DetailSifatWajibAllahActivity">
 
-    <!-- =========== HEADER JUDUL =========== -->
-
-    <!-- 1. Layer Shadow (Header) -->
     <TextView
         android:id="@+id/tvHeaderShadow"
         android:layout_width="wrap_content"
@@ -31,7 +28,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 2. Layer Utama (Header) -->
     <TextView
         android:id="@+id/tvHeaderKategori"
         android:layout_width="wrap_content"
@@ -53,7 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tombol Back -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="52dp"
@@ -68,10 +63,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"
         app:layout_constraintTop_toTopOf="@id/tvHeaderKategori"/>
 
-    <!-- ... (Bagian Header sebelumnya) ... -->
-
-    <!-- CONTAINER TOMBOL SUARA & PROGRESS (HIJAU) -->
-    <androidx.constraintlayout.widget.ConstraintLayout        android:id="@+id/layoutBtnSuara"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBtnSuara"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_marginEnd="24dp"
@@ -80,13 +73,11 @@
         app:layout_constraintBottom_toBottomOf="@id/tvHeaderKategori"
         app:layout_constraintTop_toTopOf="@id/tvHeaderKategori">
 
-        <!-- LAYER 1: Background Putih -->
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_circle_white_solid" />
 
-        <!-- LAYER 2: Progress Bar Model PIE (HIJAU) -->
         <ProgressBar
             android:id="@+id/progressSuara"
             style="?android:attr/progressBarStyleHorizontal"
@@ -103,7 +94,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- LAYER 3: Tombol Ikon -->
         <ImageButton
             android:id="@+id/btnSuara"
             android:layout_width="match_parent"
@@ -116,13 +106,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <!-- =========== KARTU KONTEN UTAMA =========== -->
-
-    <!-- Layer Shadow Kartu -->
     <View
         android:id="@+id/cardShadow"
         android:layout_width="0dp"
@@ -138,7 +123,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Layer Utama Kartu -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContent"
         android:layout_width="0dp"
@@ -162,7 +146,6 @@
             android:layout_height="match_parent"
             android:padding="16dp">
 
-            <!-- Teks Arab (Center) -->
             <TextView
                 android:id="@+id/tvArabMateri"
                 android:layout_width="match_parent"
@@ -178,7 +161,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <!-- Judul Materi (Latin) - di bawah Arab -->
             <TextView
                 android:id="@+id/tvJudulMateri"
                 android:layout_width="match_parent"
@@ -198,7 +180,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <!-- Shadow untuk Kapsul Deskripsi -->
             <View
                 android:id="@+id/deskripsiShadow"
                 android:layout_width="0dp"
@@ -211,7 +192,6 @@
                 app:layout_constraintStart_toStartOf="@+id/tvDeskripsiMateri"
                 app:layout_constraintEnd_toEndOf="@+id/tvDeskripsiMateri"/>
 
-            <!-- Kapsul Deskripsi (Footer) -->
             <TextView
                 android:id="@+id/tvDeskripsiMateri"
                 android:layout_width="match_parent"
@@ -235,7 +215,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <!-- Elemen Hidden (Agar tidak error jika dipanggil code) -->
             <ImageView
                 android:id="@+id/ivMateri"
                 android:layout_width="wrap_content"
@@ -271,7 +250,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Nomor Urut (Floating Badge) - White with Green Text -->
     <TextView
         android:id="@+id/tvNomorUrut"
         android:layout_width="64dp"
@@ -291,7 +269,6 @@
         app:layout_constraintStart_toStartOf="@id/cardContent"
         app:layout_constraintTop_toTopOf="@id/cardContent"/>
 
-    <!-- Tombol Prev -->
     <ImageButton
         android:id="@+id/btnPrev"
         android:layout_width="56dp"
@@ -308,7 +285,6 @@
         app:layout_constraintBottom_toBottomOf="@id/cardContent"
         android:layout_marginEnd="-20dp" />
 
-    <!-- Tombol Next -->
     <ImageButton
         android:id="@+id/btnNext"
         android:layout_width="56dp"

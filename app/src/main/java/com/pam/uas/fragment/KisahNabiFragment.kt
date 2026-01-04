@@ -34,11 +34,8 @@ class KisahNabiFragment : Fragment() {
 
   // Setup Recycler View
   adapter = KisahNabiAdapter(emptyList()) { nabi ->
-   // Saat item diklik, jalankan ini:
    val intent = Intent(requireContext(), DetailKisahNabiActivity::class.java)
 
-   // Kirim data penting lewat Intent
-   // (Sebaiknya Entity kamu Parcelable, tapi kalau belum, kirim manual string-nya)
    intent.putExtra("EXTRA_NAMA", nabi.name)
    intent.putExtra("EXTRA_USIA", nabi.usia)
    intent.putExtra("EXTRA_TMP", nabi.tmp)
@@ -54,7 +51,6 @@ class KisahNabiFragment : Fragment() {
   // Panggil fungsi preload
   viewModel.preloadKisahNabi()
 
-  // Observe data menggunakan viewLifecycleOwner (Lifecycle aman untuk Fragment)
   viewModel.kisahNabiList.observe(viewLifecycleOwner) { list ->
    adapter.updateData(list)
   }
@@ -62,6 +58,6 @@ class KisahNabiFragment : Fragment() {
 
  override fun onDestroyView() {
   super.onDestroyView()
-  _binding = null // Mencegah memory leak
+  _binding = null
  }
 }

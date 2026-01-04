@@ -18,7 +18,6 @@ import com.pam.uas.sfx.SfxPlayer
 
 @Suppress("DEPRECATION")
 class SplahScreen : AppCompatActivity() {
-    // Simpan handler dan runnable sebagai variabel agar bisa dibatalkan
     private val handler = Handler(Looper.getMainLooper())
     private var navigateRunnable: Runnable? = null
 
@@ -38,7 +37,6 @@ class SplahScreen : AppCompatActivity() {
         val tvTitle = findViewById<View>(R.id.tv_title)
         val tvSubtitle = findViewById<View>(R.id.tv_subtitle)
 
-        // Setup Awal
         imgLogo.scaleX = 0.5f
         imgLogo.scaleY = 0.5f
         tvTitle.alpha = 0f
@@ -46,7 +44,6 @@ class SplahScreen : AppCompatActivity() {
         tvSubtitle.alpha = 0f
         tvSubtitle.translationY = 100f
 
-        // ANIMASI
         imgLogo.animate()
             .scaleX(1f)
             .scaleY(1f)

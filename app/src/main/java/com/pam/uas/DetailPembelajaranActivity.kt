@@ -15,7 +15,6 @@ class DetailPembelajaranActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPembelajaranBinding
     private val viewModel: PembelajaranViewModel by viewModels()
 
-    // Variabel untuk menampung data & posisi saat ini
     private var materiList: List<PembelajaranEntity> = emptyList()
     private var currentIndex = 0
 
@@ -26,20 +25,19 @@ class DetailPembelajaranActivity : AppCompatActivity() {
         binding = ActivityDetailPembelajaranBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Ambil Data dari Intent
+        // Ambil Data dari Intent
         val kategoriKey = intent.getStringExtra("EXTRA_KATEGORI") ?: ""
         val judulKategori = intent.getStringExtra("EXTRA_JUDUL") ?: "Materi Pembelajaran"
 
         // Set Judul Header
         binding.tvHeaderKategori.text = judulKategori
 
-        // 2. Load Data dari Database
+        // Load Data dari Database
         if (kategoriKey.isNotEmpty()) {
             viewModel.getMateri(kategoriKey).observe(this) { list ->
                 if (list.isNotEmpty()) {
-                    // Simpan list & urutkan berdasarkan urutan (jaga-jaga)
                     materiList = list.sortedBy { it.urutan }
-                    currentIndex = 0 // Mulai dari awal
+                    currentIndex = 0
 
                     tampilkanData()
                 } else {
@@ -48,7 +46,7 @@ class DetailPembelajaranActivity : AppCompatActivity() {
             }
         }
 
-        // 3. Listener Tombol Navigasi
+        // Listener Tombol Navigasi
         binding.btnNext.setOnClickListener {
             if (currentIndex < materiList.size - 1) {
                 currentIndex++
@@ -89,13 +87,11 @@ class DetailPembelajaranActivity : AppCompatActivity() {
 
         val item = materiList[currentIndex]
 
-        // Update UI
         binding.tvNomorUrut.text = item.urutan.toString()
         binding.tvJudulMateri.text = item.nama
         binding.tvDeskripsiMateri.text = item.deskripsi
         binding.tvKeterangan.text = item.keterangan
 
-        // Teks Arab (Sembunyikan jika kosong)
         if (item.teks_arab.isNullOrEmpty()) {
             binding.tvArabMateri.visibility = View.GONE
         } else {
@@ -103,7 +99,6 @@ class DetailPembelajaranActivity : AppCompatActivity() {
             binding.tvArabMateri.text = item.teks_arab
         }
 
-        // Load Gambar (Dari Drawable)
         if (!item.image_path.isNullOrEmpty()) {
             val resId = resources.getIdentifier(
                 item.image_path, "drawable", packageName
@@ -115,22 +110,15 @@ class DetailPembelajaranActivity : AppCompatActivity() {
             }
         }
 
-        // Atur Visibility Tombol Next/Prev (Opsional: Hide jika ujung)
         binding.btnPrev.visibility = if (currentIndex == 0) View.INVISIBLE else View.VISIBLE
         binding.btnNext.visibility = if (currentIndex == materiList.size - 1) View.INVISIBLE else View.VISIBLE
 
-        // Stop suara jika pindah halaman
         stopVoice()
     }
 
     private fun playVoice(fileName: String) {
         stopVoice()
         try {
-            // Cek jika nama file tidak ada ekstensi .mp3 di string JSON, tambahkan manual jika perlu
-            // Tapi biasanya assets.openFd butuh nama lengkap.
-            // Asumsi: fileName di DB sudah lengkap "audio.mp3" atau "audio" (tanpa ekstensi)
-
-            // Jika format di DB "audio_subuh" (tanpa mp3), tambahkan ".mp3"
             val finalName = if (fileName.endsWith(".mp3")) fileName else "$fileName.mp3"
 
             val descriptor = assets.openFd(finalName)

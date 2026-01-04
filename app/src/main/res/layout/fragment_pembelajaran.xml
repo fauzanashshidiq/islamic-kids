@@ -9,7 +9,6 @@
     android:paddingTop="32dp"
     android:clipToPadding="false">
 
-    <!-- Header "Ruang Pembelajaran" -->
     <TextView
         android:id="@+id/tvHeaderPembelajaran"
         android:layout_width="wrap_content"
