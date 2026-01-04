@@ -8,20 +8,17 @@ import com.pam.uas.R // Pastikan import R paket kamu
 import com.pam.uas.databinding.ItemPembelajaranMenuBinding
 import com.pam.uas.sfx.SfxPlayer
 
-// Data class sederhana untuk menu
 data class MenuModel(
     val title: String,
-    val categoryKey: String, // Kunci kategori yang sama persis dengan di JSON/DB
+    val categoryKey: String,
     val imageRes: Int,
-    val backgroundDrawableRes: Int, // Drawable Background (Gradient + Shadow)
-    val buttonTextColorRes: Int // Warna Teks Tombol "Baca Sekarang"
+    val backgroundDrawableRes: Int,
+    val buttonTextColorRes: Int
 )
 
 class PembelajaranMenuAdapter(
     private val onItemClick: (MenuModel) -> Unit
 ) : RecyclerView.Adapter<PembelajaranMenuAdapter.VH>() {
-
-    // Daftar Menu Statis (Sesuaikan imageRes dengan icon yang kamu punya)
     private val menuList = listOf(
         MenuModel("Rukun Islam", "RUKUN_ISLAM", R.drawable.ic_rukun_islam, R.drawable.bg_3d_card_blue, R.color.card_blue_shadow),
         MenuModel("Rukun Iman", "RUKUN_IMAN", R.drawable.ic_rukun_iman, R.drawable.bg_3d_card_orange, R.color.card_orange_shadow),
@@ -41,34 +38,26 @@ class PembelajaranMenuAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val item = menuList[position]
 
-        // Set Image (Gambar menu)
         holder.binding.ivMenuImage.setImageResource(item.imageRes)
 
-        // Set Background Drawable (Gradient + 3D Effect)
         holder.binding.layoutMain.setBackgroundResource(item.backgroundDrawableRes)
 
-        // Set Warna Teks Tombol "Baca Sekarang" agar serasi dengan tema card
         val textColor = ContextCompat.getColor(holder.itemView.context, item.buttonTextColorRes)
         holder.binding.btnBacaSekarang.setTextColor(textColor)
 
         holder.itemView.setOnClickListener { view ->
             SfxPlayer.play(view.context, SfxPlayer.SoundType.POP)
-            // 1. Animasi Mengecil (Efek Ditekan)
             view.animate()
-                .scaleX(0.95f) // Kecilkan dikit ke 95%
+                .scaleX(0.95f)
                 .scaleY(0.95f)
-                .setDuration(100) // Durasi cepat (0.1 detik)
+                .setDuration(100)
                 .withEndAction {
-                    // 2. Animasi Membal Balik (Bounce)
                     view.animate()
-                        .scaleX(1.0f) // Balik ke ukuran normal
+                        .scaleX(1.0f)
                         .scaleY(1.0f)
                         .setDuration(300)
-                        .setInterpolator(android.view.animation.BounceInterpolator()) // Efek kenyal
+                        .setInterpolator(android.view.animation.BounceInterpolator())
                         .start()
-
-                    // 3. Panggil Callback Navigasi (Pindah Layar)
-                    // Ditaruh di sini supaya animasi 'tekan' selesai dulu baru pindah
                     onItemClick(item)
                 }
                 .start()

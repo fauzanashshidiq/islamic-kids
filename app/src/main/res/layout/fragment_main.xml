@@ -6,7 +6,6 @@
     android:clipToPadding="false"
     android:paddingTop="32dp">
 
-    <!-- Header Judul dengan Style 3D Card (Sama seperti Pembelajaran/Kisah Nabi) -->
     <TextView
         android:id="@+id/tvHeaderTitle"
         android:layout_width="wrap_content"
@@ -32,7 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Filter Buttons: Desain Kartun Centered -->
     <HorizontalScrollView
         android:id="@+id/svFilter"
         android:layout_width="match_parent"
@@ -59,7 +57,6 @@
             android:clipChildren="false"
             android:paddingHorizontal="8dp">
 
-            <!-- Tombol 1: SEMUA (Biru) - Ukuran Diperkecil Sedikit -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnFilterSemua"
                 android:layout_width="wrap_content"
@@ -75,7 +72,6 @@
                 android:layout_marginEnd="8dp"
                 android:elevation="4dp"/>
 
-            <!-- Tombol 2: SUDAH HAPAL (Hijau) -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnFilterSudah"
                 android:layout_width="wrap_content"
@@ -91,7 +87,6 @@
                 android:layout_marginEnd="8dp"
                 android:elevation="4dp"/>
 
-            <!-- Tombol 3: BELUM HAPAL (Kuning/Orange) -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnFilterBelum"
                 android:layout_width="wrap_content"
@@ -109,8 +104,6 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-
-    <!-- RecyclerView List Doa -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDoaMain"
         android:layout_width="0dp"
@@ -124,7 +117,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- VIEW KOSONG (Empty State) -->
     <LinearLayout
         android:id="@+id/layoutEmptyState"
         android:layout_width="wrap_content"
@@ -139,14 +131,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Gambar Ikon Lucu (Kaca Pembesar) -->
         <ImageView
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:src="@drawable/ic_search_preview"
             android:alpha="0.9"/>
 
-        <!-- Judul -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -161,7 +151,6 @@
             android:shadowDy="2"
             android:shadowRadius="4"/>
 
-        <!-- Deskripsi -->
         <TextView
             android:layout_width="280dp"
             android:layout_height="wrap_content"

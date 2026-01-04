@@ -22,7 +22,6 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
     private var currentIndex = 0
     private var mediaPlayer: MediaPlayer? = null
 
-    // Handler untuk update progress bar suara
     private val handler = Handler(Looper.getMainLooper())
     private var progressRunnable: Runnable? = null
 
@@ -32,14 +31,14 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
         binding = ActivityDetailSifatWajibAllahBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Ambil Data dari Intent
+        // Ambil Data dari Intent
         val kategoriKey = intent.getStringExtra("EXTRA_KATEGORI") ?: "SIFAT_WAJIB_ALLAH"
         val judulKategori = intent.getStringExtra("EXTRA_JUDUL") ?: "Sifat Wajib Allah"
 
         // Set Header
         binding.tvHeaderKategori.text = judulKategori
 
-        // 2. Load Data dari Database
+        // Load Data dari Database
         viewModel.getMateri(kategoriKey).observe(this) { list ->
             if (list.isNotEmpty()) {
                 materiList = list.sortedBy { it.urutan }
@@ -50,9 +49,7 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
             }
         }
 
-        // 3. Setup Tombol Logic dengan Animasi
-
-        // Tombol NEXT
+        // Setup Tombol Logic dengan Animasi
         binding.btnNext.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
@@ -67,7 +64,6 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
             }
         }
 
-        // Tombol PREV
         binding.btnPrev.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
@@ -82,7 +78,6 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
             }
         }
 
-        // Tombol BACK
         binding.btnBack.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
@@ -90,11 +85,9 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
             }
         }
 
-        // Tombol SUARA
         binding.btnSuara.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
-                // Logic Play/Stop Toggle
                 if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
                     stopVoice()
                 } else {
@@ -111,9 +104,6 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Helper Function untuk animasi tombol klik (Scale + Bounce)
-     */
     private fun animateButton(view: View, onEndAction: () -> Unit) {
         view.animate()
             .scaleX(0.85f)
@@ -133,29 +123,23 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
             .start()
     }
 
-    /**
-     * Animasi Card mengecil lalu membal (bounce) saat konten berubah.
-     */
     private fun animateCardTransition(onUpdate: () -> Unit) {
         val durationShrink = 150L
         val durationExpand = 400L
         val interpolator = android.view.animation.BounceInterpolator()
 
-        // Objek yang ingin dianimasikan: Card Utama, Shadow-nya, dan Badge Nomor
         val viewsToAnimate = listOf(binding.cardContent, binding.cardShadow, binding.tvNomorUrut)
 
         viewsToAnimate.forEach { v ->
             v.animate()
-                .scaleX(0.9f) // Kecilkan ke 90%
+                .scaleX(0.9f)
                 .scaleY(0.9f)
                 .setDuration(durationShrink)
                 .withEndAction {
-                    // Hanya panggil update sekali (misal trigger dari cardContent)
                     if (v == binding.cardContent) {
                         onUpdate()
                     }
 
-                    // Kembalikan ke ukuran normal dengan efek bounce
                     v.animate()
                         .scaleX(1.0f)
                         .scaleY(1.0f)
@@ -192,10 +176,8 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
         stopVoice()
     }
 
-    // --- LOGIC SUARA BARU ---
-
     private fun playVoice(fileName: String) {
-        stopVoice() // Reset suara sebelumnya
+        stopVoice()
 
         try {
             val finalName = if (fileName.endsWith(".mp3")) fileName else "$fileName.mp3"
@@ -208,7 +190,6 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
                 start()
             }
 
-            // Jalankan updater progress bar
             startProgressUpdater()
 
             mediaPlayer?.setOnCompletionListener {
@@ -221,7 +202,6 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
     }
 
     private fun startProgressUpdater() {
-        // Reset progress bar
         binding.progressSuara.progress = 0
         binding.progressSuara.max = mediaPlayer?.duration ?: 100
 
@@ -229,9 +209,7 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
             override fun run() {
                 mediaPlayer?.let { player ->
                     if (player.isPlaying) {
-                        // Update UI
                         binding.progressSuara.progress = player.currentPosition
-                        // Ulangi setiap 50ms
                         handler.postDelayed(this, 50)
                     }
                 }
@@ -241,11 +219,9 @@ class DetailSifatWajibAllahActivity : AppCompatActivity() {
     }
 
     private fun stopVoice() {
-        // Matikan updater
         progressRunnable?.let { handler.removeCallbacks(it) }
         progressRunnable = null
 
-        // Reset Progress Bar ke 0
         binding.progressSuara.progress = 0
 
         mediaPlayer?.let {

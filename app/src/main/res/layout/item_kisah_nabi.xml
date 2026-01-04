@@ -6,8 +6,6 @@
     android:paddingHorizontal="16dp"
     android:paddingVertical="6dp">
 
-    <!-- 1. LAYER BAYANGAN (Bagian Bawah/Gelap) -->
-    <!-- Nanti warnanya diatur di Adapter (versi lebih gelap) -->
     <View
         android:id="@+id/viewShadow"
         android:layout_width="match_parent"
@@ -19,8 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 2. LAYER UTAMA (Bagian Atas/Warna Cerah) -->
-    <!-- Nanti warnanya diatur di Adapter -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutMain"
         android:layout_width="match_parent"
@@ -32,7 +28,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Gambar Icon Nabi (Kiri) -->
         <ImageView
             android:id="@+id/ivIconNabi"
             android:layout_width="60dp"
@@ -43,7 +38,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Teks Nama Nabi (Tengah) -->
         <TextView
             android:id="@+id/tvNamaNabi"
             android:layout_width="0dp"
@@ -59,7 +53,6 @@
             app:layout_constraintStart_toEndOf="@id/ivIconNabi"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Icon Search/Detail (Kanan) -->
         <ImageView
             android:id="@+id/ivLogoKanan"
             android:layout_width="50dp"

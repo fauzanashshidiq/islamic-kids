@@ -42,7 +42,6 @@ class PembelajaranFragment : Fragment() {
 
   // Setup Adapter
   val adapter = PembelajaranMenuAdapter { menu ->
-   // Saat item diklik, buka DetailActivity dengan membawa KEY KATEGORI
    val destinationActivity = when (menu.categoryKey) {
     "RUKUN_ISLAM" -> DetailRukunIslamActivity::class.java
     "RUKUN_IMAN" -> DetailRukunImanActivity::class.java
@@ -55,13 +54,12 @@ class PembelajaranFragment : Fragment() {
 
    val intent = Intent(requireContext(), destinationActivity)
 
-   // Tetap bisa kirim data jika Activity tujuan membutuhkannya (misal untuk query DB)
    intent.putExtra("EXTRA_KATEGORI", menu.categoryKey)
    intent.putExtra("EXTRA_JUDUL", menu.title)
    startActivity(intent)
   }
 
-  // Setup RecyclerView Grid 2 Kolom
+  // Setup RecyclerView
   binding.rvPembelajaranMenu.apply {
    layoutManager = GridLayoutManager(requireContext(), 2)
    this.adapter = adapter

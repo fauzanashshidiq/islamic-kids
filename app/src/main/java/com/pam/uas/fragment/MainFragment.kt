@@ -23,7 +23,7 @@ class MainFragment : Fragment() {
  private val viewModel: DoaViewModel by viewModels()
  private lateinit var adapter: DoaMainAdapter
 
- // Variabel untuk menyimpan mode filter saat ini (Default: ALL)
+ // Variabel untuk menyimpan mode filter saat ini
  private var currentFilterMode = DoaViewModel.FilterMode.ALL
 
  override fun onCreateView(
@@ -63,8 +63,6 @@ class MainFragment : Fragment() {
 
  // Fungsi baru untuk mengubah teks berdasarkan filter
  private fun updateEmptyStateText() {
-  // Ambil referensi TextView dari dalam layoutEmptyState (karena di XML pakai LinearLayout biasa)
-  // Cara akses anak view dari binding layoutEmptyState:
   val layoutEmpty = binding.layoutEmptyState
   val ivIcon = layoutEmpty.getChildAt(0) as ImageView // Index 0 = Gambar
   val tvJudul = layoutEmpty.getChildAt(1) as TextView // Index 1 adalah Judul (lihat urutan XML)
@@ -103,10 +101,8 @@ class MainFragment : Fragment() {
  }
 
  private fun setupFilterButtons() {
-  // Daftar semua tombol filter
   val buttons = listOf(binding.btnFilterSemua, binding.btnFilterSudah, binding.btnFilterBelum)
 
-  // Set Default: Tombol "Semua" aktif
   updateButtonVisual(binding.btnFilterSemua, buttons)
 
   // Listener Tombol SEMUA
@@ -143,19 +139,19 @@ class MainFragment : Fragment() {
    val button = btn as androidx.appcompat.widget.AppCompatButton
    if (btn == selectedBtn) {
     // KONDISI AKTIF
-    btn.isSelected = true // Ini memicu selector XML tadi jadi Orange
+    btn.isSelected = true
     btn.setTextColor(android.graphics.Color.WHITE)
     btn.elevation = 8f
    } else {
     // KONDISI TIDAK AKTIF
-    btn.isSelected = false // Ini memicu selector XML tadi jadi Abu
+    btn.isSelected = false
     btn.setTextColor(android.graphics.Color.parseColor("#757575"))
     btn.elevation = 2f
    }
   }
  }
 
- // Fungsi Animasi "Pop" (Membal)
+ // Fungsi Animasi "Pop"
  private fun animateButton(view: View) {
   view.animate()
    .scaleX(1.1f)

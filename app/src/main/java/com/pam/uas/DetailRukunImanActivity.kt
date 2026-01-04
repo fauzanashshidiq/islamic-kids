@@ -33,18 +33,17 @@ class DetailRukunImanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inflate binding Rukun Iman
         binding = ActivityDetailRukunImanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Ambil Data dari Intent
+        // Ambil Data dari Intent
         val kategoriKey = intent.getStringExtra("EXTRA_KATEGORI") ?: "RUKUN_IMAN"
         val judulKategori = intent.getStringExtra("EXTRA_JUDUL") ?: "Rukun Iman"
 
         // Set Header
         binding.tvHeaderKategori.text = judulKategori
 
-        // 2. Load Data dari Database
+        // Load Data dari Database
         viewModel.getMateri(kategoriKey).observe(this) { list ->
             if (list.isNotEmpty()) {
                 materiList = list.sortedBy { it.urutan }
@@ -57,10 +56,9 @@ class DetailRukunImanActivity : AppCompatActivity() {
             }
         }
 
-        // 3. Setup Tombol Logic dengan Animasi
+        // Setup Tombol Logic dengan Animasi
         binding.btnNext.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
-            // Animasi Tombol
             view.animate()
                 .scaleX(0.9f)
                 .scaleY(0.9f)
@@ -74,7 +72,6 @@ class DetailRukunImanActivity : AppCompatActivity() {
                         .start()
 
                     if (currentIndex < materiList.size - 1) {
-                        // Jalankan Animasi Card Transisi
                         animateCardTransition {
                             currentIndex++
                             tampilkanData()
@@ -100,7 +97,6 @@ class DetailRukunImanActivity : AppCompatActivity() {
             }
         }
 
-        // UBAH LISTENER BUTTON BACK
         binding.btnBack.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
@@ -108,11 +104,9 @@ class DetailRukunImanActivity : AppCompatActivity() {
             }
         }
 
-        // UBAH LISTENER BUTTON SUARA
         binding.btnSuara.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
-                // Logic Play/Stop Toggle
                 if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
                     stopVoice()
                 } else {
@@ -129,29 +123,23 @@ class DetailRukunImanActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Animasi Card mengecil lalu membal (bounce) saat konten berubah.
-     */
     private fun animateCardTransition(onUpdate: () -> Unit) {
         val durationShrink = 150L
         val durationExpand = 400L
         val interpolator = android.view.animation.BounceInterpolator()
 
-        // Objek yang ingin dianimasikan: Card Utama, Shadow-nya, dan Badge Nomor
         val viewsToAnimate = listOf(binding.cardContent, binding.cardShadow, binding.tvNomorUrut)
 
         viewsToAnimate.forEach { v ->
             v.animate()
-                .scaleX(0.9f) // Kecilkan ke 90%
+                .scaleX(0.9f)
                 .scaleY(0.9f)
                 .setDuration(durationShrink)
                 .withEndAction {
-                    // Hanya panggil update sekali (misal trigger dari cardContent)
                     if (v == binding.cardContent) {
                         onUpdate()
                     }
-                    
-                    // Kembalikan ke ukuran normal dengan efek bounce
+
                     v.animate()
                         .scaleX(1.0f)
                         .scaleY(1.0f)
@@ -187,13 +175,11 @@ class DetailRukunImanActivity : AppCompatActivity() {
             val params = dot.layoutParams as LinearLayout.LayoutParams
             
             if (i == currentIndex) {
-                // Active Dot: Panjang (Pill)
                 params.width = dpToPx(24)
                 params.height = dpToPx(8)
                 dot.background = ContextCompat.getDrawable(this, R.drawable.bg_pill_beige)
                 dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#F57C00"))
             } else {
-                // Inactive Dot: Bulat Kecil
                 params.width = dpToPx(8)
                 params.height = dpToPx(8)
                 dot.background = ContextCompat.getDrawable(this, R.drawable.bg_circle_white_solid)
@@ -211,11 +197,8 @@ class DetailRukunImanActivity : AppCompatActivity() {
         if (materiList.isEmpty()) return
         val item = materiList[currentIndex]
 
-        // Binding View
         binding.tvNomorUrut.text = item.urutan.toString()
-        
-        // LOGIC PENGGALAN BARIS (New Line)
-        // Menambahkan \n secara dinamis untuk format yang lebih rapi
+
         var formattedJudul = item.nama
         if (formattedJudul.contains("Iman Kepada", ignoreCase = true) && !formattedJudul.contains("\n")) {
             formattedJudul = formattedJudul.replace("Iman Kepada", "Iman Kepada\n", ignoreCase = true)
@@ -225,9 +208,7 @@ class DetailRukunImanActivity : AppCompatActivity() {
         
         binding.tvJudulMateri.text = formattedJudul
         binding.tvDeskripsiMateri.text = item.deskripsi
-        
-        // Keterangan tidak ditampilkan di tampilan card simple seperti referensi, 
-        // tapi jika perlu bisa di-set:
+
         binding.tvKeterangan.text = item.keterangan
 
         // Handle Arab
@@ -278,10 +259,8 @@ class DetailRukunImanActivity : AppCompatActivity() {
             .start()
     }
 
-    // --- LOGIC SUARA BARU (Copy Paste Gantikan playVoice/stopVoice yang lama) ---
-
     private fun playVoice(fileName: String) {
-        stopVoice() // Reset suara sebelumnya
+        stopVoice()
 
         try {
             val finalName = if (fileName.endsWith(".mp3")) fileName else "$fileName.mp3"
@@ -294,7 +273,6 @@ class DetailRukunImanActivity : AppCompatActivity() {
                 start()
             }
 
-            // Jalankan updater progress bar
             startProgressUpdater()
 
             mediaPlayer?.setOnCompletionListener {
@@ -315,9 +293,7 @@ class DetailRukunImanActivity : AppCompatActivity() {
             override fun run() {
                 mediaPlayer?.let { player ->
                     if (player.isPlaying) {
-                        // Update UI
                         binding.progressSuara.progress = player.currentPosition
-                        // Ulangi setiap 50ms
                         handler.postDelayed(this, 50)
                     }
                 }
@@ -327,11 +303,9 @@ class DetailRukunImanActivity : AppCompatActivity() {
     }
 
     private fun stopVoice() {
-        // Matikan updater
         progressRunnable?.let { handler.removeCallbacks(it) }
         progressRunnable = null
 
-        // Reset Progress Bar ke 0
         binding.progressSuara.progress = 0
 
         mediaPlayer?.let {

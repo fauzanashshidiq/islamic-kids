@@ -29,7 +29,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
     private var currentIndex = 0
     private var mediaPlayer: MediaPlayer? = null
 
-    // Untuk update progress bar suara
     private val handler = Handler(Looper.getMainLooper())
     private var progressRunnable: Runnable? = null
 
@@ -55,7 +54,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
             }
         }
 
-        // --- SETUP TOMBOL NEXT/PREV (Sama, pakai animateButton) ---
         binding.btnNext.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
@@ -84,7 +82,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
             }
         }
 
-        // --- SETUP TOMBOL BACK (Dengan Animasi) ---
         binding.btnBack.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
@@ -92,7 +89,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
             }
         }
 
-        // --- SETUP TOMBOL SUARA (Dengan Progress & Animasi) ---
         binding.btnSuara.setOnClickListener { view ->
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
             animateButton(view) {
@@ -150,7 +146,6 @@ class DetailRukunIslamActivity : AppCompatActivity() {
         }
     }
 
-    // --- SETUP DOTS INDICATOR ---
     private fun setupDots() {
         binding.layoutDots.removeAllViews()
         val dotsCount = materiList.size
@@ -175,13 +170,11 @@ class DetailRukunIslamActivity : AppCompatActivity() {
             val params = dot.layoutParams as LinearLayout.LayoutParams
 
             if (i == currentIndex) {
-                // Active Dot: Panjang (Pill) - Purple #D900FF
                 params.width = dpToPx(24)
                 params.height = dpToPx(8)
                 dot.background = ContextCompat.getDrawable(this, R.drawable.bg_header_blue_gradient)
                 dot.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#29B6F6"))
             } else {
-                // Inactive Dot: Bulat Kecil - Gray
                 params.width = dpToPx(8)
                 params.height = dpToPx(8)
                 dot.background = ContextCompat.getDrawable(this, R.drawable.bg_circle_white_solid)

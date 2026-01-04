@@ -16,25 +16,19 @@ class PembelajaranViewModel(application: Application) : AndroidViewModel(applica
     init {
         val db = AppDatabase.getDatabase(application)
 
-        // Init Pembelajaran Repo
         val pembelajaranDao = db.pembelajaranDao()
         pembelajaranRepo = PembelajaranRepository(pembelajaranDao)
     }
 
-    // --- FUNGSI UNTUK UI ---
-    // Dipanggil saat user masuk ke menu tertentu (misal: Rukun Islam)
     fun getMateri(kategori: String): LiveData<List<PembelajaranEntity>> {
         return pembelajaranRepo.getMateriByKategori(kategori)
     }
 
-    // --- FUNGSI PRELOAD (Jalan sekali saja saat awal) ---
     fun preloadPembelajaran() = viewModelScope.launch {
-        // Cek database dulu supaya tidak duplikat data
         if (pembelajaranRepo.isEmpty()) {
             val helper = JsonHelper(getApplication())
             val allData = mutableListOf<PembelajaranEntity>()
 
-            // Load semua file JSON yang ada di assets
             try {
                 allData.addAll(helper.loadPembelajaran("rukun_islam.json"))
                 allData.addAll(helper.loadPembelajaran("rukun_iman.json"))
@@ -43,7 +37,6 @@ class PembelajaranViewModel(application: Application) : AndroidViewModel(applica
                 allData.addAll(helper.loadPembelajaran("sifat_wajib_allah.json"))
                 allData.addAll(helper.loadPembelajaran("tata_cara_wudhu.json"))
 
-                // Simpan ke database jika data berhasil diload
                 if (allData.isNotEmpty()) {
                     pembelajaranRepo.insertAll(allData)
                 }

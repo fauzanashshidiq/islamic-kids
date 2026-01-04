@@ -1,8 +1,8 @@
 package com.pam.uas
 
-import android.content.res.AssetFileDescriptor // Tambahan import
+import android.content.res.AssetFileDescriptor
 import android.graphics.Color
-import android.media.MediaPlayer // Tambahan import
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -10,13 +10,12 @@ import androidx.core.graphics.ColorUtils
 import com.bumptech.glide.Glide
 import com.pam.uas.databinding.ActivityDetailKisahNabiBinding
 import com.pam.uas.sfx.SfxPlayer
-import java.io.IOException // Tambahan import
+import java.io.IOException
 
 class DetailKisahNabiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailKisahNabiBinding
 
-    // --- TAMBAHAN: Variabel MediaPlayer ---
     private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +23,8 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         binding = ActivityDetailKisahNabiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // --- TAMBAHAN: Setup Musik ---
         setupBackgroundMusic()
 
-        // --- 1. LOGIKA TOMBOL KEMBALI ---
         binding.btnBack.setOnClickListener { view ->
             SfxPlayer.play(view.context, SfxPlayer.SoundType.POP)
             view.animate()
@@ -47,16 +44,12 @@ class DetailKisahNabiActivity : AppCompatActivity() {
                 .start()
         }
 
-        // ... (Kode ambil data Intent dan logika warna TETAP SAMA seperti sebelumnya) ...
-
-        // 2. Ambil Data dari Intent
         val nama = intent.getStringExtra("EXTRA_NAMA") ?: "Nama Nabi"
         val usia = intent.getStringExtra("EXTRA_USIA") ?: "-"
         val tempat = intent.getStringExtra("EXTRA_TMP") ?: "-"
         val tahun = intent.getStringExtra("EXTRA_THN") ?: "-"
         val desc = intent.getStringExtra("EXTRA_DESC") ?: "Tidak ada deskripsi."
 
-        // 3. Tampilkan Data ke UI
         binding.tvDetailNama.text = nama
         binding.tvUsia.text = "$usia Tahun"
         binding.tvTempat.text = tempat
@@ -100,10 +93,7 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         binding.viewHeaderShadow.background.setTint(colorShadow)
     }
 
-    // --- TAMBAHAN: FUNGSI SETUP MUSIK ---
-    // --- UBAH FUNGSI SETUP MUSIK ---
     private fun setupBackgroundMusic() {
-        // Cek dulu: Kalau player sudah ada, jangan buat baru biar ga restart
         if (mediaPlayer != null) return
 
         try {
@@ -117,8 +107,6 @@ class DetailKisahNabiActivity : AppCompatActivity() {
             mediaPlayer?.isLooping = true
             mediaPlayer?.setVolume(0.5f, 0.5f)
 
-            // Jangan langsung start() di sini kalau ingin kontrol penuh di onResume,
-            // tapi start() di sini aman untuk inisialisasi pertama.
             mediaPlayer?.start()
 
         } catch (e: IOException) {
@@ -126,16 +114,11 @@ class DetailKisahNabiActivity : AppCompatActivity() {
         }
     }
 
-    // --- UBAH LIFECYCLE MUSIK ---
-
     override fun onResume() {
         super.onResume()
-        // Cek null safety dan apakah sedang TIDAK main
         if (mediaPlayer != null && !mediaPlayer!!.isPlaying) {
-            // Ini akan melanjutkan (RESUME) dari posisi terakhir dipause
             mediaPlayer?.start()
         } else if (mediaPlayer == null) {
-            // Jaga-jaga kalau player null (misal memori dibersihkan), buat baru
             setupBackgroundMusic()
         }
     }
@@ -143,14 +126,13 @@ class DetailKisahNabiActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
-            mediaPlayer?.pause() // Pause di posisi detik ke-sekian
+            mediaPlayer?.pause()
         }
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
-        // Bersihkan memori saat activity dihancurkan
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null

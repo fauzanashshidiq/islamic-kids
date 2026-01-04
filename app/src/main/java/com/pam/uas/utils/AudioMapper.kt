@@ -42,7 +42,6 @@ object AudioMapper {
     )
 
     fun getAudioFile(judulDoa: String): String {
-        // Mengembalikan nama file jika ada, atau string kosong jika tidak ada
         return audioMap[judulDoa] ?: ""
     }
 }

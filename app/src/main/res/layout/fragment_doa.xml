@@ -9,14 +9,11 @@
     android:padding="16dp"
     android:clipToPadding="false">
 
-    <!-- 1. Header Kapsul Ungu (Tetap Muncul di Semua Kondisi) -->
-    <!-- Efek 3D: Layout ini membungkus Shadow dan Content -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp">
 
-        <!-- Layer Shadow (Bayangan) -->
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -25,7 +22,6 @@
             android:backgroundTint="#7B1FA2"
             android:alpha="0.5"/>
 
-        <!-- Layer Utama (Header) -->
         <TextView
             android:id="@+id/tvTitleDoa"
             android:layout_width="match_parent"
@@ -44,13 +40,11 @@
             android:elevation="4dp"/>
     </FrameLayout>
 
-    <!-- 2. Container Utama (Isinya ganti-ganti antara List, Loading, atau Error) -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <!-- A. LIST DATA (Default Visible) -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDoaApi"
             android:layout_width="match_parent"
@@ -59,7 +53,6 @@
             android:paddingBottom="80dp"
             tools:listitem="@layout/item_api_doa_checkbox"/>
 
-        <!-- B. LOADING BAR (Muncul saat loading) -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
@@ -67,7 +60,6 @@
             android:layout_gravity="center"
             android:visibility="gone"/>
 
-        <!-- C. TAMPILAN ERROR / NO INTERNET (Muncul saat error) -->
         <LinearLayout
             android:id="@+id/layoutErrorState"
             android:layout_width="match_parent"
@@ -78,7 +70,6 @@
             android:clickable="true"
             android:focusable="true">
 
-            <!-- Gambar Ikon Error -->
             <ImageView
                 android:layout_width="140dp"
                 android:layout_height="140dp"
@@ -86,7 +77,6 @@
                 android:layout_marginBottom="16dp"
                 android:alpha="0.9"/>
 
-            <!-- Judul Error -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,7 +89,6 @@
                 android:shadowDy="2"
                 android:shadowRadius="4"/>
 
-            <!-- Deskripsi Error -->
             <TextView
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
@@ -114,7 +103,6 @@
                 android:shadowDy="2"
                 android:shadowRadius="4"/>
 
-            <!-- Tombol Coba Lagi (3D Style) -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,7 +111,6 @@
                 android:clipChildren="false"
                 android:clipToPadding="false">
 
-                <!-- Shadow Layer -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -135,7 +122,6 @@
                     app:layout_constraintStart_toStartOf="@id/btnTryAgain"
                     app:layout_constraintEnd_toEndOf="@id/btnTryAgain"/>
 
-                <!-- Main Button Layer -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnTryAgain"
                     android:layout_width="wrap_content"

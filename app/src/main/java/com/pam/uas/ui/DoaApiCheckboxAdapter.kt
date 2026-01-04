@@ -30,7 +30,7 @@ class DoaApiCheckboxAdapter(
         val savedNote = savedNotesMap[item.doa]
         val isSaved = savedNote != null
 
-        // Reset listener dulu
+        // Reset listener
         holder.binding.cbSelect.setOnCheckedChangeListener(null)
         holder.binding.btnSimpanCatatan.setOnClickListener(null)
 
@@ -38,7 +38,6 @@ class DoaApiCheckboxAdapter(
         if (isSaved) {
             holder.binding.cbSelect.isChecked = true
             holder.binding.layoutCatatan.visibility = View.VISIBLE
-            // Isi EditText dengan catatan dari DB (atau kosong jika stringnya "")
             holder.binding.etCatatan.setText(savedNote)
         } else {
             holder.binding.cbSelect.isChecked = false
@@ -51,16 +50,12 @@ class DoaApiCheckboxAdapter(
             val context = buttonView.context
             if (isChecked) {
                 SfxPlayer.play(context, SfxPlayer.SoundType.SUCCESS)
-                // Tampilkan layout catatan
                 holder.binding.layoutCatatan.visibility = View.VISIBLE
-                // Simpan doa ke DB (catatan default kosong dulu)
                 onCheckChanged(item, true)
             } else {
                 SfxPlayer.play(context, SfxPlayer.SoundType.POP)
-                // Sembunyikan layout catatan
                 holder.binding.layoutCatatan.visibility = View.GONE
                 holder.binding.etCatatan.text.clear()
-                // Hapus doa dari DB
                 onCheckChanged(item, false)
             }
         }
@@ -68,21 +63,18 @@ class DoaApiCheckboxAdapter(
         // LISTENER TOMBOL SIMPAN CATATAN
         holder.binding.btnSimpanCatatan.setOnClickListener { view ->
             SfxPlayer.play(view.context, SfxPlayer.SoundType.POP)
-            // 1. Animasi Mengecil (Tekan)
             view.animate()
-                .scaleX(0.85f) // Mengecil ke 85%
+                .scaleX(0.85f)
                 .scaleY(0.85f)
                 .setDuration(100)
                 .withEndAction {
-                    // 2. Animasi Membal (Bounce Back)
                     view.animate()
                         .scaleX(1.0f)
                         .scaleY(1.0f)
                         .setDuration(300)
-                        .setInterpolator(android.view.animation.BounceInterpolator()) // Efek kenyal
+                        .setInterpolator(android.view.animation.BounceInterpolator())
                         .start()
 
-                    // 3. Jalankan logika simpan setelah animasi tekan selesai
                     val catatanBaru = holder.binding.etCatatan.text.toString()
                     onSaveNote(item, catatanBaru)
                     Toast.makeText(holder.itemView.context, "Catatan disimpan! ✅", Toast.LENGTH_SHORT).show()

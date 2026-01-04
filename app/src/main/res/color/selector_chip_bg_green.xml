@@ -1,4 +1,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="#4CAF50" android:state_checked="true"/> <!-- Biru saat aktif -->
-    <item android:color="#E0E0E0"/> <!-- Abu saat mati -->
+    <item android:color="#4CAF50" android:state_checked="true"/>
+    <item android:color="#E0E0E0"/>
 </selector>

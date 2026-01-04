@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Gambar Menu -->
         <ImageView
             android:id="@+id/ivMenuImage"
             android:layout_width="match_parent"
@@ -27,7 +26,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Judul Kategori (Disembunyikan jika gambar sudah mengandung teks) -->
         <TextView
             android:id="@+id/tvMenuTitle"
             android:layout_width="match_parent"
@@ -43,7 +41,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="14dp"/>
 
-        <!-- Tombol 'Baca Sekarang' -->
         <TextView
             android:id="@+id/btnBacaSekarang"
             android:layout_width="wrap_content"

@@ -55,7 +55,6 @@ class Welcome : AppCompatActivity() {
         btnContainer.translationY = 100f
         playWelcomeVoice()
 
-        // Animasi Masuk
         imgHero.animate()
             .alpha(1f)
             .scaleX(1f)
@@ -105,9 +104,7 @@ class Welcome : AppCompatActivity() {
             }
             .start()
 
-        // Listener Klik
         btnMulai.setOnClickListener {
-            // Stop voice welcome jika user langsung klik mulai
             stopWelcomeVoice()
 
             SfxPlayer.play(this, SfxPlayer.SoundType.POP)
@@ -116,22 +113,19 @@ class Welcome : AppCompatActivity() {
         }
     }
 
-    // 3. Fungsi setup MediaPlayer seperti di MainActivity
     private fun playWelcomeVoice() {
         try {
             welcomePlayer = MediaPlayer()
-            // Akses file di folder assets/sfx/
             val afd: AssetFileDescriptor = assets.openFd("sfx/voice_welcome.mp3")
 
             welcomePlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
             afd.close()
 
             welcomePlayer?.prepare()
-            welcomePlayer?.isLooping = false // Voice over biasanya cuma sekali, tidak looping
+            welcomePlayer?.isLooping = false
             welcomePlayer?.setVolume(1.5f, 1.5f)
             welcomePlayer?.start()
 
-            // Opsional: Release otomatis kalau sudah selesai biar hemat memori
             welcomePlayer?.setOnCompletionListener {
                 it.release()
                 welcomePlayer = null
@@ -156,17 +150,16 @@ class Welcome : AppCompatActivity() {
         }
     }
 
-    // 4. Lifecycle management: Stop suara saat keluar aplikasi/minimize/pindah
     override fun onPause() {
         super.onPause()
-        stopWelcomeVoice() // Matikan suara
+        stopWelcomeVoice()
 
         shakeRunnable?.let { handler.removeCallbacks(it) }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        stopWelcomeVoice() // Pastikan bersih
+        stopWelcomeVoice()
         shakeRunnable?.let { handler.removeCallbacks(it) }
     }
 

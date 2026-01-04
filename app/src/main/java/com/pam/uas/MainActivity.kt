@@ -46,15 +46,11 @@ class MainActivity : AppCompatActivity() {
 
         val navView = binding.bottomNavigation
         navView.itemIconTintList = null
-        navView.outlineProvider = null // Matikan shadow bawaan yang bisa memotong
+        navView.outlineProvider = null
 
-        // --- TAMBAHAN PENTING ---
-        // Cari "BottomNavigationMenuView" (anak langsung dari BottomNavigationView)
-        // dan matikan clipChildren-nya agar icon bisa keluar bebas.
         val menuView = navView.getChildAt(0) as? android.view.ViewGroup
         menuView?.clipChildren = false
         menuView?.clipToPadding = false
-        // ------------------------
 
         if (savedInstanceState == null) {
             loadFragment(MainFragment())
@@ -66,38 +62,28 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavListener()
     }
 
-    // --- FUNGSI SETUP MUSIK DARI ASSETS ---
     private fun setupBackgroundMusic() {
         try {
-            // Inisialisasi MediaPlayer kosong
             mediaPlayer = MediaPlayer()
 
-            // Buka file dari folder 'assets'
             val afd: AssetFileDescriptor = assets.openFd("music/bg_music.mp3")
 
-            // Set Data Source
-            // Penting: Gunakan startOffset dan length agar tidak error
             mediaPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
 
-            // Tutup file descriptor karena sudah di-set ke player
             afd.close()
 
-            // Persiapan player
             mediaPlayer?.prepare()
-            mediaPlayer?.isLooping = true // Biar ngulang terus
-            mediaPlayer?.setVolume(0.5f, 0.5f) // Volume 50%
-            mediaPlayer?.start() // Mulai mainkan
+            mediaPlayer?.isLooping = true
+            mediaPlayer?.setVolume(0.5f, 0.5f)
+            mediaPlayer?.start()
 
         } catch (e: IOException) {
             e.printStackTrace()
         }
     }
 
-    // --- LIFECYCLE ---
-
     override fun onResume() {
         super.onResume()
-        // Lanjut mainkan musik jika aplikasi dibuka kembali
         if (mediaPlayer != null && !mediaPlayer!!.isPlaying) {
             mediaPlayer?.start()
         }
@@ -105,7 +91,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        // Pause musik jika pindah aplikasi / tekan home
         if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
             mediaPlayer?.pause()
         }
@@ -113,7 +98,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Hapus player dari memori saat aplikasi dimatikan total
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null
@@ -167,32 +151,21 @@ class MainActivity : AppCompatActivity() {
             val menuItem = menu.getItem(i)
             val viewId = menuItem.itemId
 
-            // 1. Ambil Container Item (BottomNavigationItemView)
             val itemView = navView.findViewById<View>(viewId)
 
-            // 2. Matikan Clip agar bisa keluar jalur
             if (itemView is android.view.ViewGroup) {
                 itemView.clipChildren = false
                 itemView.clipToPadding = false
             }
 
-            // 3. Ambil Icon di dalamnya
             val iconView = itemView.findViewById<View>(com.google.android.material.R.id.navigation_bar_item_icon_view)
 
             if (viewId == selectedItemId) {
-                // --- KONDISI AKTIF ---
-
-                // A. Beri Background Putih pada Container
                 itemView.setBackgroundResource(R.drawable.bg_nav_item_selected)
 
-                // B. Naikkan CONTAINER-nya (ItemView), maka Icon otomatis ikut naik
-                // Kita naikkan -50f (sesuaikan tinggi 'pop' yang dimau)
                 animateView(itemView, -50f, 1.0f)
 
-                // C. Besarkan Icon-nya sedikit biar manis
                 if (iconView != null) {
-                    // Icon tidak perlu ditranslate lagi karena containernya sudah naik
-                    // Cukup di-scale saja
                     iconView.animate()
                         .scaleX(1.3f)
                         .scaleY(1.3f)
@@ -201,15 +174,10 @@ class MainActivity : AppCompatActivity() {
                 }
 
             } else {
-                // --- KONDISI TIDAK AKTIF ---
-
-                // A. Hapus Background
                 itemView.background = null
 
-                // B. Kembalikan Posisi Container ke 0 (Bawah)
                 animateView(itemView, 0f, 1.0f)
 
-                // C. Kembalikan Ukuran Icon Normal
                 if (iconView != null) {
                     iconView.animate()
                         .scaleX(1.0f)
@@ -221,14 +189,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Update helper function biar lebih fleksibel
     private fun animateView(view: View, translationY: Float, scale: Float) {
         view.animate()
             .translationY(translationY)
             .scaleX(scale)
             .scaleY(scale)
             .setDuration(300)
-            .setInterpolator(android.view.animation.OvershootInterpolator()) // Efek membal sedikit saat naik
+            .setInterpolator(android.view.animation.OvershootInterpolator())
             .start()
     }
 }

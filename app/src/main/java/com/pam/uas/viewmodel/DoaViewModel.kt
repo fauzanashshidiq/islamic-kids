@@ -17,10 +17,8 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
     val apiDoaList = MutableLiveData<List<ApiDoaResponse>>()
     val savedDoa = MutableLiveData<List<DoaEntity>>()
 
-    // Master data (Semua data dari DB)
     private val _allSavedDoa = MutableLiveData<List<DoaEntity>>()
 
-    // Data yang ditampilkan ke UI (bisa difilter)
     val displayDoaList = MediatorLiveData<List<DoaEntity>>()
 
     val isError = MutableLiveData<Boolean>()
@@ -38,7 +36,6 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
         val db = AppDatabase.getDatabase(context)
         repo = DoaRepository(api, db.doaDao())
 
-        // Hubungkan display list dengan data asli
         displayDoaList.addSource(_allSavedDoa) { list ->
             applyFilter(list)
         }
@@ -46,7 +43,6 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
 
     fun setFilter(mode: FilterMode) {
         currentFilterMode = mode
-        // Trigger ulang filter dengan data yang ada sekarang
         _allSavedDoa.value?.let { applyFilter(it) }
     }
 
@@ -60,28 +56,21 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun loadApiDoa() = viewModelScope.launch {
-        // 1. Mulai Loading
         isLoading.postValue(true)
-        isError.postValue(false) // Reset error
+        isError.postValue(false)
 
         try {
-            // 2. Coba ambil data
             val result = repo.fetchApiDoa()
 
-            // Urutkan hasil berdasarkan nama 'doa' secara abjad (A-Z)
             val sortedResult = result.sortedBy { it.doa }
 
-            // Masukkan data yang sudah urut
             apiDoaList.postValue(sortedResult)
             isError.postValue(false)
         } catch (e: Exception) {
-            // 3. Jika GAGAL (No Internet / Server Down)
             e.printStackTrace()
-            isError.postValue(true) // Beritahu UI ada error
+            isError.postValue(true)
             apiDoaList.postValue(emptyList())
-
         } finally {
-            // 4. Selesai Loading
             isLoading.postValue(false)
         }
     }
@@ -90,7 +79,7 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
         val audioFile = AudioMapper.getAudioFile(apiDoa.doa)
 
         val entity = DoaEntity(
-            id = 0, // Auto generate
+            id = 0,
             doa = apiDoa.doa,
             ayat = apiDoa.ayat,
             latin = apiDoa.latin,
@@ -119,7 +108,6 @@ class DoaViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun deleteDoaByJudul(judul: String) = viewModelScope.launch {
-        // Kamu perlu menambahkan fungsi ini di Repository dan DAO
         repo.deleteByJudul(judul)
     }
 
