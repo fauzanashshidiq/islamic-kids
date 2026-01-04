@@ -1,107 +1,89 @@
-# 🕌 Islamic Kids  
-### Aplikasi Bacaan dan Doa Harian untuk Anak
+<div align="center">
 
-<p align="center">
-  <img src="https://via.placeholder.com/900x300/00C853/FFFFFF?text=Islamic+Kids" alt="Islamic Kids Banner" />
-</p>
+# 👥 Tim Pengembang Islamic Kids
 
-<p align="center">
-  <b>Aplikasi mobile edukatif untuk membantu anak-anak belajar doa harian dan bacaan shalat dengan cara yang menyenangkan.</b>
-</p>
+<p>Proyek ini dikembangkan oleh kelompok kami untuk memberikan edukasi agama yang interaktif bagi anak-anak menggunakan Native Android Development.</p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Built%20With-Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" />
-  <img src="https://img.shields.io/badge/Language-Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" />
-  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-brightgreen?style=for-the-badge" />
-</p>
+| **Fauzan Ashshidiq** | **M. Rahardian Baihaqi** |
+| :---: | :---: |
+| <img src="https://github.com/fauzanashshidiq.png" width="140" style="border-radius: 50%;" alt="Fauzan"> | <img src="https://via.placeholder.com/140?text=Rahardian" width="140" style="border-radius: 50%;" alt="Rahardian"> |
+| [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/fauzanashshidiq) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/) |
+| **Nazwa Yulianti Munjana** | **Raflhy Nur Ramadhan** |
+| <img src="https://via.placeholder.com/140?text=Nazwa" width="140" style="border-radius: 50%;" alt="Nazwa"> | <img src="https://via.placeholder.com/140?text=Raflhy" width="140" style="border-radius: 50%;" alt="Raflhy"> |
+| [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/) |
 
 ---
 
-## 👥 Tim Pengembang
-
-Proyek ini dikembangkan oleh kelompok kami sebagai media edukasi agama Islam yang interaktif dan ramah anak.
-
-| Nama | GitHub |
-|------|--------|
-| **Fauzan Ashshidiq** | https://github.com/fauzanashshidiq |
-| **M. Rahardian Baihaqi** | https://github.com/ |
-| **Nazwa Yulianti Munjana** | https://github.com/ |
-| **Raflhy Nur Ramadhan** | https://github.com/ |
+# Islamic Kids: Aplikasi Bacaan dan Doa Harian
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=fauzanashshidiq&label=PROFILE+VIEWS&color=00c853&style=flat-square" />
+  <a href="https://developer.android.com/">
+    <img src="https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
+  </a>
+  <a href="https://kotlinlang.org/">
+    <img src="https://img.shields.io/badge/Language-Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin">
+  </a>
+  <a href="https://developer.android.com/studio">
+    <img src="https://img.shields.io/badge/IDE-Android%20Studio-4285F4?style=for-the-badge&logo=android-studio&logoColor=white" alt="Android Studio">
+  </a>
 </p>
+
+<img src="https://via.placeholder.com/800x300/3DDC84/FFFFFF?text=Islamic+Kids+Android+Banner" width="100%" alt="Islamic Kids Banner">
+
+<p>
+  <b>Aplikasi Android Native edukatif untuk membantu anak-anak belajar doa harian dan bacaan shalat dengan antarmuka yang modern dan interaktif.</b>
+</p>
+
+</div>
 
 ---
 
 ## 📋 Daftar Isi
-
 - [📖 Tentang Proyek](#-tentang-proyek)
 - [✨ Fitur Utama](#-fitur-utama)
 - [📱 Pratinjau Aplikasi](#-pratinjau-aplikasi)
-- [🛠️ Teknologi yang Digunakan](#️-teknologi-yang-digunakan)
+- [🛠️ Teknologi & Library](#️-teknologi--library)
 - [🚀 Cara Menjalankan](#-cara-menjalankan)
-- [📄 Lisensi](#-lisensi)
 
 ---
 
 ## 📖 Tentang Proyek
+**Islamic Kids** adalah aplikasi mobile berbasis **Android Native** yang dibangun menggunakan bahasa pemrograman **Kotlin**. Aplikasi ini dirancang khusus untuk memfasilitasi anak-anak dalam menghafal doa-doa harian, niat shalat, serta tata cara bacaan shalat secara digital.
 
-**Islamic Kids** adalah aplikasi mobile berbasis **Flutter** yang dirancang untuk membantu anak-anak Muslim mengenal dan menghafal bacaan penting dalam kehidupan sehari-hari.
-
-Aplikasi ini menyediakan kumpulan doa harian, niat shalat, dan bacaan shalat lengkap dengan dukungan audio serta animasi menarik agar proses belajar menjadi lebih menyenangkan.
+Dengan memanfaatkan library animasi dan multimedia pada Android Studio, aplikasi ini menawarkan pengalaman belajar yang tidak membosankan melalui visual yang menarik dan audio yang jernih.
 
 ---
 
 ## ✨ Fitur Utama
-
-- 🤲 **Kumpulan Doa Harian**  
-  Doa aktivitas sehari-hari dengan teks Arab, latin, dan terjemahan.
-
-- 🕌 **Niat Shalat**  
-  Niat shalat fardhu lima waktu.
-
-- 📖 **Bacaan Shalat Lengkap**  
-  Dari takbiratul ihram hingga salam.
-
-- 🔊 **Dukungan Audio**  
-  Membantu anak mendengar pelafalan yang benar.
-
-- 🎨 **Animasi Lottie**  
-  Tampilan lebih hidup dan ramah anak.
-
-- 📱 **UI Responsif**  
-  Optimal di berbagai ukuran layar.
+* **🤲 Doa Harian Lengkap:** List doa harian dengan teks Arab, transliterasi Latin, dan arti Bahasa Indonesia.
+* **🕌 Panduan Shalat:** Niat shalat fardhu dan bacaan lengkap dari takbir hingga salam.
+* **🔊 Audio Pembelajaran:** Fitur suara untuk mendengarkan pelafalan doa dan bacaan yang benar.
+* **🎨 Animasi Lottie:** Integrasi animasi interaktif untuk mempercantik tampilan UI.
+* **📱 Jetpack Components:** Implementasi teknologi Android terbaru untuk performa yang optimal.
 
 ---
 
 ## 📱 Pratinjau Aplikasi
+Berikut adalah tampilan antarmuka dari aplikasi Islamic Kids (Android Version):
 
-| Home | Daftar Doa | Detail & Audio |
-|------|-----------|----------------|
-| <img src="https://via.placeholder.com/300x600/00C853/FFFFFF?text=Home" width="220" /> | <img src="https://via.placeholder.com/300x600/00C853/FFFFFF?text=Doa" width="220" /> | <img src="https://via.placeholder.com/300x600/00C853/FFFFFF?text=Detail" width="220" /> |
+| Halaman Utama | Daftar Doa | Detail Bacaan |
+|:---:|:---:|:---:|
+| <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Home+Activity" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=List+Doa" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Detail+Audio" width="220"> |
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
-
-- **Framework:** Flutter  
-- **Bahasa Pemrograman:** Dart  
-
-### Packages
-- `google_fonts`
-- `lottie`
-- `audioplayers`
+## 🛠️ Teknologi & Library
+* **Bahasa:** [Kotlin](https://kotlinlang.org/)
+* **IDE:** [Android Studio](https://developer.android.com/studio)
+* **Library Utama:**
+  * `Lottie-Android` - Untuk render animasi interaktif.
+  * `MediaPlayer` - Untuk fitur pemutar audio doa.
+  * `RecyclerView` - Untuk menampilkan daftar doa secara efisien.
+  * `Google Fonts` - Untuk tipografi khusus anak-anak.
 
 ---
 
 ## 🚀 Cara Menjalankan
-
-### Prasyarat
-Pastikan Flutter SDK telah terinstal.
-
-### Langkah-langkah
-
-1. **Clone Repository**
+1. **Clone Repo:**
    ```bash
-   git clone https://github.com/fauzanashshidiq/islamic-kids.git
+   git clone [https://github.com/fauzanashshidiq/islamic-kids.git](https://github.com/fauzanashshidiq/islamic-kids.git)
