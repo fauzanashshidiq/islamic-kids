@@ -79,7 +79,7 @@ Islamic Kids menawarkan solusi melalui aplikasi mobile yang dirancang dengan pen
 * **Modul Doa Harian:** Kumpulan doa harian yang paling sering digunakan, lengkap dengan arti dan teks yang mudah dibaca.
 * **Modul Tuntunan Shalat:** Panduan visual dan teks mengenai niat serta urutan bacaan shalat fardhu secara sistematis.
 * **Audio Interaktif:** Setiap doa dan bacaan shalat dilengkapi dengan pemutar suara untuk memandu pelafalan yang fasih dan benar.
-* **Visualisasi Animasi:** Penggunaan animasi Lottie yang interaktif untuk memberikan kesan hidup pada aplikasi sehingga anak tidak mudah bosan.
+* **Visualisasi Animasi:** Penggunaan animasi Lottie yang interaktif untuk memberikan kesan hidup pada aplikasi sehingga anak tidak akan pernah mudah bosan.
 
 ---
 
