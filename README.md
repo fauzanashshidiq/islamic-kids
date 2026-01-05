@@ -9,19 +9,27 @@
   <tr>
     <td align="center">
       <img width="128" height="128" src="https://github.com/user-attachments/assets/fac42ceb-3149-459e-85ce-8e8e327b9dc7" alt="Fauzan"><br>
-      [![1237050051](https://img.shields.io/badge/001-Fauzan%20Ashshidiq-blue)](https://github.com/fauzanashshidiq)
+      <a href="https://github.com/fauzanashshidiq">
+        <img src="https://img.shields.io/badge/001-Fauzan%20Ashshidiq-blue" alt="001 Badge">
+      </a>
     </td>
     <td align="center">
       <img width="128" height="128" src="https://github.com/user-attachments/assets/800f0a8d-3503-4ce4-9266-99ce9a7c3f4b" alt="Rahardian"><br>
-      [![1237050023](https://img.shields.io/badge/002-M.%20Rahardian%20B-blue)](https://github.com/rhrdianbaihaqi)
+      <a href="https://github.com/rhrdianbaihaqi">
+        <img src="https://img.shields.io/badge/002-M.%20Rahardian%20B-blue" alt="002 Badge">
+      </a>
     </td>
     <td align="center">
       <img width="128" height="128" src="https://github.com/user-attachments/assets/7e57a253-1aa2-40f9-94d2-6c13ed51cc37" alt="Nazwa"><br>
-      [![1237050007](https://img.shields.io/badge/003-Nazwa%20Yulianti-blue)](https://github.com/nazwaym)
+      <a href="https://github.com/nazwaym">
+        <img src="https://img.shields.io/badge/003-Nazwa%20Yulianti-blue" alt="003 Badge">
+      </a>
     </td>
     <td align="center">
       <img width="128" height="128" src="https://github.com/user-attachments/assets/b8239489-d715-409b-a883-3a8d4f0ca595" alt="Raflhy"><br>
-      [![1237050004](https://img.shields.io/badge/004-Raflhy%20Ramadhan-blue)](https://github.com/raflhyramadhan18)
+      <a href="https://github.com/raflhyramadhan18">
+        <img src="https://img.shields.io/badge/004-Raflhy%20Ramadhan-blue" alt="004 Badge">
+      </a>
     </td>
   </tr>
 </table>
@@ -77,9 +85,9 @@ Islamic Kids menawarkan solusi melalui aplikasi mobile yang dirancang dengan pen
 
 ## Dokumentasi Antarmuka
 
-| Halaman Utama | Daftar Doa | Detail Bacaan |
+| Daftar Doa | Bacaan Kisah Nabi | Ruang Pembelajaran |
 |:---:|:---:|:---:|
-| <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Home+Interface" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=List+Interface" width="220"> | <img src="https://via.placeholder.com/300x600/3DDC84/FFFFFF?text=Detail+Interface" width="220"> |
+| <img width="220" src="https://github.com/user-attachments/assets/33e62c8a-557c-4127-9bf8-f98666879df0"> | <img width="220" src="https://github.com/user-attachments/assets/63fb9d8a-542d-4f2a-a67d-3371467a5c74"> | <img width="220" src="https://github.com/user-attachments/assets/92fc4c64-da4a-444f-91f4-3b249ecd4de7"> |
 
 ---
 
