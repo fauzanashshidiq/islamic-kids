@@ -1,28 +1,27 @@
 <div align="center">
 
 # Tim Pengembang - 
-### Teknik Informatika UIN Sunan Gunung Djati Bandung
+### [Teknik Informatika](http://if.uinsgd.ac.id/) [UIN Sunan Gunung Djati Bandung](https://uinsgd.ac.id/)
 
 ---
 
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/fauzanashshidiq.png" width="120" style="border-radius: 50%; border: 3px solid #EBCB8B;" alt="Fauzan"><br>
-      <img src="" alt="Badge Fauzan">
+      <img width="128" height="128" src="https://github.com/user-attachments/assets/fac42ceb-3149-459e-85ce-8e8e327b9dc7" alt="Fauzan"><br>
+      [![1237050051](https://img.shields.io/badge/001-Fauzan%20Ashshidiq-blue)](https://github.com/fauzanashshidiq)
     </td>
     <td align="center">
-      <img src="https://via.placeholder.com/120?text=Rahardian" width="120" style="border-radius: 50%; border: 3px solid #EBCB8B;" alt="Rahardian"><br>
-      <img src="https://img.shields.io/badge/002-M.%20Rahardian%20B-blue?style=flat-square" alt="Badge Rahardian">
+      <img width="128" height="128" src="https://github.com/user-attachments/assets/800f0a8d-3503-4ce4-9266-99ce9a7c3f4b" alt="Rahardian"><br>
+      [![1237050023](https://img.shields.io/badge/002-M.%20Rahardian%20B-blue)](https://github.com/rhrdianbaihaqi)
     </td>
     <td align="center">
-      <img src="https://via.placeholder.com/120?text=Nazwa" width="120" style="border-radius: 50%; border: 3px solid #EBCB8B;" alt="Nazwa"><br>
-      <img src="https://img.shields.io/badge/003-Nazwa%20Yulianti-blue?style=flat-square" alt="Badge Nazwa">
+      <img width="128" height="128" src="https://github.com/user-attachments/assets/7e57a253-1aa2-40f9-94d2-6c13ed51cc37" alt="Nazwa"><br>
+      [![1237050007](https://img.shields.io/badge/003-Nazwa%20Yulianti-blue)](https://github.com/nazwaym)
     </td>
     <td align="center">
-      <img src="https://via.placeholder.com/120?text=Raflhy" width="120" style="border-radius: 50%; border: 3px solid #EBCB8B;" alt="Raflhy"><br>
-      <img src="![WhatsApp Image 2026-01-04 at 20 28 16](https://github.com/user-attachments/assets/c597d019-87ed-4c59-bcb9-25e8cb640b97)
- " alt="Badge Raflhy">
+      <img width="128" height="128" src="https://github.com/user-attachments/assets/b8239489-d715-409b-a883-3a8d4f0ca595" alt="Raflhy"><br>
+      [![1237050004](https://img.shields.io/badge/004-Raflhy%20Ramadhan-blue)](https://github.com/raflhyramadhan18)
     </td>
   </tr>
 </table>
@@ -92,6 +91,28 @@ Aplikasi ini dikembangkan dengan arsitektur Android modern menggunakan komponen 
 * **Library Multimedia:** Android MediaPlayer API
 * **Library Animasi:** Airbnb Lottie for Android
 * **Manajemen Daftar:** RecyclerView dengan Adaptive Layout
+* **Networking:** Retrofit 2 + OkHttp (REST API Client)
+* **Database Lokal:** Room Database (SQLite Abstraction)
+
+---
+
+## API dan Data
+
+Aplikasi menggunakan API publik sebagai sumber data doa-doa Islam dan doa harian.
+
+**Endpoint yang digunakan:**
+- `GET /api` → mengambil semua doa dari server
+
+**Contoh response:** Endpoint: https://doa-doa-api-ahmadramadhan.fly.dev/api
+
+**Implementasi di aplikasi:**
+- Data diambil menggunakan **Retrofit 2 + OkHttp**
+- Response API disimpan ke **Room Database** agar dapat diakses secara offline
+
+**Struktur penyimpanan Room Database:**
+- `doa` → daftar doa-doa Islam & doa harian
+- `kisah_nabi` → cerita singkat para Nabi
+- `pembelajaran` → materi edukasi Islam untuk anak (rukun iman, rukun islam, shalat wajib, asmaul husna, sifat wajib Allah, dan tata cara wudhu)
 
 ---
 
@@ -100,4 +121,4 @@ Aplikasi ini dikembangkan dengan arsitektur Android modern menggunakan komponen 
 1. Pastikan Anda memiliki **Android Studio** versi terbaru terpasang di perangkat Anda.
 2. Clone repositori ini melalui terminal:
    ```bash
-   git clone [https://github.com/fauzanashshidiq/islamic-kids.git](https://github.com/fauzanashshidiq/islamic-kids.git)
+   git clone https://github.com/fauzanashshidiq/islamic-kids.git
